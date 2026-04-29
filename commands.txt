@@ -1,0 +1,4 @@
+docker build -t a-eye-trainer .
+docker stop a-eye-app 2>nul & docker run --rm --name a-eye-app -p 8501:8501 a-eye-trainer
+docker ps
+docker stop fcf9a5b94a2f
