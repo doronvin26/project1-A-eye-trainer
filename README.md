@@ -8,7 +8,7 @@ The application operates using a **distributed computing approach**:
 ---
 
 ### 📱 Frontend
-A mobile application that captures the user's movement via the phone's camera in real-time.
+A mobile application that captures the user's movement via the phone's camera.
 
 ### 💻 Backend
 A computer that receives data from the phone to perform complex algorithmic analysis and pose estimation.
