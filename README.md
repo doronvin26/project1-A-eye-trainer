@@ -6,4 +6,3 @@ The application operates using a distributed computing approach:
 Frontend: A mobile application that captures the user's movement via the phone's camera. 
 Backend:  A computer that receives data from the phone to perform complex algorithmic analysis. 
 Logic: A state machine-based system manages the exercise logic to track progress and count repetitions (e.g., push-ups, planks, and squats). 
-doronnnnnnnnn
