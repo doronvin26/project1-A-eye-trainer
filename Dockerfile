@@ -10,7 +10,14 @@ RUN apt-get update && apt-get install -y \
     libgl1 \
     libglx-mesa0 \
     libglib2.0-0 \
+    libgles2 \
+    libegl1 \
+    wget \
     && rm -rf /var/lib/apt/lists/*
+
+# יצירת תיקיית מודלים נפרדת (כדי שה-Volume לא ידרוס אותה) והורדת המודל
+RUN mkdir -p /models && \
+    wget -q -O /models/pose_landmarker_full.task https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task
 
 # הגדרת תיקיית העבודה
 WORKDIR /app
