@@ -1,6 +1,5 @@
 # 1. שימוש בגרסת Python מודרנית (3.11) על בסיס Ubuntu
-FROM ubuntu:22.04
-
+FROM ubuntu:latest
 # מניעת שאלות אינטראקטיביות בזמן ההתקנה
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -22,8 +21,6 @@ COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # הערה: הסרנו את COPY . . כדי להשתמש ב-Mount בזמן ההרצה
-
-#EXPOSE 8501
 
 # הרצה של Streamlit (שים לב לשימוש ב-python3)
 CMD ["sh", "-c", "echo 'App is starting at: http://localhost:8501' && python3 -m streamlit run app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true --browser.gatherUsageStats=false --logger.level=error > /dev/null 2>&1"]
