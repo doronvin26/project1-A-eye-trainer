@@ -18,8 +18,7 @@ services:
     volumes:
       - ".:/app"
     # כאן אתה מגדיר איזה קובץ להריץ. 
-    # החלף את 'your_script.py' בשם הקובץ האמיתי שלך
-    command: python image_proc.py
+    command: python3 image_proc.py
     stdin_open: true
     tty: true
     init: true
