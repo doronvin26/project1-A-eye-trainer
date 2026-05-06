@@ -61,7 +61,9 @@ with vision.PoseLandmarker.create_from_options(options) as landmarker:
         if image is None:
             print(f"Warning: Could not read {filename}")
             continue
-            
+        # --- חילוץ הרזולוציה של התמונה ---
+        # הפונקציה shape מחזירה (height, width, channels)
+        height, width, _ = image.shape    
         # המרה ל-RGB ויצירת אובייקט תמונה של MediaPipe
         image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image_rgb)
@@ -76,8 +78,7 @@ with vision.PoseLandmarker.create_from_options(options) as landmarker:
         end_time = time.perf_counter()
 
         processing_time_ms = (end_time - start_time) * 1000
-        print(f"Image: {filename} | Processing time: {processing_time_ms:.2f} ms")
-        
+        print(f"Image: {filename} | Resolution: {width}x{height} | Processing time: {processing_time_ms:.2f} ms")        
         total_time_ms += processing_time_ms
         valid_images_count += 1
 
