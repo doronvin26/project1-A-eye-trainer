@@ -1,17 +1,25 @@
-
 services:
-  # השירות של האפליקציה שלנו
+  # השירות הקיים שלך - שרת ה-Streamlit
   trainer-app:
     build: .
     container_name: a-eye-app
-    # פתיחת הפורטים (בדיוק כמו -p)
     ports:
       - "8501:8501"
-    # חיבור התיקייה מהמחשב לתוך הדוקר (ה-Mount שדיברנו עליו)
     volumes:
       - ".:/app"
-    # מאפשר לנו לראות את הצבעים והלוגים בטרמינל בצורה טובה
     stdin_open: true
     tty: true
-    # אתחול חכם של תהליכים (בדיוק כמו --init)
+    init: true
+
+  # השירות החדש - להרצת קבצי פייתון נוספים
+  data-processor:
+    build: .
+    container_name: image_proc
+    volumes:
+      - ".:/app"
+    # כאן אתה מגדיר איזה קובץ להריץ. 
+    # החלף את 'your_script.py' בשם הקובץ האמיתי שלך
+    command: python image_proc.py
+    stdin_open: true
+    tty: true
     init: true
