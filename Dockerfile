@@ -1,5 +1,5 @@
 # 1. שימוש בגרסת Python מודרנית (3.11) על בסיס Ubuntu
-FROM ubuntu:latest
+FROM ubuntu:22.04
 # מניעת שאלות אינטראקטיביות בזמן ההתקנה
 ENV DEBIAN_FRONTEND=noninteractive
 
