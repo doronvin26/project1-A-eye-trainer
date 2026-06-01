@@ -1,4 +1,6 @@
 streamlit
 opencv-python-headless
 mediapipe
+ultralytics
 numpy
+tensorflow-cpu

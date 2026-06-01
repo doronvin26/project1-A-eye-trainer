@@ -6,7 +6,7 @@ import time
 import os
 import numpy as np
 
-# הגדרת נתיבים
+# Define paths
 folder_path = './images'  
 output_folder = './output_images' 
 model_path = '/models/pose_landmarker_full.task' 
@@ -20,7 +20,7 @@ options = vision.PoseLandmarkerOptions(
 
 with vision.PoseLandmarker.create_from_options(options) as landmarker:
     
-    # --- שלב החימום ---
+    # --- Warm-up phase ---
     dummy_image_np = np.zeros((480, 640, 3), dtype=np.uint8)
     mp_dummy_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=dummy_image_np)
     landmarker.detect(mp_dummy_image)
@@ -49,11 +49,11 @@ with vision.PoseLandmarker.create_from_options(options) as landmarker:
         processing_time_ms = (end_time - start_time) * 1000
         print(f"Image: {filename} | Resolution: {width}x{height} | Processing time: {processing_time_ms:.2f} ms")
         
-        # --- ציור ושמירת התמונה (בעזרת OpenCV ישירות!) ---
+        # --- Drawing and saving the image (using OpenCV directly!) ---
         if detection_result.pose_landmarks:
             annotated_image = image.copy()
             
-            # הגדרה ידנית ובטוחה של כל החיבורים בשלד (ללא תלות ב-solutions השבור)
+            # Manual and safe definition of all skeleton connections (independent of the broken solutions)
             POSE_CONNECTIONS = [
                 (0, 1), (1, 2), (2, 3), (3, 7), (0, 4), (4, 5), (5, 6), (6, 8), (9, 10), 
                 (11, 12), (11, 13), (13, 15), (15, 17), (15, 19), (15, 21), (17, 19), 
@@ -64,14 +64,14 @@ with vision.PoseLandmarker.create_from_options(options) as landmarker:
             
             for pose_landmarks in detection_result.pose_landmarks:
                 
-                # שלב 1: המרת כל הנקודות לפיקסלים אמיתיים
+                # Step 1: Convert all landmarks to real pixels
                 pixel_landmarks = []
                 for landmark in pose_landmarks:
                     cx = int(landmark.x * width)
                     cy = int(landmark.y * height)
                     pixel_landmarks.append((cx, cy))
                     
-                # שלב 2: ציור הקווים (השלד)
+                # Step 2: Draw the lines (skeleton)
                 for connection in POSE_CONNECTIONS:
                     start_idx = connection[0]
                     end_idx = connection[1]
@@ -79,12 +79,12 @@ with vision.PoseLandmarker.create_from_options(options) as landmarker:
                     if start_idx < len(pixel_landmarks) and end_idx < len(pixel_landmarks):
                         pt1 = pixel_landmarks[start_idx]
                         pt2 = pixel_landmarks[end_idx]
-                        # ציור קו ירוק בעובי 2 פיקסלים
+                        # Draw a green line with a thickness of 2 pixels
                         cv2.line(annotated_image, pt1, pt2, (0, 255, 0), 2)
                         
-                # שלב 3: ציור הנקודות (המפרקים)
+                # Step 3: Draw the points (joints)
                 for pt in pixel_landmarks:
-                    # ציור עיגול אדום
+                    # Draw a red circle
                     cv2.circle(annotated_image, pt, 4, (0, 0, 255), -1)
 
             output_path = os.path.join(output_folder, f"annotated_{filename}")
