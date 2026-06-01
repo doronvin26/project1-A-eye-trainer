@@ -1,4 +1,3 @@
-#not working!!!!
 import cv2
 import time
 import os
@@ -192,7 +191,7 @@ def benchmark_movenet_lightning(video_path, target_frames):
         input_image = cv2.resize(frame, (192, 192))
         input_image = cv2.cvtColor(input_image, cv2.COLOR_BGR2RGB)
         input_image = np.expand_dims(input_image, axis=0)
-        input_image = tf.cast(input_image, dtype=tf.int32)
+        input_image = tf.cast(input_image, dtype=tf.float32)
         
         # Run inference
         interpreter.set_tensor(input_details[0]['index'], input_image)
