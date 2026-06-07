@@ -9,6 +9,7 @@ import pandas as pd
 import os
 from pathlib import Path
 from functools import lru_cache
+import hashlib
 
 # ============================================================================
 # PAGE CONFIGURATION
@@ -73,14 +74,18 @@ def init_session_state():
         st.session_state.frame_labels = {}
     if "last_viewed_frame" not in st.session_state:
         st.session_state.last_viewed_frame = -1
-    if "uploaded_file_id" not in st.session_state:
-        st.session_state.uploaded_file_id = None
+    if "video_hash" not in st.session_state:
+        st.session_state.video_hash = None
 
 init_session_state()
 
 # ============================================================================
 # UTILITIES
 # ============================================================================
+
+def get_file_hash(file_obj):
+    """Generate hash of uploaded file (name + size)."""
+    return hashlib.md5(f"{file_obj.name}_{file_obj.size}".encode()).hexdigest()
 
 @lru_cache(maxsize=1)
 def load_mediapipe_model():
@@ -343,11 +348,11 @@ with st.sidebar:
     uploaded_video = st.file_uploader("Upload a video", type=["mp4", "avi", "mov"])
     
     if uploaded_video is not None:
-        # Create unique ID for this upload to detect if file changed
-        current_file_id = id(uploaded_video)
+        # Create hash of file (name + size) to detect if it's new
+        current_file_hash = get_file_hash(uploaded_video)
         
-        # Only process if it's a NEW file (not already cached)
-        if st.session_state.uploaded_file_id != current_file_id:
+        # Only process if it's a NEW file (different hash)
+        if st.session_state.video_hash != current_file_hash:
             # Save uploaded video to temp file
             tfile = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
             tfile.write(uploaded_video.read())
@@ -355,7 +360,7 @@ with st.sidebar:
             
             st.session_state.video_path = tfile.name
             st.session_state.video_name = uploaded_video.name.split(".")[0]
-            st.session_state.uploaded_file_id = current_file_id
+            st.session_state.video_hash = current_file_hash
             st.session_state.frame_labels = {}
             st.session_state.last_viewed_frame = -1
             st.session_state.current_frame_idx = 0
