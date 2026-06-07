@@ -67,6 +67,8 @@ def init_session_state():
         st.session_state.current_frame_idx = 0
     if "landmarks_cache" not in st.session_state:
         st.session_state.landmarks_cache = None
+    if "rendered_frames_cache" not in st.session_state:
+        st.session_state.rendered_frames_cache = None
     if "frame_labels" not in st.session_state:
         st.session_state.frame_labels = {}
     if "last_viewed_frame" not in st.session_state:
@@ -94,21 +96,26 @@ def load_mediapipe_model():
     )
     return vision.PoseLandmarker.create_from_options(options)
 
-def extract_landmarks_from_video(video_path):
+def extract_and_render_video(video_path):
     """
-    Extract MediaPipe landmarks for all frames in a video.
-    Returns a list of landmark arrays (one per frame).
+    Extract MediaPipe landmarks for all frames AND render them.
+    Returns:
+    - landmarks_list: List of landmark arrays (one per frame)
+    - rendered_frames: List of pre-rendered frames with skeletons drawn
+    - frame_count: Total number of frames
     """
     cap = cv2.VideoCapture(video_path)
     landmarks_list = []
+    rendered_frames = []
     frame_count = 0
     
     landmarker = load_mediapipe_model()
     if landmarker is None:
-        return None, 0
+        return None, None, 0
     
-    with st.spinner("Extracting pose landmarks from video..."):
+    with st.spinner("🔄 Processing video... Extracting landmarks and rendering frames"):
         progress_bar = st.progress(0)
+        status_text = st.empty()
         
         while cap.isOpened():
             ret, frame = cap.read()
@@ -136,15 +143,24 @@ def extract_landmarks_from_video(video_path):
                 ]
             
             landmarks_list.append(landmark_data)
+            
+            # Pre-render frame with skeleton
+            frame_bgr = cv2.cvtColor(frame_rgb, cv2.COLOR_RGB2BGR)
+            rendered_frame = draw_pose_on_frame(frame_bgr, landmark_data)
+            rendered_frames.append(rendered_frame)
+            
             frame_count += 1
             
-            # Update progress bar
-            progress_bar.progress(min(frame_count / 300, 1.0))  # Assume max 300 frames
+            # Update progress
+            progress = min(frame_count / 300, 1.0)
+            progress_bar.progress(progress)
+            status_text.text(f"Processing frame {frame_count}...")
         
         progress_bar.empty()
+        status_text.empty()
     
     cap.release()
-    return landmarks_list, frame_count
+    return landmarks_list, rendered_frames, frame_count
 
 def draw_pose_on_frame(frame, landmarks):
     """
@@ -183,17 +199,6 @@ def draw_pose_on_frame(frame, landmarks):
         cv2.circle(annotated, pt, 5, (0, 0, 255), -1)
     
     return annotated
-
-def get_frame_from_video(video_path, frame_idx):
-    """Get a specific frame from the video."""
-    cap = cv2.VideoCapture(video_path)
-    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
-    ret, frame = cap.read()
-    cap.release()
-    
-    if ret:
-        return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    return None
 
 def get_label_for_frame(frame_idx):
     """Get the label dictionary for a specific frame."""
@@ -349,12 +354,13 @@ with st.sidebar:
             st.session_state.last_viewed_frame = -1
             st.session_state.current_frame_idx = 0
             
-            # Extract landmarks
-            landmarks, frame_count = extract_landmarks_from_video(tfile.name)
+            # Extract landmarks AND render frames
+            landmarks, rendered_frames, frame_count = extract_and_render_video(tfile.name)
             st.session_state.landmarks_cache = landmarks
+            st.session_state.rendered_frames_cache = rendered_frames
             st.session_state.frame_count = frame_count
             
-            st.success(f"✅ Video loaded: {frame_count} frames")
+            st.success(f"✅ Video loaded: {frame_count} frames (pre-rendered)")
         
         st.divider()
         st.subheader("📊 Statistics")
@@ -403,16 +409,12 @@ if st.session_state.video_path is not None:
                     )
                     st.rerun()
         
-        # Display frame with landmarks
-        frame = get_frame_from_video(st.session_state.video_path, st.session_state.current_frame_idx)
-        if frame is not None:
-            if st.session_state.landmarks_cache and st.session_state.current_frame_idx < len(st.session_state.landmarks_cache):
-                landmarks = st.session_state.landmarks_cache[st.session_state.current_frame_idx]
-                frame_bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
-                frame_with_pose = draw_pose_on_frame(frame_bgr, landmarks)
-                frame = cv2.cvtColor(frame_with_pose, cv2.COLOR_BGR2RGB)
-            
-            st.image(frame, use_column_width=True, caption=f"Frame {st.session_state.current_frame_idx}")
+        # Display PRE-RENDERED frame with skeleton (instant display!)
+        if st.session_state.rendered_frames_cache and st.session_state.current_frame_idx < len(st.session_state.rendered_frames_cache):
+            # Display cached rendered frame directly
+            rendered_frame_bgr = st.session_state.rendered_frames_cache[st.session_state.current_frame_idx]
+            rendered_frame_rgb = cv2.cvtColor(rendered_frame_bgr, cv2.COLOR_BGR2RGB)
+            st.image(rendered_frame_rgb, use_column_width=True, caption=f"Frame {st.session_state.current_frame_idx}")
         
         st.info(f"🎯 Current Frame: {st.session_state.current_frame_idx} / {st.session_state.frame_count - 1}")
     
