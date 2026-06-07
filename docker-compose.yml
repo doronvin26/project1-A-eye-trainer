@@ -7,6 +7,7 @@ services:
       - "8501:8501"
     volumes:
       - ".:/app"
+      - models-volume:/models  # Persistent volume for downloaded models
     stdin_open: true
     tty: true
     init: true
@@ -22,3 +23,7 @@ services:
   #   stdin_open: true
   #   tty: true
   #   init: true
+
+# Named volume to persist downloaded models between container restarts
+volumes:
+  models-volume:
