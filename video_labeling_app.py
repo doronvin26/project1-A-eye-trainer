@@ -73,6 +73,8 @@ def init_session_state():
         st.session_state.frame_labels = {}
     if "last_viewed_frame" not in st.session_state:
         st.session_state.last_viewed_frame = -1
+    if "uploaded_file_id" not in st.session_state:
+        st.session_state.uploaded_file_id = None
 
 init_session_state()
 
@@ -341,26 +343,33 @@ with st.sidebar:
     uploaded_video = st.file_uploader("Upload a video", type=["mp4", "avi", "mov"])
     
     if uploaded_video is not None:
-        # Save uploaded video to temp file
-        tfile = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
-        tfile.write(uploaded_video.read())
-        tfile.flush()
+        # Create unique ID for this upload to detect if file changed
+        current_file_id = id(uploaded_video)
         
-        # Only process if it's a new video
-        if st.session_state.video_path != tfile.name:
+        # Only process if it's a NEW file (not already cached)
+        if st.session_state.uploaded_file_id != current_file_id:
+            # Save uploaded video to temp file
+            tfile = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
+            tfile.write(uploaded_video.read())
+            tfile.flush()
+            
             st.session_state.video_path = tfile.name
             st.session_state.video_name = uploaded_video.name.split(".")[0]
+            st.session_state.uploaded_file_id = current_file_id
             st.session_state.frame_labels = {}
             st.session_state.last_viewed_frame = -1
             st.session_state.current_frame_idx = 0
             
-            # Extract landmarks AND render frames
+            # Extract landmarks AND render frames (only once!)
             landmarks, rendered_frames, frame_count = extract_and_render_video(tfile.name)
             st.session_state.landmarks_cache = landmarks
             st.session_state.rendered_frames_cache = rendered_frames
             st.session_state.frame_count = frame_count
             
             st.success(f"✅ Video loaded: {frame_count} frames (pre-rendered)")
+        else:
+            # Video already cached, just show stats
+            st.info("✅ Video already loaded (using cached data)")
         
         st.divider()
         st.subheader("📊 Statistics")
