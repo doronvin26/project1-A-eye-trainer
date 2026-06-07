@@ -7,18 +7,23 @@ services:
       - "8501:8501"
     volumes:
       - ".:/app"
+      - models-volume:/models  # Persistent volume for downloaded models
     stdin_open: true
     tty: true
     init: true
 
-  # השירות החדש - להרצת קבצי פייתון נוספים
-  data-processor:
-    build: .
-    container_name: image_proc
-    volumes:
-      - ".:/app"
-    # כאן אתה מגדיר איזה קובץ להריץ. 
-    command: python3 image_proc.py
-    stdin_open: true
-    tty: true
-    init: true
+  # # השירות החדש - להרצת קבצי פייתון נוספים
+  # data-processor:
+  #   build: .
+  #   container_name: models_compare_lite
+  #   volumes:
+  #     - ".:/app"
+  #   # כאן אתה מגדיר איזה קובץ להריץ. 
+  #   command: python3 models_compare_lite.py
+  #   stdin_open: true
+  #   tty: true
+  #   init: true
+
+# Named volume to persist downloaded models between container restarts
+volumes:
+  models-volume:
