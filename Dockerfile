@@ -17,7 +17,9 @@ RUN apt-get update && apt-get install -y \
 
 # יצירת תיקיית מודלים נפרדת (כדי שה-Volume לא ידרוס אותה) והורדת המודל
 RUN mkdir -p /models && \
-    wget -q -O /models/pose_landmarker_full.task https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task
+    if [ ! -f /models/pose_landmarker_full.task ]; then \
+    wget -q -O /models/pose_landmarker_full.task https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task; \
+    fi
 
 # הגדרת תיקיית העבודה
 WORKDIR /app
@@ -25,9 +27,9 @@ WORKDIR /app
 # העתקת ה-requirements והתקנה
 # (עדיין מעתיקים את זה כי הספריות לא משתנות לעיתים קרובות כמו הקוד)
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # הערה: הסרנו את COPY . . כדי להשתמש ב-Mount בזמן ההרצה
 
-# הרצה של Streamlit (שים לב לשימוש ב-python3)
-CMD ["sh", "-c", "echo 'App is starting at: http://localhost:8501' && python3 -m streamlit run app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true --browser.gatherUsageStats=false --logger.level=error > /dev/null 2>&1"]
+# הרצה של Streamlit עם video_labeling_app.py
+CMD ["sh", "-c", "echo 'App is starting at: http://localhost:8501' && python3 -m streamlit run video_labeling_app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true --browser.gatherUsageStats=false"]
