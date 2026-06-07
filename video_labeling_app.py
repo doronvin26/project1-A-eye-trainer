@@ -88,12 +88,26 @@ def get_file_hash(file_obj):
     return hashlib.md5(f"{file_obj.name}_{file_obj.size}".encode()).hexdigest()
 
 @lru_cache(maxsize=1)
+
+
+
 def load_mediapipe_model():
     """Load the MediaPipe Pose Landmarker model."""
-    model_path = "pose_landmarker_lite.task"
+    # ---> CHANGED: Pointing to the heavy model file variant for maximum structural precision
+    model_path = "pose_landmarker_heavy.task"
     if not os.path.exists(model_path):
         st.error(f"Model file not found: {model_path}")
         return None
+
+
+
+
+# def load_mediapipe_model():
+#     """Load the MediaPipe Pose Landmarker model."""
+#     model_path = "pose_landmarker_lite.task"
+#     if not os.path.exists(model_path):
+#         st.error(f"Model file not found: {model_path}")
+#         return None
     
     base_options = python.BaseOptions(model_asset_path=model_path)
     options = vision.PoseLandmarkerOptions(
