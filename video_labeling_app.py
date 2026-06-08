@@ -116,7 +116,6 @@ def load_mediapipe_model():
         num_poses=1
     )
     return vision.PoseLandmarker.create_from_options(options)
-
 def extract_and_render_video(video_path):
     """
     Extract MediaPipe landmarks for all frames AND render them.
@@ -143,13 +142,14 @@ def extract_and_render_video(video_path):
             if not ret:
                 break
             
-            # Convert BGR to RGB
+            # 1. המרה ל-RGB והרצת המודל על התמונה המקורית (באיכות גבוהה)
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame_rgb)
             
             # Detect pose landmarks
             detection_result = landmarker.detect(mp_image)
             
+            # 2. חילוץ נקודות השלד מהפריים הנוכחי
             if detection_result.pose_landmarks and len(detection_result.pose_landmarks) > 0:
                 landmarks = detection_result.pose_landmarks[0]
                 landmark_data = [
@@ -163,12 +163,21 @@ def extract_and_render_video(video_path):
                     for _ in range(33)
                 ]
             
+            # שומרים את ה-Landmarks המקוריים במערך הראשי
             landmarks_list.append(landmark_data)
             
-            # Pre-render frame with skeleton
+            # 3. שלב הציור, ה-Resize והדחיסה ל-JPEG (חוסך 95% מהזיכרון!)
             frame_bgr = cv2.cvtColor(frame_rgb, cv2.COLOR_RGB2BGR)
             rendered_frame = draw_pose_on_frame(frame_bgr, landmark_data)
-            rendered_frames.append(rendered_frame)
+            
+            # א. הקטנת הממדים בחצי
+            resized_rendered = cv2.resize(rendered_frame, (0, 0), fx=0.5, fy=0.5)
+            
+            # ב. דחיסת התמונה לפורמט JPEG קליל בזיכרון
+            _, encoded_img = cv2.imencode('.jpg', resized_rendered, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
+            
+            # ג. שמירת ה-Bytes הדחוסים בלבד
+            rendered_frames.append(encoded_img.tobytes())
             
             frame_count += 1
             
@@ -392,35 +401,40 @@ if st.session_state.video_path is not None:
         st.session_state.current_frame_idx = frame_idx
         st.session_state.last_viewed_frame = max(st.session_state.last_viewed_frame, frame_idx)
         
-        # Navigation buttons
+        # 1. מגדירים את פונקציות הרקע קודם כל
+        def go_previous():
+            if st.session_state.current_frame_idx > 0:
+                st.session_state.current_frame_idx -= 1
+                st.session_state.last_viewed_frame = max(
+                    st.session_state.last_viewed_frame,
+                    st.session_state.current_frame_idx
+                )
+
+        def go_next():
+            if st.session_state.current_frame_idx < st.session_state.frame_count - 1:
+                st.session_state.current_frame_idx += 1
+                st.session_state.last_viewed_frame = max(
+                    st.session_state.last_viewed_frame,
+                    st.session_state.current_frame_idx
+                )
+
+        # 2. יוצרים את העמודות של הכפתורים (רק פעם אחת!) ומחברים אותם לפונקציות
         col_prev, col_next = st.columns(2)
+        
         with col_prev:
-            if st.button("⬅️ Previous Frame"):
-                if st.session_state.current_frame_idx > 0:
-                    st.session_state.current_frame_idx -= 1
-                    st.session_state.last_viewed_frame = max(
-                        st.session_state.last_viewed_frame,
-                        st.session_state.current_frame_idx
-                    )
-                    st.rerun()
+            st.button("⬅️ Previous Frame", on_click=go_previous)
         
         with col_next:
-            if st.button("Next Frame ➡️"):
-                if st.session_state.current_frame_idx < st.session_state.frame_count - 1:
-                    st.session_state.current_frame_idx += 1
-                    st.session_state.last_viewed_frame = max(
-                        st.session_state.last_viewed_frame,
-                        st.session_state.current_frame_idx
-                    )
-                    st.rerun()
+            st.button("Next Frame ➡️", on_click=go_next)
         
-        # Display PRE-RENDERED frame with skeleton (instant display!)
+        # --- הצגת הפריים עצמו (כ-JPEG חסכוני מתוך הזיכרון) ---
         if st.session_state.rendered_frames_cache and st.session_state.current_frame_idx < len(st.session_state.rendered_frames_cache):
-            rendered_frame_bgr = st.session_state.rendered_frames_cache[st.session_state.current_frame_idx]
-            rendered_frame_rgb = cv2.cvtColor(rendered_frame_bgr, cv2.COLOR_BGR2RGB)
-            st.image(rendered_frame_rgb, use_column_width=True, caption=f"Frame {st.session_state.current_frame_idx}")
+            img_bytes = st.session_state.rendered_frames_cache[st.session_state.current_frame_idx]
+            st.image(img_bytes, width=800, caption=f"Frame {st.session_state.current_frame_idx}")
         
         st.info(f"🎯 Current Frame: {st.session_state.current_frame_idx} / {st.session_state.frame_count - 1}")
+    
+    # מכאן ממשיך הקוד של: with col_labels:
     
     with col_labels:
         st.subheader("🏷️ Labels")
