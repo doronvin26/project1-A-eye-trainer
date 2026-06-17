@@ -74,7 +74,7 @@ def get_feature_columns(selected_landmarks, use_engineered_features=False):
         cols.extend([f"{lm}_x", f"{lm}_y", f"{lm}_z", f"{lm}_visibility"])
         
     if use_engineered_features:
-        cols.extend(['left_body_angle', 'right_body_angle'])
+        cols.extend(['left_body_angle', 'right_body_angle', 'left_angle_elbow','right_angle_elbow'])
         # הוסף כאן בעתיד עוד עמודות...
         
     return cols
@@ -91,7 +91,9 @@ def extract_features_from_task(pose_landmarks, selected_landmarks, use_engineere
         # חישוב הזוויות על בסיס אינדקסים קבועים
         left_angle = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["left_shoulder"], MP_LANDMARK_MAP["left_hip"], MP_LANDMARK_MAP["left_heel"])
         right_angle = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["right_shoulder"], MP_LANDMARK_MAP["right_hip"], MP_LANDMARK_MAP["right_heel"])
-        features.extend([left_angle, right_angle])
+        left_angle_elbow = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["left_shoulder"], MP_LANDMARK_MAP["left_elbow"], MP_LANDMARK_MAP["left_wrist"])
+        right_angle_elbow = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["right_shoulder"], MP_LANDMARK_MAP["right_elbow"], MP_LANDMARK_MAP["right_wrist"])
+        features.extend([left_angle, right_angle,left_angle_elbow,right_angle_elbow])
         # חישובים עתידיים יתווספו לכאן...
         
     return np.array(features).reshape(1, -1)
@@ -135,7 +137,7 @@ if train_data is None:
     st.stop()
 
 st.sidebar.header("⚙️ Model Parameters")
-k_neighbors = st.sidebar.slider("Select K (Neighbors):", 1, 30, 3, 1)
+k_neighbors = st.sidebar.slider("Select K (Neighbors):", 1, 50, 3, 1)
 
 default_landmarks = ["left_shoulder", "right_shoulder", "left_elbow", "right_elbow", "left_wrist", "right_wrist", "left_hip", "right_hip"]
 selected_landmarks = st.sidebar.multiselect("Select Landmarks:", ALL_LANDMARKS, default=default_landmarks)
@@ -162,9 +164,18 @@ y_hips_train = train_data['hips_position']
 
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
+X_train_scaled_df = pd.DataFrame(X_train_scaled, columns=feature_cols)
+# 3. הזרקת המשקלים: נותנים משקל גבוה יותר לפיצ'רים המועדפים
+if 'left_body_angle' in X_train_scaled_df.columns:
+    X_train_scaled_df['left_body_angle'] *= 1
+    X_train_scaled_df['right_body_angle'] *= 1
+    X_train_scaled_df['left_angle_elbow'] *= 1
+    X_train_scaled_df['right_angle_elbow'] *= 1
 
-knn_phase = KNeighborsClassifier(n_neighbors=k_neighbors).fit(X_train_scaled, y_phase_train)
-knn_hips = KNeighborsClassifier(n_neighbors=k_neighbors).fit(X_train_scaled, y_hips_train)
+# 4. אימון ה-KNN על הדאטה עם המשקלים המעודכנים
+
+knn_phase = KNeighborsClassifier(n_neighbors=k_neighbors).fit(X_train_scaled_df, y_phase_train)
+knn_hips = KNeighborsClassifier(n_neighbors=k_neighbors).fit(X_train_scaled_df, y_hips_train)
 
 st.sidebar.success(f"Models trained successfully on {len(train_data)} frames from 'data' folder.")
 

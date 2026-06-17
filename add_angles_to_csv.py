@@ -23,9 +23,10 @@ def calculate_angle(row, p1, p2, p3):
         angle = np.abs(np.degrees(radians))
         
         # אנחנו תמיד רוצים את הזווית הפנימית הקטנה מ-180 מעלות
-        if angle > 180.0:
+        """if angle > 180.0:
             angle = 360.0 - angle
-            
+        """
+             
         return angle
     except Exception:
         # במקרה של שגיאת המרה (למשל טקסט במקום מספר), נחזיר ערך ריק
@@ -54,12 +55,20 @@ def process_all_csvs():
             
             # חישוב זווית צד שמאל
             df['left_body_angle'] = df.apply(
-                lambda row: calculate_angle(row, 'left_shoulder', 'left_hip', 'left_heel'), axis=1
+                lambda row: calculate_angle(row, 'left_shoulder', 'left_hip', 'left_heel') , axis=1
             )
             
             # חישוב זווית צד ימין
             df['right_body_angle'] = df.apply(
                 lambda row: calculate_angle(row, 'right_shoulder', 'right_hip', 'right_heel'), axis=1
+            )
+            df['left_angle_elbow'] = df.apply(
+                lambda row: calculate_angle(row, 'left_shoulder', 'left_elbow', 'left_wrist'), axis=1
+            )
+            
+            # חישוב זווית צד ימין
+            df['right_angle_elbow'] = df.apply(
+                lambda row: calculate_angle(row, 'right_shoulder', 'right_elbow', 'right_wrist'), axis=1
             )
             
             # שמירת הקובץ מחדש (דורס את הישן, עכשיו הוא כולל את העמודות החדשות)
