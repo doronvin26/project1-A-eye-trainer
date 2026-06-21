@@ -6,3 +6,4 @@ docker stop fcf9a5b94a2f
 docker-compose up --build
 docker-compose up
 docker-compose down
+docker-compose run --rm trainer-app python3 add_angles_to_csv.py
