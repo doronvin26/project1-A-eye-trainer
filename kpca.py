@@ -12,8 +12,12 @@ from sklearn.model_selection import GridSearchCV
 # 1. הגדרות ופיצ'רים
 # ==========================================
 default_landmarks = [
-    "left_shoulder", "right_shoulder", "left_elbow", "right_elbow", 
-    "left_wrist", "right_wrist", "left_hip", "right_hip"
+    "left_shoulder", "right_shoulder",
+    "left_elbow", "right_elbow", 
+    "left_wrist", "right_wrist",
+    "left_hip", "right_hip",
+    "left_ankle", "right_ankle", 
+    "left_heel", "right_heel", 
 ]
 
 engineered_features = [
@@ -66,10 +70,10 @@ def get_prediction_stats(actual_arr, pred_arr, frame_indices):
     return good_preds, bad_preds, max_bad_streak, bad_frames
 
 # ==========================================
-# 3. הפעלת החיפוש, ההערכה ושמירת הקובץ
+# 3. הפעלת החיפוש, ההערכה וכתיבה לדו"ח המלא
 # ==========================================
-def optimize_and_evaluate(target_col, X_train, y_train, X_test, y_test, test_frames):
-    print(f"\n🔍 Optimizing Model for: {target_col.upper()}...")
+def optimize_and_evaluate(target_col, X_train, y_train, X_test, y_test, test_frames, output_file):
+    print(f"⏳ Working on '{target_col.upper()}'... (This may take a few minutes)")
     
     pipeline = Pipeline([
         ('scaler', StandardScaler()),
@@ -80,45 +84,38 @@ def optimize_and_evaluate(target_col, X_train, y_train, X_test, y_test, test_fra
     param_grid = {
         'kpca__n_components': [6, 10, 15],
         'kpca__kernel': ['linear', 'rbf'],
-        'knn__n_neighbors': [3, 5, 7],
+        'knn__n_neighbors': [3, 5, 7, 12],
         'knn__weights': ['uniform', 'distance']
     }
 
-    grid_search = GridSearchCV(pipeline, param_grid, cv=3, scoring='accuracy', n_jobs=1, verbose=3)
+    # verbose=0 משתיק לחלוטין את הטרמינל בזמן החישובים
+    grid_search = GridSearchCV(pipeline, param_grid, cv=3, scoring='accuracy', n_jobs=1, verbose=0)
     grid_search.fit(X_train, y_train)
     best_model = grid_search.best_estimator_
-
-    print("\n🏆 Best Parameters Found:")
-    for param, value in grid_search.best_params_.items():
-        print(f"   - {param}: {value}")
     
-    print(f"\n📊 Evaluating on Test Data...")
+    # חיזוי על נתוני הטסט עם המודל המנצח
     predictions = best_model.predict(X_test)
-    
     good, bad, streak, bad_frames_list = get_prediction_stats(y_test.values, predictions, test_frames.values)
     accuracy = (good / (good + bad)) * 100
-    
-    print(f"   🎯 Accuracy: {accuracy:.2f}%")
-    print(f"   ✅ Correct Frames: {good}")
-    print(f"   ❌ Incorrect Frames: {bad}")
-    print(f"   ⚠️ Max Bad Streak: {streak}")
+
+    # שליפת כל המודלים שנבדקו וסידור שלהם מהטוב לגרוע
+    results_df = pd.DataFrame(grid_search.cv_results_)
+    results_df = results_df.sort_values(by='rank_test_score')
 
     # ==========================================
-    # --- התוספת החדשה: שמירת התוצאות לקובץ TXT ---
+    # --- כתיבת הדו"ח המלא לקובץ ---
     # ==========================================
-    # יצירת שם קובץ תקין דינמי לפי שם המודל
-    file_safe_name = f"results_{target_col.lower().replace(' ', '_')}.txt"
-    
-    with open(file_safe_name, "w", encoding="utf-8") as f:
+    with open(output_file, "a", encoding="utf-8") as f:
         f.write(f"==================================================\n")
-        f.write(f"📊 OPTIMIZATION RESULTS FOR: {target_col.upper()}\n")
+        f.write(f"🎯 OPTIMIZATION REPORT FOR: {target_col.upper()}\n")
         f.write(f"==================================================\n\n")
         
-        f.write("🏆 BEST PARAMETERS FOUND:\n")
+        # בלוק 1: המודל המנצח והסטטיסטיקות שלו
+        f.write("🌟 THE WINNING MODEL (BEST PARAMETERS):\n")
         for param, value in grid_search.best_params_.items():
             f.write(f" - {param}: {value}\n")
             
-        f.write("\n📈 TEST SET PERFORMANCE STATISTICS:\n")
+        f.write("\n📈 TEST SET PERFORMANCE (WINNER):\n")
         f.write(f" - Final Accuracy: {accuracy:.2f}%\n")
         f.write(f" - Total Valid Test Frames: {good + bad}\n")
         f.write(f" - Correct Predictions: {good}\n")
@@ -131,13 +128,25 @@ def optimize_and_evaluate(target_col, X_train, y_train, X_test, y_test, test_fra
         else:
             f.write("🎉 Perfect Prediction - No errors encountered on the test set!\n")
             
-    print(f"💾 Results successfully saved to: {file_safe_name}")
-    # ==========================================
-
+        f.write("\n--------------------------------------------------\n")
+        
+        # בלוק 2: רשימת כל המודלים שנבדקו במהלך החיפוש
+        f.write("🔬 ALL TESTED COMBINATIONS (Ranked by internal accuracy):\n")
+        for index, row in results_df.iterrows():
+            rank = row['rank_test_score']
+            mean_acc = row['mean_test_score'] * 100
+            params_dict = row['params']
+            
+            # הדפסה קריאה של כל שילוב
+            f.write(f" [Rank {rank}] Accuracy: {mean_acc:.2f}% | Params: {params_dict}\n")
+            
+        f.write("\n\n\n") 
+            
+    print(f"✅ Finished '{target_col.upper()}'. Results appended to file.")
     return best_model
 
 if __name__ == "__main__":
-    print("🚀 Starting Optimized Hyperparameter Optimization Script...")
+    print("🚀 Starting Silent Hyperparameter Optimization Script...\n")
     
     feature_cols = get_feature_columns()
     
@@ -148,12 +157,8 @@ if __name__ == "__main__":
         print("❌ Error: Missing 'data' or 'test data' folders/csvs.")
         exit()
         
-    print(f"📂 Loaded {len(train_df)} train frames and {len(test_df)} test frames.")
-    
-    # דילול לשם מהירות
     MAX_SAMPLES = 1500
     if len(train_df) > MAX_SAMPLES:
-        print(f"⚡ Subsampling training data from {len(train_df)} to {MAX_SAMPLES} frames for exponential speedup...")
         train_df = train_df.sample(n=MAX_SAMPLES, random_state=42).reset_index(drop=True)
     
     X_train = train_df[feature_cols]
@@ -165,8 +170,14 @@ if __name__ == "__main__":
     y_test_hips = test_df['hips_position']
     test_frames = test_df['frame_index']
     
-    print("\n" + "="*50)
-    optimize_and_evaluate("Pushup Phase", X_train, y_train_phase, X_test, y_test_phase, test_frames)
+    # ניקוי ויצירת הקובץ המאוחד מחדש
+    shared_output_file = "kpca_optimization_results.txt"
+    with open(shared_output_file, "w", encoding="utf-8") as fresh_file:
+        fresh_file.write("==================================================\n")
+        fresh_file.write("🚀 GLOBAL HYPERPARAMETER OPTIMIZATION REPORT\n")
+        fresh_file.write("==================================================\n\n")
     
-    print("\n" + "="*50)
-    optimize_and_evaluate("Hips Position", X_train, y_train_hips, X_test, y_test_hips, test_frames)
+    optimize_and_evaluate("Pushup Phase", X_train, y_train_phase, X_test, y_test_phase, test_frames, shared_output_file)
+    optimize_and_evaluate("Hips Position", X_train, y_train_hips, X_test, y_test_hips, test_frames, shared_output_file)
+    
+    print(f"\n🎉 All done! Open '{shared_output_file}' to view the full report.")
