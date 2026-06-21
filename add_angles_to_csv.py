@@ -9,75 +9,91 @@ def calculate_angle(row, p1, p2, p3):
     חישוב ב-2D (רק X ו-Y) נותן תוצאה הרבה יותר יציבה מחישוב בתלת-ממד.
     """
     try:
-        # שליפת קואורדינטות X ו-Y של שלוש הנקודות
-        x1, y1 = float(row[f'{p1}_x']), float(row[f'{p1}_y']) # כתף
-        x2, y2 = float(row[f'{p2}_x']), float(row[f'{p2}_y']) # אגן (קודקוד הזווית)
-        x3, y3 = float(row[f'{p3}_x']), float(row[f'{p3}_y']) # עקב
+        x1, y1 = float(row[f'{p1}_x']), float(row[f'{p1}_y']) 
+        x2, y2 = float(row[f'{p2}_x']), float(row[f'{p2}_y']) 
+        x3, y3 = float(row[f'{p3}_x']), float(row[f'{p3}_y']) 
         
-        # אם יש נתונים חסרים בפריים הספציפי הזה, נדלג עליו
         if pd.isna(x1) or pd.isna(x2) or pd.isna(x3):
             return np.nan
             
-        # חישוב הזווית במעלות באמצעות arctan2
         radians = np.arctan2(y3 - y2, x3 - x2) - np.arctan2(y1 - y2, x1 - x2)
         angle = np.abs(np.degrees(radians))
         
-        # אנחנו תמיד רוצים את הזווית הפנימית הקטנה מ-180 מעלות
-        """if angle > 180.0:
-            angle = 360.0 - angle
-        """
-             
         return angle
     except Exception:
-        # במקרה של שגיאת המרה (למשל טקסט במקום מספר), נחזיר ערך ריק
         return np.nan
 
-def process_all_csvs():
+def calculate_distance(row, p1, p2):
+    """
+    מחשב את המרחק האוקלידי הדו-ממדי בין שתי נקודות.
+    """
+    try:
+        x1, y1 = float(row[f'{p1}_x']), float(row[f'{p1}_y'])
+        x2, y2 = float(row[f'{p2}_x']), float(row[f'{p2}_y'])
         
-    path = "data/*.csv"
-    csv_files = glob.glob(path)
-    
-    print(f"Files I found: {csv_files}")
-    
-    if not csv_files:
-        print("❌ No CSV files found inside 'data' folder.")
-        return
-    path = os.path.join("data", "*.csv")
-    csv_files = glob.glob(path)
+        if pd.isna(x1) or pd.isna(x2):
+            return np.nan
+            
+        # חישוב משפט פיתגורס (מרחק בין שתי נקודות)
+        distance = np.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+        return distance
+    except Exception:
+        return np.nan
 
-    print(f"📂 Found {len(csv_files)} CSV files. Starting to process...\n")
+def process_all_csvs(target_folders):
+    total_processed = 0
 
-    for file in csv_files:
-        df = pd.read_csv(file)
+    for folder in target_folders:
+        print(f"\n🔍 סורק את התיקייה: '{folder}'")
         
-        # מוודא שהעמודות הבסיסיות אכן קיימות בקובץ לפני שמנסים לחשב
-        if 'left_shoulder_x' in df.columns and 'left_hip_x' in df.columns and 'left_heel_x' in df.columns:
-            
-            # חישוב זווית צד שמאל
-            df['left_body_angle'] = df.apply(
-                lambda row: calculate_angle(row, 'left_shoulder', 'left_hip', 'left_heel') , axis=1
-            )
-            
-            # חישוב זווית צד ימין
-            df['right_body_angle'] = df.apply(
-                lambda row: calculate_angle(row, 'right_shoulder', 'right_hip', 'right_heel'), axis=1
-            )
-            df['left_angle_elbow'] = df.apply(
-                lambda row: calculate_angle(row, 'left_shoulder', 'left_elbow', 'left_wrist'), axis=1
-            )
-            
-            # חישוב זווית צד ימין
-            df['right_angle_elbow'] = df.apply(
-                lambda row: calculate_angle(row, 'right_shoulder', 'right_elbow', 'right_wrist'), axis=1
-            )
-            
-            # שמירת הקובץ מחדש (דורס את הישן, עכשיו הוא כולל את העמודות החדשות)
-            df.to_csv(file, index=False)
-            print(f"✅ Processed and updated: {os.path.basename(file)}")
-        else:
-            print(f"⚠️ Skipped {os.path.basename(file)} - missing required coordinate columns.")
+        path = os.path.join(folder, "*.csv")
+        csv_files = glob.glob(path)
+        
+        if not csv_files:
+            print(f"❌ No CSV files found inside '{folder}' folder.")
+            continue
 
-    print("\n🎉 All files updated successfully! The new features are ready.")
+        print(f"📂 Found {len(csv_files)} CSV files in '{folder}'. Starting to process...")
+
+        for file in csv_files:
+            df = pd.read_csv(file)
+            
+            # מוודא שהעמודות הבסיסיות אכן קיימות בקובץ
+            if 'left_shoulder_x' in df.columns and 'left_hip_x' in df.columns and 'left_heel_x' in df.columns:
+                
+                # --- חישובי זוויות ---
+                df['left_body_angle'] = df.apply(
+                    lambda row: calculate_angle(row, 'left_shoulder', 'left_hip', 'left_heel') , axis=1
+                )
+                df['right_body_angle'] = df.apply(
+                    lambda row: calculate_angle(row, 'right_shoulder', 'right_hip', 'right_heel'), axis=1
+                )
+                df['left_angle_elbow'] = df.apply(
+                    lambda row: calculate_angle(row, 'left_shoulder', 'left_elbow', 'left_wrist'), axis=1
+                )
+                df['right_angle_elbow'] = df.apply(
+                    lambda row: calculate_angle(row, 'right_shoulder', 'right_elbow', 'right_wrist'), axis=1
+                )
+                
+                # --- התוספת החדשה: חישובי מרחקים ---
+                # מרחק יד שמאל
+                df['left_arm_distance'] = df.apply(
+                    lambda row: calculate_distance(row, 'left_shoulder', 'left_wrist'), axis=1
+                )
+                # מרחק יד ימין
+                df['right_arm_distance'] = df.apply(
+                    lambda row: calculate_distance(row, 'right_shoulder', 'right_wrist'), axis=1
+                )
+                
+                # שמירת הקובץ מחדש
+                df.to_csv(file, index=False)
+                print(f"✅ Processed and updated: {file}")
+                total_processed += 1
+            else:
+                print(f"⚠️ Skipped {file} - missing required coordinate columns.")
+
+    print(f"\n🎉 All done! Successfully updated {total_processed} files in their original locations.")
 
 if __name__ == "__main__":
-    process_all_csvs()
+    folders_to_process = ["data", "test data"]
+    process_all_csvs(folders_to_process)

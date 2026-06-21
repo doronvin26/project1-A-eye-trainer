@@ -14,6 +14,7 @@ from mediapipe.tasks.python import vision
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
 
 # ==========================================
 # PAGE CONFIG
@@ -50,12 +51,25 @@ def load_training_data():
     full_data = full_data.dropna(subset=['pushup_phase', 'hips_position'])
     return full_data
 
-def calc_angle_live(pose_landmarks, p1_idx, p2_idx, p3_idx):
+def calc_dist(pose_landmarks, p1_idx, p2_idx):
+    """מחשב את הזווית מתוך אובייקט landmarks של Tasks API בזמן אמת"""
+    try:
+        x1, y1 = pose_landmarks[p1_idx].x, pose_landmarks[p1_idx].y
+        x2, y2 = pose_landmarks[p2_idx].x, pose_landmarks[p2_idx].y
+
+        distance = np.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+        return distance
+    except Exception:
+        return 0.0
+    
+
+def calc_angle_live(pose_landmarks, p1_idx, p2_idx,p3_idx):
     """מחשב את הזווית מתוך אובייקט landmarks של Tasks API בזמן אמת"""
     try:
         x1, y1 = pose_landmarks[p1_idx].x, pose_landmarks[p1_idx].y
         x2, y2 = pose_landmarks[p2_idx].x, pose_landmarks[p2_idx].y
         x3, y3 = pose_landmarks[p3_idx].x, pose_landmarks[p3_idx].y
+
         
         radians = math.atan2(y3 - y2, x3 - x2) - math.atan2(y1 - y2, x1 - x2)
         angle = abs(math.degrees(radians))
@@ -67,19 +81,20 @@ def calc_angle_live(pose_landmarks, p1_idx, p2_idx, p3_idx):
     except Exception:
         return 0.0
 
-def get_feature_columns(selected_landmarks, use_engineered_features=False):
+def get_feature_columns(selected_landmarks, use_engineered_features_angels=False, use_engineered_features_dist=False):
     """בונה את שמות העמודות, עם אופציה להוסיף את הפיצ'רים החדשים"""
     cols = []
     for lm in selected_landmarks:
         cols.extend([f"{lm}_x", f"{lm}_y", f"{lm}_z", f"{lm}_visibility"])
         
-    if use_engineered_features:
+    if use_engineered_features_angels:
         cols.extend(['left_body_angle', 'right_body_angle', 'left_angle_elbow','right_angle_elbow'])
         # הוסף כאן בעתיד עוד עמודות...
-        
+    if use_engineered_features_dist:
+        cols.extend(['left_arm_distance','right_arm_distance'])
     return cols
 
-def extract_features_from_task(pose_landmarks, selected_landmarks, use_engineered_features=False):
+def extract_features_from_task(pose_landmarks, selected_landmarks, use_engineered_features_angels=False, use_engineered_features_dist=False):
     """חולץ פיצ'רים ומחשב בזמן אמת את הפיצ'רים המהונדסים אם התבקש"""
     features = []
     for lm_name in selected_landmarks:
@@ -87,14 +102,19 @@ def extract_features_from_task(pose_landmarks, selected_landmarks, use_engineere
         lm = pose_landmarks[idx]
         features.extend([lm.x, lm.y, lm.z, lm.visibility])
         
-    if use_engineered_features:
+    if use_engineered_features_angels:
         # חישוב הזוויות על בסיס אינדקסים קבועים
         left_angle = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["left_shoulder"], MP_LANDMARK_MAP["left_hip"], MP_LANDMARK_MAP["left_heel"])
         right_angle = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["right_shoulder"], MP_LANDMARK_MAP["right_hip"], MP_LANDMARK_MAP["right_heel"])
         left_angle_elbow = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["left_shoulder"], MP_LANDMARK_MAP["left_elbow"], MP_LANDMARK_MAP["left_wrist"])
         right_angle_elbow = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["right_shoulder"], MP_LANDMARK_MAP["right_elbow"], MP_LANDMARK_MAP["right_wrist"])
         features.extend([left_angle, right_angle,left_angle_elbow,right_angle_elbow])
-        # חישובים עתידיים יתווספו לכאן...
+    if use_engineered_features_dist:
+        # חישוב הזוויות על בסיס אינדקסים קבועים
+    
+        right_dis_shoulder_wrist = calc_dist(pose_landmarks, MP_LANDMARK_MAP["right_shoulder"], MP_LANDMARK_MAP["right_wrist"])
+        left_dis_shoulder_wrist = calc_dist(pose_landmarks, MP_LANDMARK_MAP["left_shoulder"], MP_LANDMARK_MAP["left_wrist"])
+        features.extend([left_dis_shoulder_wrist,right_dis_shoulder_wrist])
         
     return np.array(features).reshape(1, -1)
 
@@ -137,20 +157,26 @@ if train_data is None:
     st.stop()
 
 st.sidebar.header("⚙️ Model Parameters")
-k_neighbors = st.sidebar.slider("Select K (Neighbors):", 1, 50, 3, 1)
+k_neighbors_phase= st.sidebar.slider("Select K (Neighbor_pahses):", 1, 50, 3, 1)
+k_neighbors_hip= st.sidebar.slider("Select K (Neighbors_hips):", 1, 50, 3, 1)
+
 
 default_landmarks = ["left_shoulder", "right_shoulder", "left_elbow", "right_elbow", "left_wrist", "right_wrist", "left_hip", "right_hip"]
+#default_landmarks = []
+
 selected_landmarks = st.sidebar.multiselect("Select Landmarks:", ALL_LANDMARKS, default=default_landmarks)
 
 # כפתור חדש להפעלת הפיצ'רים המחושבים
-use_engineered_features = st.sidebar.checkbox("Include Engineered Features (Angles)", value=True)
+use_engineered_features_angels = st.sidebar.checkbox("Include Engineered Features (Angles)", value=True)
+use_engineered_features_dist = st.sidebar.checkbox("Include Engineered Features (distance)", value=True)
 
-if not selected_landmarks:
-    st.warning("Please select landmarks.")
-    st.stop()
+
+# if not selected_landmarks:
+#     st.warning("Please select landmarks.")
+#     st.stop()
 
 # --- אימון המודל ---
-feature_cols = get_feature_columns(selected_landmarks, use_engineered_features)
+feature_cols = get_feature_columns(selected_landmarks, use_engineered_features_angels,use_engineered_features_dist )
 
 # וידוא שהעמודות החדשות קיימות ב-CSV (למקרה ששכחו להריץ את סקריפט הטיוב)
 missing_cols = [col for col in feature_cols if col not in train_data.columns]
@@ -166,16 +192,25 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_train_scaled_df = pd.DataFrame(X_train_scaled, columns=feature_cols)
 # 3. הזרקת המשקלים: נותנים משקל גבוה יותר לפיצ'רים המועדפים
-if 'left_body_angle' in X_train_scaled_df.columns:
-    X_train_scaled_df['left_body_angle'] *= 1
-    X_train_scaled_df['right_body_angle'] *= 1
-    X_train_scaled_df['left_angle_elbow'] *= 1
-    X_train_scaled_df['right_angle_elbow'] *= 1
+# if 'left_body_angle' in X_train_scaled_df.columns:
+#     X_train_scaled_df['left_body_angle'] *= 1
+#     X_train_scaled_df['right_body_angle'] *= 1
+#     X_train_scaled_df['left_angle_elbow'] *= 1
+#     X_train_scaled_df['right_angle_elbow'] *= 1
 
 # 4. אימון ה-KNN על הדאטה עם המשקלים המעודכנים
+##pca implamantation
 
-knn_phase = KNeighborsClassifier(n_neighbors=k_neighbors).fit(X_train_scaled_df, y_phase_train)
-knn_hips = KNeighborsClassifier(n_neighbors=k_neighbors).fit(X_train_scaled_df, y_hips_train)
+pca = PCA(n_components=0.95)
+# המודל לומד מנתוני האימון ומכווץ אותם
+X_train_pca = pca.fit_transform(X_train_scaled_df)
+    
+# המודל מכווץ את נתוני הטסט בדיוק לפי אותם חוקים שלמד מהאימון
+X_test_pca = pca.transform(X_train_scaled_df)
+print(f"Features before PCA: {X_train_scaled.shape[1]}")
+print(f"Features after PCA (saving 95% info): {X_train_pca.shape[1]}")
+knn_phase = KNeighborsClassifier(n_neighbors=k_neighbors_phase).fit(X_train_pca, y_phase_train)
+knn_hips = KNeighborsClassifier(n_neighbors=k_neighbors_hip).fit(X_train_pca, y_hips_train)
 
 st.sidebar.success(f"Models trained successfully on {len(train_data)} frames from 'data' folder.")
 
@@ -205,9 +240,15 @@ with tab_csv:
             else:
                 X_test = test_df[feature_cols]
                 X_test_scaled = scaler.transform(X_test)
+
+                X_test_pca = pca.transform(X_test_scaled)
+
+                # לשנות את החיזוי שישתמש בנתונים המכווצים
+                test_df['pred_phase'] = knn_phase.predict(X_test_pca)
+                test_df['pred_hips'] = knn_hips.predict(X_test_pca)
                 
-                test_df['pred_phase'] = knn_phase.predict(X_test_scaled)
-                test_df['pred_hips'] = knn_hips.predict(X_test_scaled)
+                # test_df['pred_phase'] = knn_phase.predict(X_test_scaled)
+                # test_df['pred_hips'] = knn_hips.predict(X_test_scaled)
                 
                 st.markdown("### 📈 Prediction Statistics")
                 
@@ -287,7 +328,7 @@ with tab_video:
                         if detection_result.pose_landmarks:
                             pose_landmarks = detection_result.pose_landmarks[0]
                             # העברנו את משתנה ההפעלה של הפיצ'רים החדשים לתוך הפונקציה
-                            features = extract_features_from_task(pose_landmarks, selected_landmarks, use_engineered_features)
+                            features = extract_features_from_task(pose_landmarks, selected_landmarks,use_engineered_features_angels,use_engineered_features_dist)
                             st.session_state.vid_features.append(features)
                             
                             h, w, _ = frame_rgb.shape
@@ -329,8 +370,9 @@ with tab_video:
             
             if current_feat is not None:
                 scaled_feat = scaler.transform(current_feat)
-                pred_phase_vid = knn_phase.predict(scaled_feat)[0]
-                pred_hips_vid = knn_hips.predict(scaled_feat)[0]
+                pca_feat = pca.transform(scaled_feat) 
+                pred_phase_vid = knn_phase.predict(pca_feat)[0]
+                pred_hips_vid = knn_hips.predict(pca_feat)[0]
                 
                 st.success(f"🎯 **KNN Prediction:** Phase = `{pred_phase_vid}` | Hips = `{pred_hips_vid}`")
             else:
