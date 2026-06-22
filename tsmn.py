@@ -18,13 +18,30 @@ default_landmarks = [
     # "left_hip", "right_hip",
     # "left_ankle", "right_ankle", 
     # "left_heel", "right_heel",
-    'nose' 
+    # 'nose' 
 ]
 
+# הרשימה המלאה והמעודכנת של כל הפיצ'רים שהנדסנו
 engineered_features = [
+    # --- Classic 2D Features ---
     'left_body_angle', 'right_body_angle', 
     'left_angle_elbow', 'right_angle_elbow',
-    #'left_arm_distance', 'right_arm_distance'
+    
+    # 'left_knee_angle', 'right_knee_angle', 'neck_angle',
+    # 'left_arm_ratio', 'right_arm_ratio',
+    # 'left_shoulder_elbow_y_norm', 'right_shoulder_elbow_y_norm',
+    # 'left_hip_deviation_norm', 'right_hip_deviation_norm',
+    
+    # --- Advanced 3D Features ---
+    #'body_alignment_angle', 
+    'hip_line_error', 
+    #'left_arm_compression', 'right_arm_compression', 'avg_arm_compression',
+    #'elbow_symmetry',
+    'avg_elbow_angle', 
+    #'avg_body_angle',
+    
+    # --- Temporal Motion Features ---
+    'avg_delta_elbow_angle', 'delta_hip_line_error', 'delta_body_alignment_angle'
 ]
 
 def get_feature_columns():
@@ -58,32 +75,27 @@ def generate_umap_visualization(data_features, labels, title, filename):
     """
     print(f"⏳ Generating UMAP for: {title}...")
     
-    # הפעלת מנוע ה-UMAP לדחיסה ל-2 ממדים לצורך ציור
     reducer = umap.UMAP(n_components=2, random_state=42, min_dist=0.3, n_neighbors=15)
     embedding = reducer.fit_transform(data_features)
     
-    # הגדרת סגנון הציור
     plt.figure(figsize=(12, 8))
     sns.set_theme(style="whitegrid")
     
-    # ציור נקודות הנתונים, צבועות לפי שלב השכיבה
     scatter = sns.scatterplot(
         x=embedding[:, 0], 
         y=embedding[:, 1], 
         hue=labels, 
         palette="Set2", 
-        s=30,          # גודל הנקודות
-        alpha=0.7,     # שקיפות כדי לראות צפיפות
+        s=30,          
+        alpha=0.7,     
         edgecolor=None
     )
     
-    # עיצוב הגרף
     plt.title(title, fontsize=18, fontweight='bold', pad=15)
     plt.xlabel('UMAP Dimension 1', fontsize=12)
     plt.ylabel('UMAP Dimension 2', fontsize=12)
     plt.legend(title='Pushup Phase', title_fontsize='13', fontsize='11', loc='best')
     
-    # שמירת התמונה
     plt.tight_layout()
     plt.savefig(filename, dpi=300)
     plt.close()
@@ -103,17 +115,14 @@ if __name__ == "__main__":
         print("❌ Error: Missing 'data' folder or CSVs.")
         exit()
         
-    # דילול הנתונים: UMAP מצייר נקודות, וענן של 6000 נקודות יהיה קשה לקריאה
-    # נדגום 2000 נקודות כדי לקבל תמונה ברורה ונקייה
     MAX_SAMPLES = 2000
     if len(train_df) > MAX_SAMPLES:
         print(f"⚡ Subsampling data to {MAX_SAMPLES} points for clearer visualization...")
         train_df = train_df.sample(n=MAX_SAMPLES, random_state=42).reset_index(drop=True)
         
     X_raw = train_df[feature_cols]
-    y_labels = train_df['pushup_phase']  # נצבע את הגרף לפי שלב השכיבה
+    y_labels = train_df['pushup_phase']
     
-    # נרמול חובה לפני כל הורדת ממדים
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X_raw)
     
@@ -124,16 +133,15 @@ if __name__ == "__main__":
     generate_umap_visualization(
         data_features=X_scaled, 
         labels=y_labels, 
-        title="UMAP Projection: Raw Engineered Features (34 Dimensions)", 
+        title="UMAP Projection: All Engineered Features", 
         filename="umap_1_raw_features.png"
     )
     
     print("-" * 50)
     # ---------------------------------------------------------
-    # הפעלת KPCA (המודל המנצח מהאופטימיזציה שלך)
+    # הפעלת KPCA
     # ---------------------------------------------------------
-    print("⚙️ Applying Kernel PCA (rbf kernel, 10 components)...")
-    # שים כאן את הפרמטרים שהיו המנצחים אצלך בקובץ ה-TXT!
+    print("⚙️ Applying Kernel PCA (linear kernel, 6 components)...")
     kpca = KernelPCA(n_components=6, kernel='linear', fit_inverse_transform=False)
     X_kpca = kpca.fit_transform(X_scaled)
     
@@ -143,7 +151,7 @@ if __name__ == "__main__":
     generate_umap_visualization(
         data_features=X_kpca, 
         labels=y_labels, 
-        title="UMAP Projection: After Kernel PCA (10 Dimensions)", 
+        title="UMAP Projection: After Kernel PCA (6 Dimensions)", 
         filename="umap_2_after_kpca.png"
     )
     
