@@ -4,6 +4,10 @@ mediapipe
 pandas
 numpy
 scikit-learn
+umap-learn
+matplotlib
+seaborn
+
 # Heavy dependencies - uncomment if needed later
 # tensorflow-cpu
 # ultralytics

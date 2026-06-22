@@ -18,6 +18,8 @@ def calculate_angle(row, p1, p2, p3):
             
         radians = np.arctan2(y3 - y2, x3 - x2) - np.arctan2(y1 - y2, x1 - x2)
         angle = np.abs(np.degrees(radians))
+        if angle > 180.0:
+            angle = 360.0 - angle
         
         return angle
     except Exception:

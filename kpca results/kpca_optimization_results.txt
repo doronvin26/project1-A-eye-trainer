@@ -1,0 +1,150 @@
+==================================================
+🚀 GLOBAL HYPERPARAMETER OPTIMIZATION REPORT
+==================================================
+
+==================================================
+🎯 OPTIMIZATION REPORT FOR: PUSHUP PHASE
+==================================================
+
+🌟 THE WINNING MODEL (BEST PARAMETERS):
+ - knn__n_neighbors: 3
+ - knn__weights: uniform
+ - kpca__kernel: linear
+ - kpca__n_components: 15
+
+📈 TEST SET PERFORMANCE (WINNER):
+ - Final Accuracy: 68.00%
+ - Total Valid Test Frames: 325
+ - Correct Predictions: 221
+ - Incorrect Predictions: 104
+ - Maximum Consecutive Error Streak: 12
+
+📋 INCORRECT FRAME INDICES:
+ [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 34, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 53, 54, 55, 56, 57, 76, 78, 83, 84, 85, 86, 87, 88, 89, 96, 97, 98, 99, 104, 105, 106, 117, 118, 119, 120, 126, 127, 128, 129, 130, 131, 132, 133, 144, 145, 146, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 179, 192, 193, 194, 195, 196, 197, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 264, 265, 266, 267, 268, 276, 277, 278, 305, 306, 307, 308, 309, 310, 311, 312]
+
+--------------------------------------------------
+🔬 ALL TESTED COMBINATIONS (Ranked by internal accuracy):
+ [Rank 1] Accuracy: 45.86% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 2] Accuracy: 45.84% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 3] Accuracy: 45.83% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 4] Accuracy: 45.81% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 5] Accuracy: 45.44% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 6] Accuracy: 45.31% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 7] Accuracy: 44.07% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 8] Accuracy: 42.98% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 9] Accuracy: 41.97% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 10] Accuracy: 41.95% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 11] Accuracy: 41.10% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 12] Accuracy: 41.01% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 13] Accuracy: 40.49% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 14] Accuracy: 40.37% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 15] Accuracy: 39.93% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 16] Accuracy: 39.67% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 17] Accuracy: 39.55% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 18] Accuracy: 39.13% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 19] Accuracy: 38.80% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 20] Accuracy: 38.77% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 21] Accuracy: 38.66% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 22] Accuracy: 38.51% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 23] Accuracy: 38.46% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 24] Accuracy: 38.44% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 25] Accuracy: 38.39% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 26] Accuracy: 38.35% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 27] Accuracy: 38.35% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 28] Accuracy: 38.23% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 29] Accuracy: 38.19% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 30] Accuracy: 38.14% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 31] Accuracy: 38.02% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 32] Accuracy: 37.92% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 33] Accuracy: 37.78% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 34] Accuracy: 37.59% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 35] Accuracy: 37.46% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 36] Accuracy: 37.36% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 37] Accuracy: 37.32% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 38] Accuracy: 37.31% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 39] Accuracy: 37.31% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 40] Accuracy: 37.24% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 41] Accuracy: 37.20% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 42] Accuracy: 37.19% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 43] Accuracy: 37.12% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 44] Accuracy: 37.03% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 45] Accuracy: 36.30% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 46] Accuracy: 36.23% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 47] Accuracy: 36.16% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 48] Accuracy: 36.14% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+
+
+
+==================================================
+🎯 OPTIMIZATION REPORT FOR: HIPS POSITION
+==================================================
+
+🌟 THE WINNING MODEL (BEST PARAMETERS):
+ - knn__n_neighbors: 12
+ - knn__weights: uniform
+ - kpca__kernel: linear
+ - kpca__n_components: 15
+
+📈 TEST SET PERFORMANCE (WINNER):
+ - Final Accuracy: 59.38%
+ - Total Valid Test Frames: 325
+ - Correct Predictions: 193
+ - Incorrect Predictions: 132
+ - Maximum Consecutive Error Streak: 38
+
+📋 INCORRECT FRAME INDICES:
+ [16, 17, 18, 19, 20, 21, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 76, 78, 79, 80, 81, 82, 83, 84, 85, 97, 98, 99, 100, 101, 102, 103, 104, 120, 121, 123, 124, 125, 126, 127, 128, 129, 140, 141, 142, 143, 144, 145, 146, 152, 153, 156, 157, 172, 173, 174, 175, 176, 179, 187, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 236, 278, 282, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 313, 314, 315]
+
+--------------------------------------------------
+🔬 ALL TESTED COMBINATIONS (Ranked by internal accuracy):
+ [Rank 1] Accuracy: 78.18% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 2] Accuracy: 78.13% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 3] Accuracy: 78.13% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 4] Accuracy: 78.11% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 5] Accuracy: 77.78% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 5] Accuracy: 77.78% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 7] Accuracy: 77.69% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 7] Accuracy: 77.69% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 15}
+ [Rank 9] Accuracy: 77.62% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 10] Accuracy: 77.54% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 11] Accuracy: 77.47% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 12] Accuracy: 77.45% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 13] Accuracy: 77.42% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 13] Accuracy: 77.42% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 15] Accuracy: 77.38% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 16] Accuracy: 77.35% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 17] Accuracy: 77.26% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 17] Accuracy: 77.26% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 19] Accuracy: 77.24% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 20] Accuracy: 77.17% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 21] Accuracy: 77.09% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 21] Accuracy: 77.09% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 10}
+ [Rank 23] Accuracy: 76.88% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 23] Accuracy: 76.88% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 25] Accuracy: 76.77% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 26] Accuracy: 76.72% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 26] Accuracy: 76.72% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 10}
+ [Rank 28] Accuracy: 76.67% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 29] Accuracy: 76.65% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 30] Accuracy: 76.65% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 31] Accuracy: 76.63% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 31] Accuracy: 76.63% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 15}
+ [Rank 33] Accuracy: 75.40% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 34] Accuracy: 75.38% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 35] Accuracy: 75.35% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 36] Accuracy: 75.33% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 37] Accuracy: 75.26% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 38] Accuracy: 75.05% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 39] Accuracy: 75.02% | Params: {'knn__n_neighbors': 12, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 40] Accuracy: 75.00% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 41] Accuracy: 75.00% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 42] Accuracy: 74.98% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'rbf', 'kpca__n_components': 6}
+ [Rank 43] Accuracy: 74.81% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 44] Accuracy: 74.79% | Params: {'knn__n_neighbors': 7, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 45] Accuracy: 73.92% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 46] Accuracy: 73.90% | Params: {'knn__n_neighbors': 5, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 47] Accuracy: 73.73% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'uniform', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+ [Rank 48] Accuracy: 73.70% | Params: {'knn__n_neighbors': 3, 'knn__weights': 'distance', 'kpca__kernel': 'linear', 'kpca__n_components': 6}
+
+
+
