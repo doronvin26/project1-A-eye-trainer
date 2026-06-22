@@ -70,11 +70,19 @@ def process_all_csvs(target_folders):
                 df['right_body_angle'] = df.apply(
                     lambda row: calculate_angle(row, 'right_shoulder', 'right_hip', 'right_heel'), axis=1
                 )
+
                 df['left_angle_elbow'] = df.apply(
                     lambda row: calculate_angle(row, 'left_shoulder', 'left_elbow', 'left_wrist'), axis=1
                 )
                 df['right_angle_elbow'] = df.apply(
                     lambda row: calculate_angle(row, 'right_shoulder', 'right_elbow', 'right_wrist'), axis=1
+                )
+
+                df['right_wrist_shoulder_hip'] = df.apply(
+                    lambda row: calculate_angle(row, 'right_wrist', 'right_shoulder', 'right_hip'), axis=1
+                )
+                df['left_wrist_shoulder_hip'] = df.apply(
+                    lambda row: calculate_angle(row, 'left_wrist', 'left_shoulder', 'left_hip'), axis=1
                 )
                 
                 # --- התוספת החדשה: חישובי מרחקים ---
@@ -85,6 +93,14 @@ def process_all_csvs(target_folders):
                 # מרחק יד ימין
                 df['right_arm_distance'] = df.apply(
                     lambda row: calculate_distance(row, 'right_shoulder', 'right_wrist'), axis=1
+                )
+
+                df['left_arm_index_shoulder'] = df.apply(
+                    lambda row: calculate_distance(row, 'left_shoulder', 'left_index'), axis=1
+                )
+                # מרחק יד ימין
+                df['right_arm_index_shoulder'] = df.apply(
+                    lambda row: calculate_distance(row, 'right_shoulder', 'right_index'), axis=1
                 )
                 
                 # שמירת הקובץ מחדש

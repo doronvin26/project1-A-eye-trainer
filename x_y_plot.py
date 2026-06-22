@@ -8,13 +8,16 @@ import os
 # ==========================================
 CSV_FILE_PATH = "test data/test_alon_partial_labels.csv" 
 
-X_COLUMN = "left_arm_distance"   
-Y_COLUMN = "pushup_phase"       
-HUE_COLUMN = "pushup_phase"     
-
+X_COLUMN = "left_arm_index_shoulder"   
+Y_COLUMN = "hips_position"       
+#HUE_COLUMN = "hips_position"     
+#hips_position
+#pushup_phase
 # ==========================================
 # 📊 פונקציית יצירת הגרף
 # ==========================================
+
+
 def create_scatter_plot(csv_path, x_col, y_col, hue_col=None):
     print(f"Loading data from: {csv_path}...")
     
@@ -24,7 +27,7 @@ def create_scatter_plot(csv_path, x_col, y_col, hue_col=None):
 
     # טעינת הנתונים
     df = pd.read_csv(csv_path)
-    
+
     missing_cols = [col for col in [x_col, y_col] if col not in df.columns]
     if missing_cols:
         print(f"❌ Error: The following columns are missing in the CSV: {missing_cols}")
@@ -64,7 +67,9 @@ def create_scatter_plot(csv_path, x_col, y_col, hue_col=None):
     os.makedirs("pics", exist_ok=True)
     
     # הגדרת נתיב השמירה המלא
-    output_filename = os.path.join("pics", f"scatter_{x_col}_vs_{y_col}.png")
+    target_folder = os.path.join("pics", y_col)
+    os.makedirs(target_folder, exist_ok=True)
+    output_filename = os.path.join(target_folder, f"{x_col}_vs_{y_col}.png")
     
     # שמירת הקובץ
     plt.savefig(output_filename, dpi=300, bbox_inches='tight')
@@ -76,4 +81,4 @@ def create_scatter_plot(csv_path, x_col, y_col, hue_col=None):
 # 🚀 הפעלה
 # ==========================================
 if __name__ == "__main__":
-    create_scatter_plot(CSV_FILE_PATH, X_COLUMN, Y_COLUMN, HUE_COLUMN)
+    create_scatter_plot(CSV_FILE_PATH, X_COLUMN, Y_COLUMN, Y_COLUMN)
