@@ -12,18 +12,34 @@ from sklearn.model_selection import GridSearchCV
 # 1. הגדרות ופיצ'רים
 # ==========================================
 default_landmarks = [
-    "left_shoulder", "right_shoulder",
-    "left_elbow", "right_elbow", 
-    "left_wrist", "right_wrist",
-    "left_hip", "right_hip",
-    "left_ankle", "right_ankle", 
-    "left_heel", "right_heel", 
+    # "left_shoulder", "right_shoulder",
+    # "left_elbow", "right_elbow", 
+    # "left_wrist", "right_wrist",
+    # "left_hip", "right_hip",
+    # "left_ankle", "right_ankle", 
+    # "left_heel", "right_heel", 
 ]
 
 engineered_features = [
+    # --- Classic 2D Features ---
     'left_body_angle', 'right_body_angle', 
     'left_angle_elbow', 'right_angle_elbow',
-    'left_arm_distance', 'right_arm_distance'
+    
+    # 'left_knee_angle', 'right_knee_angle', 'neck_angle',
+    # 'left_arm_ratio', 'right_arm_ratio',
+    # 'left_shoulder_elbow_y_norm', 'right_shoulder_elbow_y_norm',
+    # 'left_hip_deviation_norm', 'right_hip_deviation_norm',
+    
+    # --- Advanced 3D Features ---
+    #'body_alignment_angle', 
+    'hip_line_error', 
+    #'left_arm_compression', 'right_arm_compression', 'avg_arm_compression',
+    #'elbow_symmetry',
+    'avg_elbow_angle', 
+    #'avg_body_angle',
+    
+    # --- Temporal Motion Features ---
+    'avg_delta_elbow_angle', 'delta_hip_line_error', 'delta_body_alignment_angle'
 ]
 
 def get_feature_columns():
@@ -81,15 +97,26 @@ def optimize_and_evaluate(target_col, X_train, y_train, X_test, y_test, test_fra
         ('knn', KNeighborsClassifier())
     ])
 
-    param_grid = {
-        'kpca__n_components': [6, 10, 15],
-        'kpca__kernel': ['linear', 'rbf'],
-        'knn__n_neighbors': [3, 5, 7, 12],
-        'knn__weights': ['uniform', 'distance']
-    }
+    param_grid = [
+        # מילון 1: רק עבור קרנל לינארי (בלי גאמה!)
+        {
+            'kpca__n_components': [4, 6, 8],
+            'kpca__kernel': ['linear'],
+            'knn__n_neighbors': [3, 5, 7, 12, 15, 18, 20],
+            'knn__weights': ['uniform', 'distance']
+        },
+        # מילון 2: רק עבור קרנל RBF (עם גאמה)
+        {
+            'kpca__n_components': [4, 6, 8],
+            'kpca__kernel': ['rbf'],
+            'kpca__gamma': [None, 0.01, 0.1, 0.5],
+            'knn__n_neighbors': [3, 5, 7, 12, 15, 18, 20],
+            'knn__weights': ['uniform', 'distance']
+        }
+    ]
 
     # verbose=0 משתיק לחלוטין את הטרמינל בזמן החישובים
-    grid_search = GridSearchCV(pipeline, param_grid, cv=3, scoring='accuracy', n_jobs=1, verbose=0)
+    grid_search = GridSearchCV(pipeline, param_grid, cv=3, scoring='accuracy', n_jobs=-1, verbose=0)
     grid_search.fit(X_train, y_train)
     best_model = grid_search.best_estimator_
     
