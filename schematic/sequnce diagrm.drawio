@@ -1,0 +1,148 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="PushUp-SM" id="0Zp1Mhhf1-ombWB3INKL">
+    <mxGraphModel dx="936" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ed_0nTSygg14d2RjUV-d-79" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="User" vertex="1">
+          <mxGeometry height="700" width="100" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-80" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Main Application" vertex="1">
+          <mxGeometry height="700" width="100" x="240" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-81" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="MediaPipe" vertex="1">
+          <mxGeometry height="700" width="100" x="440" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-82" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Feature Extractor" vertex="1">
+          <mxGeometry height="700" width="100" x="640" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-83" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="KNN Predictor" vertex="1">
+          <mxGeometry height="700" width="100" x="840" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-84" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Rep SM" vertex="1">
+          <mxGeometry height="700" width="100" x="1040" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-85" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Hip SM" vertex="1">
+          <mxGeometry height="700" width="100" x="1240" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-86" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" value="Start Training">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="160" />
+            </Array>
+            <mxPoint x="89.59090909090901" y="160" as="sourcePoint" />
+            <mxPoint x="289.5" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-87" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" value="Send Frame for Detection">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="190" />
+            </Array>
+            <mxPoint x="289.590909090909" y="190" as="sourcePoint" />
+            <mxPoint x="489.5" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-88" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" value="Return Landmarks">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="240" />
+            </Array>
+            <mxPoint x="489.5" y="240" as="sourcePoint" />
+            <mxPoint x="289.590909090909" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-89" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-80" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" target="ed_0nTSygg14d2RjUV-d-82" value="Send Landmarks">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="280" />
+            </Array>
+            <mxPoint x="290" y="280" as="sourcePoint" />
+            <mxPoint x="690" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-90" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-82" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" target="ed_0nTSygg14d2RjUV-d-80" value="Return Engineered Features">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="330" />
+            </Array>
+            <mxPoint x="690" y="330" as="sourcePoint" />
+            <mxPoint x="290" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-91" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-80" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" target="ed_0nTSygg14d2RjUV-d-83" value="Send Features for Prediction">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="380" />
+            </Array>
+            <mxPoint x="290" y="380" as="sourcePoint" />
+            <mxPoint x="890" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-92" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-83" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" target="ed_0nTSygg14d2RjUV-d-84" value="Phase State (High, Medium, Low)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="430" />
+            </Array>
+            <mxPoint x="890" y="430" as="sourcePoint" />
+            <mxPoint x="1090" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-93" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-83" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" target="ed_0nTSygg14d2RjUV-d-85" value="Hip Position (Good, Low, High)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="1090" y="480" />
+            </Array>
+            <mxPoint x="890" y="480" as="sourcePoint" />
+            <mxPoint x="1290" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-94" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-84" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" target="ed_0nTSygg14d2RjUV-d-80" value="Return&amp;nbsp; 1-Rep Completed, 2-Half Up Rep, 3- Half Down Rep, -1- Rrror">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="530" />
+            </Array>
+            <mxPoint x="1090" y="530" as="sourcePoint" />
+            <mxPoint x="290" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-95" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-85" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" target="ed_0nTSygg14d2RjUV-d-80" value="Return Hip Form Feedback">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="580" />
+            </Array>
+            <mxPoint x="1290" y="580" as="sourcePoint" />
+            <mxPoint x="290" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-96" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-80" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" target="ed_0nTSygg14d2RjUV-d-79" value="Show Updated Frame on Screen">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="630" />
+            </Array>
+            <mxPoint x="290" y="630" as="sourcePoint" />
+            <mxPoint x="90" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-97" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" value="Start Handshake">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="190.409090909091" y="100" />
+            </Array>
+            <mxPoint x="90" y="100" as="sourcePoint" />
+            <mxPoint x="289.909090909091" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-98" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" value="Handshake completed">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="130" />
+            </Array>
+            <mxPoint x="290" y="130" as="sourcePoint" />
+            <mxPoint x="90" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

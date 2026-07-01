@@ -1,0 +1,56 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="PushUp-SM" id="0Zp1Mhhf1-ombWB3INKL">
+    <mxGraphModel dx="936" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ed_0nTSygg14d2RjUV-d-47" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Helvetica;fontSize=13;align=left;verticalAlign=top;shadow=1;" value="&lt;div style=&quot;text-align: left; padding: 10px;&quot;&gt;&lt;h3 style=&quot;margin-top:0px;&quot;&gt;Push-Up Hip State Machine&lt;/h3&gt;&lt;hr&gt;&lt;b&gt;Input:&lt;/b&gt; push-up detected hip&lt;br&gt;(Good, High, Low)&lt;br&gt;&lt;br&gt;&lt;b&gt;Outputs / Events:&lt;br&gt;&lt;/b&gt;&lt;b&gt;&lt;font color=&quot;#ffa3a3&quot;&gt;2&lt;/font&gt;&amp;nbsp;&lt;/b&gt;: Hip is too low&lt;br&gt;&lt;font color=&quot;#cc0000&quot;&gt;&lt;b&gt;1&lt;/b&gt;&lt;/font&gt; : Hip is too high&lt;br&gt;&lt;font color=&quot;#cc0000&quot;&gt;&lt;b&gt;0&lt;/b&gt;&lt;/font&gt; : Hip is in good level&lt;br&gt;&lt;font color=&quot;#cc0000&quot;&gt;&lt;b&gt;-1&lt;/b&gt;&lt;/font&gt; : error&lt;/div&gt;" vertex="1">
+          <mxGeometry height="200" width="260" x="200" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-48" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontStyle=1;fontSize=15;shadow=1;" value="idle" vertex="1">
+          <mxGeometry height="90" width="90" x="570" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-49" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-48" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;strokeWidth=2;fontSize=13;fontStyle=1;endArrow=block;endFill=1;strokeColor=#555555;labelBackgroundColor=none;exitX=0.25;exitY=0.05;exitDx=0;exitDy=0;entryX=0.75;entryY=0.05;entryDx=0;entryDy=0;" target="ed_0nTSygg14d2RjUV-d-48" value="3/5 Good / &lt;font color=&quot;#cc0000&quot;&gt;0&lt;/font&gt;">
+          <mxGeometry relative="1" y="-15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="593" y="440" />
+              <mxPoint x="638" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-50" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-48" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;strokeWidth=2;fontSize=13;fontStyle=1;endArrow=block;endFill=1;strokeColor=#555555;labelBackgroundColor=none;exitX=0.95;exitY=0.25;exitDx=0;exitDy=0;entryX=0.95;entryY=0.75;entryDx=0;entryDy=0;" target="ed_0nTSygg14d2RjUV-d-48" value="3/5 High / &lt;font color=&quot;#cc0000&quot;&gt;1&lt;/font&gt;">
+          <mxGeometry relative="1" y="15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="720" y="548" />
+              <mxPoint x="720" y="593" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-51" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-48" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;strokeWidth=2;fontSize=13;fontStyle=1;endArrow=block;endFill=1;strokeColor=#555555;labelBackgroundColor=none;exitX=0.75;exitY=0.95;exitDx=0;exitDy=0;entryX=0.25;entryY=0.95;entryDx=0;entryDy=0;" target="ed_0nTSygg14d2RjUV-d-48" value="else / &lt;font color=&quot;#cc0000&quot;&gt;-1&lt;/font&gt;">
+          <mxGeometry relative="1" y="15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="638" y="700" />
+              <mxPoint x="593" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed_0nTSygg14d2RjUV-d-52" edge="1" parent="1" source="ed_0nTSygg14d2RjUV-d-48" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;strokeWidth=2;fontSize=13;fontStyle=1;endArrow=block;endFill=1;strokeColor=#555555;labelBackgroundColor=none;entryX=0.083;entryY=0.765;entryDx=0;entryDy=0;exitX=0.028;exitY=0.414;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="ed_0nTSygg14d2RjUV-d-48" value="3/5 Low / &lt;font color=&quot;#cc0000&quot;&gt;2&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.5289" y="-25" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="573" y="540" />
+              <mxPoint x="490" y="540" />
+              <mxPoint x="490" y="602" />
+              <mxPoint x="578" y="602" />
+            </Array>
+            <mxPoint x="540" y="570" as="sourcePoint" />
+            <mxPoint x="525" y="571" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
