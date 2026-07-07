@@ -1,0 +1,336 @@
+Source: Offline Video - alon_test.mp4
+Date & Time: 2026-07-07 12:36:30
+==========================================================================================
+Frame: 0001 | Phase: High            | Hip: Good            | Times(ms) -> MP: 49.4, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0002 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.5, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0003 | Phase: High            | Hip: Good            | Times(ms) -> MP: 49.9, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0004 | Phase: High            | Hip: Good            | Times(ms) -> MP: 44.7, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0005 | Phase: High            | Hip: Good            | Times(ms) -> MP: 44.9, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0006 | Phase: High            | Hip: Good            | Times(ms) -> MP: 44.3, Feat: 00.1, Predict: 02.3, States: 00.0
+Frame: 0007 | Phase: High            | Hip: Good            | Times(ms) -> MP: 44.4, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0008 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.0, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0009 | Phase: High            | Hip: Good            | Times(ms) -> MP: 44.5, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0010 | Phase: High            | Hip: Good            | Times(ms) -> MP: 44.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0011 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.5, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0012 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.8, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0013 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.9, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0014 | Phase: High            | Hip: Good            | Times(ms) -> MP: 43.9, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0015 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.0, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0016 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.7, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0017 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.3, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0018 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 45.4, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0019 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 45.5, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0020 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 45.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0021 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 45.5, Feat: 00.1, Predict: 03.2, States: 00.0
+Frame: 0022 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.8, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0023 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 44.9, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0024 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.5, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0025 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.0, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0026 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.6, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0027 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0028 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 50.0, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0029 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 44.7, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0030 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0031 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.0, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0032 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0033 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0034 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0035 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.1, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0036 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.2, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0037 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 45.0, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0038 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 44.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0039 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 48.1, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0040 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 47.8, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0041 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.2, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0042 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.2, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0043 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0044 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.7, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0045 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0046 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.7, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0047 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.7, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0048 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0049 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.8, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0050 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.7, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0051 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.4, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0052 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.1, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0053 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.3, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0054 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.2, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0055 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.8, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0056 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.3, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0057 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 45.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0058 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 44.5, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0059 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 45.3, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0060 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 45.0, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0061 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0062 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 48.0, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0063 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 45.6, Feat: 00.1, Predict: 02.3, States: 00.0
+Frame: 0064 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0065 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.0, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0066 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.0, Feat: 00.1, Predict: 02.2, States: 00.0
+Frame: 0067 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 49.0, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0068 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.7, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0069 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 44.4, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0070 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.2, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0071 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.1, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0072 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.7, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0073 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.1, Feat: 00.1, Predict: 02.3, States: 00.0
+Frame: 0074 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.2, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0075 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.8, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0076 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0077 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.1, Feat: 00.1, Predict: 03.3, States: 00.0
+Frame: 0078 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0079 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.3, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0080 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0081 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.3, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0082 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.7, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0083 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 47.5, Feat: 00.1, Predict: 03.5, States: 00.0
+Frame: 0084 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 49.1, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0085 | Phase: High            | Hip: Good            | Times(ms) -> MP: 52.4, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0086 | Phase: High            | Hip: Good            | Times(ms) -> MP: 50.9, Feat: 00.1, Predict: 04.1, States: 00.0
+Frame: 0087 | Phase: High            | Hip: Good            | Times(ms) -> MP: 54.2, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0088 | Phase: High            | Hip: Good            | Times(ms) -> MP: 53.9, Feat: 00.1, Predict: 03.2, States: 00.0
+Frame: 0089 | Phase: High            | Hip: Good            | Times(ms) -> MP: 51.3, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0090 | Phase: High            | Hip: Good            | Times(ms) -> MP: 50.4, Feat: 00.1, Predict: 03.3, States: 00.0
+Frame: 0091 | Phase: High            | Hip: Good            | Times(ms) -> MP: 53.5, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0092 | Phase: High            | Hip: Good            | Times(ms) -> MP: 50.8, Feat: 00.1, Predict: 03.2, States: 00.0
+Frame: 0093 | Phase: High            | Hip: Good            | Times(ms) -> MP: 50.6, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0094 | Phase: High            | Hip: Good            | Times(ms) -> MP: 50.0, Feat: 00.1, Predict: 03.3, States: 00.0
+Frame: 0095 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.7, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0096 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.5, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0097 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0098 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0099 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 50.1, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0100 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 55.1, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0101 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 53.8, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0102 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.4, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0103 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0104 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 49.1, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0105 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 48.1, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0106 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0107 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.2, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0108 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.7, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0109 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.9, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0110 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0111 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.0, Feat: 00.2, Predict: 02.6, States: 00.0
+Frame: 0112 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.4, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0113 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.8, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0114 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.5, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0115 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.7, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0116 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 51.2, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0117 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 50.0, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0118 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 53.6, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0119 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 51.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0120 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 49.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0121 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0122 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.3, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0123 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.0, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0124 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 48.9, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0125 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.7, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0126 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0127 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0128 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0129 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 47.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0130 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0131 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0132 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0133 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0134 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.1, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0135 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0136 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0137 | Phase: High            | Hip: Good            | Times(ms) -> MP: 51.5, Feat: 00.1, Predict: 02.7, States: 00.1
+Frame: 0138 | Phase: High            | Hip: Good            | Times(ms) -> MP: 52.3, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0139 | Phase: High            | Hip: Good            | Times(ms) -> MP: 52.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0140 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0141 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0142 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.9, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0143 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.9, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0144 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0145 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.3, States: 00.0
+Frame: 0146 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0147 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0148 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.3, States: 00.0
+Frame: 0149 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0150 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.9, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0151 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0152 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.9, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0153 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.7, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0154 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0155 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 45.9, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0156 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 49.0, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0157 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0158 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 49.3, Feat: 00.2, Predict: 03.3, States: 00.0
+Frame: 0159 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 52.4, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0160 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 57.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0161 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 50.6, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0162 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 50.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0163 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.0, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0164 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 49.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0165 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0166 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0167 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.3, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0168 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.7, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0169 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0170 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0171 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 50.0, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0172 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 45.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0173 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.7, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0174 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0175 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0176 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.5, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0177 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.2, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0178 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0179 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 50.7, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0180 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 45.3, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0181 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.7, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0182 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.9, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0183 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0184 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0185 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0186 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0187 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0188 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.9, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0189 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.2, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0190 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 47.7, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0191 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.6, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0192 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 49.9, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0193 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.0, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0194 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 52.4, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0195 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 48.3, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0196 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 49.5, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0197 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 49.9, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0198 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 50.5, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0199 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 51.2, Feat: 00.1, Predict: 03.4, States: 00.0
+Frame: 0200 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 49.5, Feat: 00.2, Predict: 03.5, States: 00.0
+Frame: 0201 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 52.8, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0202 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 53.1, Feat: 00.1, Predict: 03.2, States: 00.0
+Frame: 0203 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 51.9, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0204 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 50.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0205 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 57.1, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0206 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 49.3, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0207 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 50.7, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0208 | Phase: High            | Hip: Too High        | Times(ms) -> MP: 50.0, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0209 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 51.2, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0210 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0211 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 49.8, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0212 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0213 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0214 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0215 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0216 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0217 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.0, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0218 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0219 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0220 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.8, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0221 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.7, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0222 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.8, Feat: 00.1, Predict: 03.2, States: 00.0
+Frame: 0223 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.3, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0224 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.0, Feat: 00.1, Predict: 02.1, States: 00.0
+Frame: 0225 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0226 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.8, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0227 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.7, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0228 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0229 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 49.3, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0230 | Phase: High            | Hip: Good            | Times(ms) -> MP: 49.6, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0231 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.5, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0232 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0233 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0234 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.2, Feat: 00.1, Predict: 02.1, States: 00.0
+Frame: 0235 | Phase: High            | Hip: Good            | Times(ms) -> MP: 50.2, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0236 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 49.2, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0237 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0238 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0239 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 50.8, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0240 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0241 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0242 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0243 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0244 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.1, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0245 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 45.6, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0246 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 44.7, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0247 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 48.1, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0248 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.0, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0249 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.5, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0250 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0251 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0252 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0253 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 50.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0254 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 49.5, Feat: 00.1, Predict: 03.1, States: 00.0
+Frame: 0255 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.1, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0256 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0257 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0258 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.5, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0259 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 49.7, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0260 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 49.1, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0261 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0262 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 49.4, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0263 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0264 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 49.8, Feat: 00.1, Predict: 02.3, States: 00.0
+Frame: 0265 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.2, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0266 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 48.1, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0267 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 53.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0268 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 45.3, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0269 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 45.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0270 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 46.1, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0271 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 46.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0272 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 45.8, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0273 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.2, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0274 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 46.3, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0275 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0276 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0277 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 46.8, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0278 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0279 | Phase: Low             | Hip: Too Low         | Times(ms) -> MP: 46.4, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0280 | Phase: Low             | Hip: Too Low         | Times(ms) -> MP: 46.8, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0281 | Phase: Low             | Hip: Too Low         | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0282 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0283 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.1, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0284 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 45.7, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0285 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 53.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0286 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.3, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0287 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.9, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0288 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.3, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0289 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.3, Feat: 00.1, Predict: 02.3, States: 00.0
+Frame: 0290 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 50.4, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0291 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.5, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0292 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 48.7, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0293 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0294 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.3, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0295 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 49.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0296 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 46.6, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0297 | Phase: Low             | Hip: Good            | Times(ms) -> MP: 47.2, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0298 | Phase: Low             | Hip: Too Low         | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0299 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.4, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0300 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0301 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.8, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0302 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.0, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0303 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.5, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0304 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.8, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0305 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0306 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 46.8, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0307 | Phase: Medium          | Hip: Good            | Times(ms) -> MP: 48.8, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0308 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 47.9, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0309 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.5, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0310 | Phase: High            | Hip: Too Low         | Times(ms) -> MP: 46.0, Feat: 00.1, Predict: 02.2, States: 00.0
+Frame: 0311 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 47.6, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0312 | Phase: Medium          | Hip: Too Low         | Times(ms) -> MP: 48.1, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0313 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.2, Feat: 00.1, Predict: 03.0, States: 00.0
+Frame: 0314 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.1, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0315 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.9, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0316 | Phase: High            | Hip: Good            | Times(ms) -> MP: 49.3, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0317 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.2, Feat: 00.1, Predict: 02.9, States: 00.0
+Frame: 0318 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.0, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0319 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.5, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0320 | Phase: High            | Hip: Good            | Times(ms) -> MP: 45.4, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0321 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.2, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0322 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0323 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.9, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0324 | Phase: High            | Hip: Good            | Times(ms) -> MP: 50.8, Feat: 00.1, Predict: 02.5, States: 00.0
+Frame: 0325 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.3, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0326 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.7, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0327 | Phase: High            | Hip: Good            | Times(ms) -> MP: 49.3, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0328 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.5, Feat: 00.1, Predict: 02.7, States: 00.0
+Frame: 0329 | Phase: High            | Hip: Good            | Times(ms) -> MP: 49.8, Feat: 00.1, Predict: 02.2, States: 00.0
+Frame: 0330 | Phase: High            | Hip: Good            | Times(ms) -> MP: 46.2, Feat: 00.1, Predict: 02.8, States: 00.0
+Frame: 0331 | Phase: High            | Hip: Good            | Times(ms) -> MP: 47.8, Feat: 00.1, Predict: 02.6, States: 00.0
+Frame: 0332 | Phase: High            | Hip: Good            | Times(ms) -> MP: 49.2, Feat: 00.1, Predict: 02.4, States: 00.0
+Frame: 0333 | Phase: High            | Hip: Good            | Times(ms) -> MP: 48.3, Feat: 00.1, Predict: 02.5, States: 00.0

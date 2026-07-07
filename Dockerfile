@@ -32,4 +32,4 @@ RUN pip3 install -r requirements.txt
 # הערה: הסרנו את COPY . . כדי להשתמש ב-Mount בזמן ההרצה
 
 # הרצה של Streamlit עם video_labeling_app.py
-CMD ["sh", "-c", "echo 'App is starting at: http://localhost:8501' && python3 -m streamlit run offline_validator.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true --browser.gatherUsageStats=false"]
+CMD ["sh", "-c", "echo 'App is starting at: http://localhost:8501' && python3 -m streamlit run app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true --browser.gatherUsageStats=false"]
