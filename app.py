@@ -85,7 +85,9 @@ SELECTED_LANDMARKS = ["left_shoulder", "right_shoulder", "left_elbow", "right_el
 SELECTED_ENG_FEATURES = [
     'left_body_angle', 'right_body_angle', 
     'left_angle_elbow', 'right_angle_elbow', 
-    'left_hip_deviation_norm', 'right_hip_deviation_norm'
+    'left_hip_deviation_norm', 'right_hip_deviation_norm',
+    'avg_elbow_angle', 'avg_delta_elbow_angle', 
+    'delta_hip_line_error', 'delta_body_alignment_angle'
 ]
 
 # ==========================================
@@ -183,6 +185,36 @@ class HipStateMachine:
 # ==========================================
 # 2. FEATURE EXTRACTION HELPERS
 # ==========================================
+def get_pt3d(world_landmarks, idx):
+    """חילוץ קואורדינטות 3D אמיתיות"""
+    lm = world_landmarks[idx]
+    return np.array([lm.x, lm.y, lm.z])
+
+def calc_angle_3d(p1, p2, p3):
+    if p1 is None or p2 is None or p3 is None: return 0.0
+    v1 = p1 - p2
+    v2 = p3 - p2
+    v1_u = v1 / (np.linalg.norm(v1) + 1e-8)
+    v2_u = v2 / (np.linalg.norm(v2) + 1e-8)
+    angle_rad = np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
+    return np.degrees(angle_rad)
+
+def calc_hip_line_error_3d(shoulder_center, hip_center, ankle_center):
+    if shoulder_center is None or hip_center is None or ankle_center is None: return 0.0
+    line_vec = ankle_center - shoulder_center
+    line_len = np.linalg.norm(line_vec)
+    if line_len < 1e-8: return 0.0
+    
+    line_dir = line_vec / line_len
+    vec_to_hip = hip_center - shoulder_center
+    projection_length = np.dot(vec_to_hip, line_dir)
+    projected_point = shoulder_center + projection_length * line_dir
+    
+    diff_vec = hip_center - projected_point
+    distance = np.linalg.norm(diff_vec)
+    sign = 1.0 if diff_vec[1] > 0 else -1.0
+    return distance * sign
+
 def calc_dist(pose_landmarks, p1_idx, p2_idx):
     try:
         x1, y1 = pose_landmarks[p1_idx].x, pose_landmarks[p1_idx].y
@@ -207,7 +239,7 @@ def calc_hip_deviation_live(pose_landmarks, shoulder_idx, knee_idx, hip_idx):
         return pose_landmarks[hip_idx].y - expected
     except Exception: return 0.0
 
-def extract_features_from_task(pose_landmarks, world_landmarks, selected_landmarks, selected_engineered_features, use_centered):
+def extract_features_from_task(pose_landmarks, world_landmarks, selected_landmarks, selected_engineered_features, use_centered, cache):
     features = []
     l_hip_idx = MP_LANDMARK_MAP["left_hip"]
     r_hip_idx = MP_LANDMARK_MAP["right_hip"]
@@ -239,6 +271,46 @@ def extract_features_from_task(pose_landmarks, world_landmarks, selected_landmar
     eng_feat_dict['left_hip_deviation_norm'] = calc_hip_deviation_live(pose_landmarks, l_shoulder, MP_LANDMARK_MAP["left_knee"], l_hip_idx) / avg_torso
     eng_feat_dict['right_hip_deviation_norm'] = calc_hip_deviation_live(pose_landmarks, r_shoulder, MP_LANDMARK_MAP["right_knee"], r_hip_idx) / avg_torso
 
+    # --- הפיצ'רים החדשים שלך ---
+    
+    # 1. ממוצע זווית מרפקים
+    avg_elbow = (eng_feat_dict['left_angle_elbow'] + eng_feat_dict['right_angle_elbow']) / 2.0
+    eng_feat_dict['avg_elbow_angle'] = avg_elbow
+
+    # 2. חישובי 3D (סטיית אגן ויישור גוף כפי שהיו בקוד הישן)
+    if world_landmarks:
+        ls = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_shoulder'])
+        rs = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_shoulder'])
+        lh = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_hip'])
+        rh = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_hip'])
+        la = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_ankle'])
+        ra = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_ankle'])
+        
+        shoulder_center = (ls + rs) / 2.0
+        hip_center = (lh + rh) / 2.0
+        ankle_center = (la + ra) / 2.0
+        
+        body_align = calc_angle_3d(shoulder_center, hip_center, ankle_center)
+        hip_error = calc_hip_line_error_3d(shoulder_center, hip_center, ankle_center)
+    else:
+        body_align, hip_error = 0.0, 0.0
+
+# 3. חישוב דלתאות זמניות (Deltas) בעזרת ה-cache
+    prev_avg_elbow = cache.get('prev_avg_elbow_angle', avg_elbow)
+    prev_hip_error = cache.get('prev_hip_line_error', hip_error)
+    prev_body_align = cache.get('prev_body_alignment', body_align)
+    
+    # שימוש בשמות המדויקים כפי שהם ב-CSV
+    eng_feat_dict['avg_delta_elbow_angle'] = avg_elbow - prev_avg_elbow
+    eng_feat_dict['delta_hip_line_error'] = hip_error - prev_hip_error
+    eng_feat_dict['delta_body_alignment_angle'] = body_align - prev_body_align
+    
+    # עדכון ה-cache לפריים הבא
+    cache['prev_avg_elbow_angle'] = avg_elbow
+    cache['prev_hip_line_error'] = hip_error
+    cache['prev_body_alignment'] = body_align
+
+    # הוספת הפיצ'רים לסדר הסופי
     for feat_name in selected_engineered_features:
         features.append(eng_feat_dict.get(feat_name, 0.0))
 
@@ -280,8 +352,8 @@ def load_and_train_models():
         pca = None
         X_train_final = X_train_scaled
 
-    knn_phase = KNeighborsClassifier(n_neighbors=3).fit(X_train_final, y_phase_train)
-    knn_hips = KNeighborsClassifier(n_neighbors=3).fit(X_train_final, y_hips_train)
+    knn_phase = KNeighborsClassifier(n_neighbors=15).fit(X_train_final, y_phase_train)
+    knn_hips = KNeighborsClassifier(n_neighbors=18).fit(X_train_final, y_hips_train)
     
     return scaler, pca, knn_phase, knn_hips
 
@@ -297,7 +369,10 @@ def get_landmarker():
     options = vision.PoseLandmarkerOptions(
         base_options=python.BaseOptions(model_asset_path=MODEL_PATH), 
         running_mode=vision.RunningMode.VIDEO,
-        output_segmentation_masks=False
+        output_segmentation_masks=False,
+        num_poses=1,                     # הגבלת זיהוי לאדם אחד בלבד
+        min_pose_detection_confidence=0.5, 
+        min_tracking_confidence=0.5      # מאפשר למעקב המהיר "לתפוס פיקוד" בקלות יותר
     )
     return vision.PoseLandmarker.create_from_options(options)
 
@@ -309,6 +384,7 @@ landmarker = get_landmarker()
 from mediapipe.tasks.python.components.containers import NormalizedRect
 
 def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, start_time=0, process_this_frame=True, frame_num=0):
+    frame = cv2.resize(frame, (640, 480))
     h, w, _ = frame.shape
     debug_info = None
     
@@ -338,7 +414,7 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
             t_feat_start = time.time()
             features = extract_features_from_task(
                 pose_landmarks, world_landmarks, 
-                SELECTED_LANDMARKS, SELECTED_ENG_FEATURES, USE_CENTERED_COORDS
+                SELECTED_LANDMARKS, SELECTED_ENG_FEATURES, USE_CENTERED_COORDS, cache
             )
             feat_time = (time.time() - t_feat_start) * 1000
             
