@@ -1,0 +1,4323 @@
+KNN Optimization Results for Target: pushup_phase
+============================================================
+
+Rank: 1
+Macro F1-Score: 0.7201
+Number of Features: 8
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2247  117   92]
+  [478 758 324]
+  [ 302  214 1545]
+------------------------------------------------------------
+Rank: 2
+Macro F1-Score: 0.7197
+Number of Features: 8
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2255  108   93]
+  [478 748 334]
+  [ 288  221 1552]
+------------------------------------------------------------
+Rank: 3
+Macro F1-Score: 0.7187
+Number of Features: 8
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2250  122   84]
+  [478 769 313]
+  [ 325  219 1517]
+------------------------------------------------------------
+Rank: 4
+Macro F1-Score: 0.7177
+Number of Features: 5
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2245  103  108]
+  [478 714 368]
+  [ 255  205 1601]
+------------------------------------------------------------
+Rank: 5
+Macro F1-Score: 0.7172
+Number of Features: 4
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2265  125   66]
+  [478 712 370]
+  [ 256  219 1586]
+------------------------------------------------------------
+Rank: 6
+Macro F1-Score: 0.7170
+Number of Features: 6
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2200  124  132]
+  [477 751 332]
+  [ 313  175 1573]
+------------------------------------------------------------
+Rank: 7
+Macro F1-Score: 0.7166
+Number of Features: 3
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2222  146   88]
+  [477 704 379]
+  [ 252  179 1630]
+------------------------------------------------------------
+Rank: 8
+Macro F1-Score: 0.7162
+Number of Features: 6
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2192  120  144]
+  [477 732 351]
+  [ 298  160 1603]
+------------------------------------------------------------
+Rank: 9
+Macro F1-Score: 0.7161
+Number of Features: 4
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2224  118  114]
+  [478 683 399]
+  [ 230  173 1658]
+------------------------------------------------------------
+Rank: 10
+Macro F1-Score: 0.7158
+Number of Features: 5
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2246  116   94]
+  [478 703 379]
+  [ 254  201 1606]
+------------------------------------------------------------
+Rank: 11
+Macro F1-Score: 0.7154
+Number of Features: 4
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2236  119  101]
+  [478 691 391]
+  [ 242  188 1631]
+------------------------------------------------------------
+Rank: 12
+Macro F1-Score: 0.7151
+Number of Features: 8
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2228  117  111]
+  [478 748 334]
+  [ 302  214 1545]
+------------------------------------------------------------
+Rank: 13
+Macro F1-Score: 0.7146
+Number of Features: 8
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2234  108  114]
+  [478 737 345]
+  [ 285  221 1555]
+------------------------------------------------------------
+Rank: 14
+Macro F1-Score: 0.7144
+Number of Features: 4
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2204  118  134]
+  [478 683 399]
+  [ 232  165 1664]
+------------------------------------------------------------
+Rank: 15
+Macro F1-Score: 0.7133
+Number of Features: 4
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2244  120   92]
+  [478 690 392]
+  [ 246  202 1613]
+------------------------------------------------------------
+Rank: 16
+Macro F1-Score: 0.7129
+Number of Features: 3
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2218  143   95]
+  [477 688 395]
+  [ 246  179 1636]
+------------------------------------------------------------
+Rank: 17
+Macro F1-Score: 0.7129
+Number of Features: 3
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2199  146  111]
+  [477 692 391]
+  [ 241  174 1646]
+------------------------------------------------------------
+Rank: 18
+Macro F1-Score: 0.7125
+Number of Features: 7
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2171  120  165]
+  [478 749 333]
+  [ 321  169 1571]
+------------------------------------------------------------
+Rank: 19
+Macro F1-Score: 0.7115
+Number of Features: 8
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2213  113  130]
+  [479 739 342]
+  [ 298  214 1549]
+------------------------------------------------------------
+Rank: 20
+Macro F1-Score: 0.7111
+Number of Features: 5
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2243  110  103]
+  [478 681 401]
+  [ 247  200 1614]
+------------------------------------------------------------
+Rank: 21
+Macro F1-Score: 0.7110
+Number of Features: 6
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2203  111  142]
+  [477 702 381]
+  [ 294  159 1608]
+------------------------------------------------------------
+Rank: 22
+Macro F1-Score: 0.7107
+Number of Features: 7
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2163  117  176]
+  [478 735 347]
+  [ 302  170 1589]
+------------------------------------------------------------
+Rank: 23
+Macro F1-Score: 0.7091
+Number of Features: 3
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2146  141  169]
+  [477 699 384]
+  [ 229  175 1657]
+------------------------------------------------------------
+Rank: 24
+Macro F1-Score: 0.7088
+Number of Features: 3
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2176  152  128]
+  [477 686 397]
+  [ 237  174 1650]
+------------------------------------------------------------
+Rank: 25
+Macro F1-Score: 0.7076
+Number of Features: 5
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2238  109  109]
+  [477 658 425]
+  [ 238  190 1633]
+------------------------------------------------------------
+Rank: 26
+Macro F1-Score: 0.7076
+Number of Features: 6
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2217  115  124]
+  [477 711 372]
+  [ 268  226 1567]
+------------------------------------------------------------
+Rank: 27
+Macro F1-Score: 0.7070
+Number of Features: 8
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2227  103  126]
+  [478 712 370]
+  [ 280  229 1552]
+------------------------------------------------------------
+Rank: 28
+Macro F1-Score: 0.7069
+Number of Features: 8
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2195  112  149]
+  [477 731 352]
+  [ 297  216 1548]
+------------------------------------------------------------
+Rank: 29
+Macro F1-Score: 0.7061
+Number of Features: 5
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2235  109  112]
+  [477 642 441]
+  [ 231  178 1652]
+------------------------------------------------------------
+Rank: 30
+Macro F1-Score: 0.7060
+Number of Features: 6
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2183  106  167]
+  [476 678 406]
+  [ 282  148 1631]
+------------------------------------------------------------
+Rank: 31
+Macro F1-Score: 0.7057
+Number of Features: 8
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2211  102  143]
+  [478 715 367]
+  [ 277  231 1553]
+------------------------------------------------------------
+Rank: 32
+Macro F1-Score: 0.7049
+Number of Features: 6
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2176   98  182]
+  [475 668 417]
+  [ 272  143 1646]
+------------------------------------------------------------
+Rank: 33
+Macro F1-Score: 0.7043
+Number of Features: 8
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2149  106  201]
+  [477 722 361]
+  [ 289  190 1582]
+------------------------------------------------------------
+Rank: 34
+Macro F1-Score: 0.7041
+Number of Features: 4
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2159  119  178]
+  [478 661 421]
+  [ 226  162 1673]
+------------------------------------------------------------
+Rank: 35
+Macro F1-Score: 0.7036
+Number of Features: 7
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2156  119  181]
+  [477 705 378]
+  [ 300  164 1597]
+------------------------------------------------------------
+Rank: 36
+Macro F1-Score: 0.7033
+Number of Features: 7
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2149  118  189]
+  [480 693 387]
+  [ 293  149 1619]
+------------------------------------------------------------
+Rank: 37
+Macro F1-Score: 0.7015
+Number of Features: 5
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2232  108  116]
+  [478 653 429]
+  [ 244  209 1608]
+------------------------------------------------------------
+Rank: 38
+Macro F1-Score: 0.7006
+Number of Features: 5
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2224  109  123]
+  [477 613 470]
+  [ 226  161 1674]
+------------------------------------------------------------
+Rank: 39
+Macro F1-Score: 0.7002
+Number of Features: 5
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2225  102  129]
+  [478 646 436]
+  [ 237  207 1617]
+------------------------------------------------------------
+Rank: 40
+Macro F1-Score: 0.6999
+Number of Features: 2
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2164  188  104]
+  [482 736 342]
+  [ 279  253 1529]
+------------------------------------------------------------
+Rank: 41
+Macro F1-Score: 0.6994
+Number of Features: 8
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2191   98  167]
+  [478 700 382]
+  [ 269  238 1554]
+------------------------------------------------------------
+Rank: 42
+Macro F1-Score: 0.6986
+Number of Features: 6
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2196  112  148]
+  [477 678 405]
+  [ 261  220 1580]
+------------------------------------------------------------
+Rank: 43
+Macro F1-Score: 0.6983
+Number of Features: 3
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2091  140  225]
+  [477 685 398]
+  [ 222  181 1658]
+------------------------------------------------------------
+Rank: 44
+Macro F1-Score: 0.6974
+Number of Features: 8
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2188  186   82]
+  [477 725 358]
+  [ 328  227 1506]
+------------------------------------------------------------
+Rank: 45
+Macro F1-Score: 0.6964
+Number of Features: 7
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2131  113  212]
+  [478 671 411]
+  [ 282  153 1626]
+------------------------------------------------------------
+Rank: 46
+Macro F1-Score: 0.6962
+Number of Features: 8
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2179  189   88]
+  [476 723 361]
+  [ 317  234 1510]
+------------------------------------------------------------
+Rank: 47
+Macro F1-Score: 0.6952
+Number of Features: 2
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2145  188  123]
+  [482 721 357]
+  [ 274  249 1538]
+------------------------------------------------------------
+Rank: 48
+Macro F1-Score: 0.6944
+Number of Features: 6
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2140   93  223]
+  [477 640 443]
+  [ 251  153 1657]
+------------------------------------------------------------
+Rank: 49
+Macro F1-Score: 0.6943
+Number of Features: 8
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2157  198  101]
+  [473 721 366]
+  [ 309  231 1521]
+------------------------------------------------------------
+Rank: 50
+Macro F1-Score: 0.6943
+Number of Features: 7
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2097  110  249]
+  [479 667 414]
+  [ 257  154 1650]
+------------------------------------------------------------
+Rank: 51
+Macro F1-Score: 0.6931
+Number of Features: 3
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2182  167  107]
+  [476 681 403]
+  [ 245  259 1557]
+------------------------------------------------------------
+Rank: 52
+Macro F1-Score: 0.6931
+Number of Features: 3
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2182  167  107]
+  [476 681 403]
+  [ 245  259 1557]
+------------------------------------------------------------
+Rank: 53
+Macro F1-Score: 0.6931
+Number of Features: 8
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2137  103  216]
+  [477 688 395]
+  [ 248  233 1580]
+------------------------------------------------------------
+Rank: 54
+Macro F1-Score: 0.6923
+Number of Features: 6
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2185  111  160]
+  [477 661 422]
+  [ 254  230 1577]
+------------------------------------------------------------
+Rank: 55
+Macro F1-Score: 0.6908
+Number of Features: 3
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2202  165   89]
+  [478 666 416]
+  [ 247  265 1549]
+------------------------------------------------------------
+Rank: 56
+Macro F1-Score: 0.6908
+Number of Features: 3
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2202  165   89]
+  [478 666 416]
+  [ 247  265 1549]
+------------------------------------------------------------
+Rank: 57
+Macro F1-Score: 0.6908
+Number of Features: 4
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2267  123   66]
+  [478 636 446]
+  [ 242  277 1542]
+------------------------------------------------------------
+Rank: 58
+Macro F1-Score: 0.6908
+Number of Features: 4
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2267  123   66]
+  [478 636 446]
+  [ 242  277 1542]
+------------------------------------------------------------
+Rank: 59
+Macro F1-Score: 0.6907
+Number of Features: 3
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2159  163  134]
+  [477 677 406]
+  [ 245  249 1567]
+------------------------------------------------------------
+Rank: 60
+Macro F1-Score: 0.6907
+Number of Features: 3
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2159  163  134]
+  [477 677 406]
+  [ 245  249 1567]
+------------------------------------------------------------
+Rank: 61
+Macro F1-Score: 0.6904
+Number of Features: 7
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2178  126  152]
+  [478 677 405]
+  [ 283  233 1545]
+------------------------------------------------------------
+Rank: 62
+Macro F1-Score: 0.6904
+Number of Features: 8
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2135  206  115]
+  [471 724 365]
+  [ 299  250 1512]
+------------------------------------------------------------
+Rank: 63
+Macro F1-Score: 0.6901
+Number of Features: 4
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2255  123   78]
+  [478 631 451]
+  [ 233  272 1556]
+------------------------------------------------------------
+Rank: 64
+Macro F1-Score: 0.6901
+Number of Features: 4
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2255  123   78]
+  [478 631 451]
+  [ 233  272 1556]
+------------------------------------------------------------
+Rank: 65
+Macro F1-Score: 0.6897
+Number of Features: 4
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2275  124   57]
+  [478 636 446]
+  [ 251  282 1528]
+------------------------------------------------------------
+Rank: 66
+Macro F1-Score: 0.6897
+Number of Features: 4
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2275  124   57]
+  [478 636 446]
+  [ 251  282 1528]
+------------------------------------------------------------
+Rank: 67
+Macro F1-Score: 0.6892
+Number of Features: 3
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2198  169   89]
+  [478 664 418]
+  [ 250  266 1545]
+------------------------------------------------------------
+Rank: 68
+Macro F1-Score: 0.6892
+Number of Features: 3
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2198  169   89]
+  [478 664 418]
+  [ 250  266 1545]
+------------------------------------------------------------
+Rank: 69
+Macro F1-Score: 0.6885
+Number of Features: 4
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2221  114  121]
+  [477 628 455]
+  [ 224  258 1579]
+------------------------------------------------------------
+Rank: 70
+Macro F1-Score: 0.6885
+Number of Features: 4
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2221  114  121]
+  [477 628 455]
+  [ 224  258 1579]
+------------------------------------------------------------
+Rank: 71
+Macro F1-Score: 0.6884
+Number of Features: 3
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2205  172   79]
+  [478 671 411]
+  [ 263  275 1523]
+------------------------------------------------------------
+Rank: 72
+Macro F1-Score: 0.6884
+Number of Features: 3
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2205  172   79]
+  [478 671 411]
+  [ 263  275 1523]
+------------------------------------------------------------
+Rank: 73
+Macro F1-Score: 0.6881
+Number of Features: 4
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2236  121   99]
+  [478 621 461]
+  [ 227  259 1575]
+------------------------------------------------------------
+Rank: 74
+Macro F1-Score: 0.6881
+Number of Features: 4
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2236  121   99]
+  [478 621 461]
+  [ 227  259 1575]
+------------------------------------------------------------
+Rank: 75
+Macro F1-Score: 0.6860
+Number of Features: 8
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2116  206  134]
+  [468 728 364]
+  [ 299  266 1496]
+------------------------------------------------------------
+Rank: 76
+Macro F1-Score: 0.6858
+Number of Features: 5
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2181   97  178]
+  [477 599 484]
+  [ 224  197 1640]
+------------------------------------------------------------
+Rank: 77
+Macro F1-Score: 0.6856
+Number of Features: 2
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2145  189  122]
+  [480 685 395]
+  [ 281  247 1533]
+------------------------------------------------------------
+Rank: 78
+Macro F1-Score: 0.6856
+Number of Features: 5
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2199   99  158]
+  [477 599 484]
+  [ 237  201 1623]
+------------------------------------------------------------
+Rank: 79
+Macro F1-Score: 0.6845
+Number of Features: 6
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2162  112  182]
+  [477 629 454]
+  [ 237  225 1599]
+------------------------------------------------------------
+Rank: 80
+Macro F1-Score: 0.6838
+Number of Features: 3
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2138  152  166]
+  [476 672 412]
+  [ 252  260 1549]
+------------------------------------------------------------
+Rank: 81
+Macro F1-Score: 0.6838
+Number of Features: 3
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2138  152  166]
+  [476 672 412]
+  [ 252  260 1549]
+------------------------------------------------------------
+Rank: 82
+Macro F1-Score: 0.6825
+Number of Features: 7
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2157  129  170]
+  [477 642 441]
+  [ 275  218 1568]
+------------------------------------------------------------
+Rank: 83
+Macro F1-Score: 0.6820
+Number of Features: 5
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2177  112  167]
+  [477 569 514]
+  [ 225  166 1670]
+------------------------------------------------------------
+Rank: 84
+Macro F1-Score: 0.6800
+Number of Features: 7
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2147  129  180]
+  [477 634 449]
+  [ 267  220 1574]
+------------------------------------------------------------
+Rank: 85
+Macro F1-Score: 0.6781
+Number of Features: 4
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2178  114  164]
+  [477 611 472]
+  [ 228  257 1576]
+------------------------------------------------------------
+Rank: 86
+Macro F1-Score: 0.6781
+Number of Features: 4
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2178  114  164]
+  [477 611 472]
+  [ 228  257 1576]
+------------------------------------------------------------
+Rank: 87
+Macro F1-Score: 0.6777
+Number of Features: 2
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2119  197  140]
+  [480 664 416]
+  [ 276  247 1538]
+------------------------------------------------------------
+Rank: 88
+Macro F1-Score: 0.6777
+Number of Features: 6
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2157  107  192]
+  [476 600 484]
+  [ 238  216 1607]
+------------------------------------------------------------
+Rank: 89
+Macro F1-Score: 0.6776
+Number of Features: 7
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2140  127  189]
+  [477 624 459]
+  [ 263  217 1581]
+------------------------------------------------------------
+Rank: 90
+Macro F1-Score: 0.6738
+Number of Features: 2
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2085  198  173]
+  [481 661 418]
+  [ 271  243 1547]
+------------------------------------------------------------
+Rank: 91
+Macro F1-Score: 0.6731
+Number of Features: 8
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2031  226  199]
+  [462 720 378]
+  [ 298  263 1500]
+------------------------------------------------------------
+Rank: 92
+Macro F1-Score: 0.6720
+Number of Features: 5
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2150   96  210]
+  [478 576 506]
+  [ 229  215 1617]
+------------------------------------------------------------
+Rank: 93
+Macro F1-Score: 0.6707
+Number of Features: 9
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1977   96  383]
+  [473 675 412]
+  [ 234  233 1594]
+------------------------------------------------------------
+Rank: 94
+Macro F1-Score: 0.6706
+Number of Features: 7
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2171  188   97]
+  [475 694 391]
+  [ 323  332 1406]
+------------------------------------------------------------
+Rank: 95
+Macro F1-Score: 0.6690
+Number of Features: 7
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2154  188  114]
+  [475 689 396]
+  [ 313  330 1418]
+------------------------------------------------------------
+Rank: 96
+Macro F1-Score: 0.6689
+Number of Features: 7
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2128  205  123]
+  [471 691 398]
+  [ 304  321 1436]
+------------------------------------------------------------
+Rank: 97
+Macro F1-Score: 0.6679
+Number of Features: 9
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1970   96  390]
+  [476 675 409]
+  [ 255  226 1580]
+------------------------------------------------------------
+Rank: 98
+Macro F1-Score: 0.6672
+Number of Features: 7
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2118  127  211]
+  [478 596 486]
+  [ 266  216 1579]
+------------------------------------------------------------
+Rank: 99
+Macro F1-Score: 0.6672
+Number of Features: 6
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2144  202  110]
+  [476 693 391]
+  [ 316  336 1409]
+------------------------------------------------------------
+Rank: 100
+Macro F1-Score: 0.6670
+Number of Features: 6
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2129  206  121]
+  [477 689 394]
+  [ 315  320 1426]
+------------------------------------------------------------
+Rank: 101
+Macro F1-Score: 0.6641
+Number of Features: 6
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2131  101  224]
+  [477 569 514]
+  [ 235  232 1594]
+------------------------------------------------------------
+Rank: 102
+Macro F1-Score: 0.6637
+Number of Features: 9
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1942  105  409]
+  [478 676 406]
+  [ 259  226 1576]
+------------------------------------------------------------
+Rank: 103
+Macro F1-Score: 0.6634
+Number of Features: 10
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1894   82  480]
+  [468 687 405]
+  [ 262  205 1594]
+------------------------------------------------------------
+Rank: 104
+Macro F1-Score: 0.6627
+Number of Features: 7
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2099  212  145]
+  [469 670 421]
+  [ 302  306 1453]
+------------------------------------------------------------
+Rank: 105
+Macro F1-Score: 0.6619
+Number of Features: 6
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2109  202  145]
+  [477 673 410]
+  [ 308  318 1435]
+------------------------------------------------------------
+Rank: 106
+Macro F1-Score: 0.6619
+Number of Features: 6
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2043  210  203]
+  [470 700 390]
+  [ 304  307 1450]
+------------------------------------------------------------
+Rank: 107
+Macro F1-Score: 0.6598
+Number of Features: 9
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1939  109  408]
+  [478 680 402]
+  [ 278  236 1547]
+------------------------------------------------------------
+Rank: 108
+Macro F1-Score: 0.6584
+Number of Features: 6
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2074  208  174]
+  [473 670 417]
+  [ 306  308 1447]
+------------------------------------------------------------
+Rank: 109
+Macro F1-Score: 0.6580
+Number of Features: 10
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1908   87  461]
+  [474 664 422]
+  [ 275  203 1583]
+------------------------------------------------------------
+Rank: 110
+Macro F1-Score: 0.6575
+Number of Features: 7
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2057  228  171]
+  [460 663 437]
+  [ 293  301 1467]
+------------------------------------------------------------
+Rank: 111
+Macro F1-Score: 0.6551
+Number of Features: 9
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1921  107  428]
+  [479 678 403]
+  [ 290  236 1535]
+------------------------------------------------------------
+Rank: 112
+Macro F1-Score: 0.6550
+Number of Features: 2
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2022  199  235]
+  [482 627 451]
+  [ 276  250 1535]
+------------------------------------------------------------
+Rank: 113
+Macro F1-Score: 0.6541
+Number of Features: 7
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2082  117  257]
+  [478 564 518]
+  [ 267  216 1578]
+------------------------------------------------------------
+Rank: 114
+Macro F1-Score: 0.6538
+Number of Features: 10
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1899   93  464]
+  [477 664 419]
+  [ 297  201 1563]
+------------------------------------------------------------
+Rank: 115
+Macro F1-Score: 0.6512
+Number of Features: 9
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1929  115  412]
+  [479 669 412]
+  [ 306  238 1517]
+------------------------------------------------------------
+Rank: 116
+Macro F1-Score: 0.6509
+Number of Features: 5
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2101  222  133]
+  [479 610 471]
+  [ 298  294 1469]
+------------------------------------------------------------
+Rank: 117
+Macro F1-Score: 0.6479
+Number of Features: 10
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1902   95  459]
+  [478 656 426]
+  [ 323  204 1534]
+------------------------------------------------------------
+Rank: 118
+Macro F1-Score: 0.6476
+Number of Features: 5
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2082  226  148]
+  [478 605 477]
+  [ 294  295 1472]
+------------------------------------------------------------
+Rank: 119
+Macro F1-Score: 0.6462
+Number of Features: 5
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2108  225  123]
+  [479 605 476]
+  [ 310  310 1441]
+------------------------------------------------------------
+Rank: 120
+Macro F1-Score: 0.6449
+Number of Features: 5
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2027  231  198]
+  [475 616 469]
+  [ 282  294 1485]
+------------------------------------------------------------
+Rank: 121
+Macro F1-Score: 0.6442
+Number of Features: 6
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1957  217  282]
+  [456 682 422]
+  [ 308  314 1439]
+------------------------------------------------------------
+Rank: 122
+Macro F1-Score: 0.6428
+Number of Features: 10
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1898  100  458]
+  [479 649 432]
+  [ 331  214 1516]
+------------------------------------------------------------
+Rank: 123
+Macro F1-Score: 0.6420
+Number of Features: 5
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1968  228  260]
+  [470 615 475]
+  [ 270  272 1519]
+------------------------------------------------------------
+Rank: 124
+Macro F1-Score: 0.6416
+Number of Features: 10
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1905  107  444]
+  [479 656 425]
+  [ 354  216 1491]
+------------------------------------------------------------
+Rank: 125
+Macro F1-Score: 0.6396
+Number of Features: 5
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2071  225  160]
+  [478 581 501]
+  [ 296  296 1469]
+------------------------------------------------------------
+Rank: 126
+Macro F1-Score: 0.6393
+Number of Features: 2
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2229  145   82]
+  [482 463 615]
+  [ 313  212 1536]
+------------------------------------------------------------
+Rank: 127
+Macro F1-Score: 0.6378
+Number of Features: 2
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2215  151   90]
+  [482 465 613]
+  [ 306  221 1534]
+------------------------------------------------------------
+Rank: 128
+Macro F1-Score: 0.6351
+Number of Features: 2
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2223  154   79]
+  [482 447 631]
+  [ 311  207 1543]
+------------------------------------------------------------
+Rank: 129
+Macro F1-Score: 0.6339
+Number of Features: 7
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1966  228  262]
+  [453 609 498]
+  [ 296  287 1478]
+------------------------------------------------------------
+Rank: 130
+Macro F1-Score: 0.6324
+Number of Features: 2
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2217  155   84]
+  [482 482 596]
+  [ 309  285 1467]
+------------------------------------------------------------
+Rank: 131
+Macro F1-Score: 0.6324
+Number of Features: 2
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2217  155   84]
+  [482 482 596]
+  [ 309  285 1467]
+------------------------------------------------------------
+Rank: 132
+Macro F1-Score: 0.6324
+Number of Features: 2
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2217  155   84]
+  [482 482 596]
+  [ 309  285 1467]
+------------------------------------------------------------
+Rank: 133
+Macro F1-Score: 0.6324
+Number of Features: 2
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2217  155   84]
+  [482 482 596]
+  [ 309  285 1467]
+------------------------------------------------------------
+Rank: 134
+Macro F1-Score: 0.6314
+Number of Features: 2
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2197  156  103]
+  [482 463 615]
+  [ 310  240 1511]
+------------------------------------------------------------
+Rank: 135
+Macro F1-Score: 0.6296
+Number of Features: 2
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2209  164   83]
+  [482 468 610]
+  [ 305  276 1480]
+------------------------------------------------------------
+Rank: 136
+Macro F1-Score: 0.6296
+Number of Features: 2
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2209  164   83]
+  [482 468 610]
+  [ 305  276 1480]
+------------------------------------------------------------
+Rank: 137
+Macro F1-Score: 0.6296
+Number of Features: 2
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2209  164   83]
+  [482 468 610]
+  [ 305  276 1480]
+------------------------------------------------------------
+Rank: 138
+Macro F1-Score: 0.6296
+Number of Features: 2
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2209  164   83]
+  [482 468 610]
+  [ 305  276 1480]
+------------------------------------------------------------
+Rank: 139
+Macro F1-Score: 0.6295
+Number of Features: 2
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2200  163   93]
+  [482 484 594]
+  [ 301  301 1459]
+------------------------------------------------------------
+Rank: 140
+Macro F1-Score: 0.6295
+Number of Features: 2
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2200  163   93]
+  [482 484 594]
+  [ 301  301 1459]
+------------------------------------------------------------
+Rank: 141
+Macro F1-Score: 0.6295
+Number of Features: 2
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2200  163   93]
+  [482 484 594]
+  [ 301  301 1459]
+------------------------------------------------------------
+Rank: 142
+Macro F1-Score: 0.6295
+Number of Features: 2
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2200  163   93]
+  [482 484 594]
+  [ 301  301 1459]
+------------------------------------------------------------
+Rank: 143
+Macro F1-Score: 0.6273
+Number of Features: 2
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2169  169  118]
+  [480 465 615]
+  [ 311  246 1504]
+------------------------------------------------------------
+Rank: 144
+Macro F1-Score: 0.6244
+Number of Features: 2
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2183  168  105]
+  [482 482 596]
+  [ 306  312 1443]
+------------------------------------------------------------
+Rank: 145
+Macro F1-Score: 0.6244
+Number of Features: 2
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2183  168  105]
+  [482 482 596]
+  [ 306  312 1443]
+------------------------------------------------------------
+Rank: 146
+Macro F1-Score: 0.6244
+Number of Features: 2
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2183  168  105]
+  [482 482 596]
+  [ 306  312 1443]
+------------------------------------------------------------
+Rank: 147
+Macro F1-Score: 0.6244
+Number of Features: 2
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2183  168  105]
+  [482 482 596]
+  [ 306  312 1443]
+------------------------------------------------------------
+Rank: 148
+Macro F1-Score: 0.6229
+Number of Features: 8
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1996  235  225]
+  [473 673 414]
+  [ 522  261 1278]
+------------------------------------------------------------
+Rank: 149
+Macro F1-Score: 0.6224
+Number of Features: 8
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1993  228  235]
+  [469 673 418]
+  [ 517  266 1278]
+------------------------------------------------------------
+Rank: 150
+Macro F1-Score: 0.6207
+Number of Features: 9
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1719  275  462]
+  [453 637 470]
+  [ 267  226 1568]
+------------------------------------------------------------
+Rank: 151
+Macro F1-Score: 0.6207
+Number of Features: 9
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1719  275  462]
+  [453 637 470]
+  [ 267  226 1568]
+------------------------------------------------------------
+Rank: 152
+Macro F1-Score: 0.6191
+Number of Features: 9
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1729  278  449]
+  [459 629 472]
+  [ 283  218 1560]
+------------------------------------------------------------
+Rank: 153
+Macro F1-Score: 0.6191
+Number of Features: 9
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1729  278  449]
+  [459 629 472]
+  [ 283  218 1560]
+------------------------------------------------------------
+Rank: 154
+Macro F1-Score: 0.6190
+Number of Features: 2
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2153  185  118]
+  [480 482 598]
+  [ 306  322 1433]
+------------------------------------------------------------
+Rank: 155
+Macro F1-Score: 0.6190
+Number of Features: 2
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2153  185  118]
+  [480 482 598]
+  [ 306  322 1433]
+------------------------------------------------------------
+Rank: 156
+Macro F1-Score: 0.6190
+Number of Features: 2
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2153  185  118]
+  [480 482 598]
+  [ 306  322 1433]
+------------------------------------------------------------
+Rank: 157
+Macro F1-Score: 0.6190
+Number of Features: 2
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2153  185  118]
+  [480 482 598]
+  [ 306  322 1433]
+------------------------------------------------------------
+Rank: 158
+Macro F1-Score: 0.6183
+Number of Features: 8
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1958  242  256]
+  [471 675 414]
+  [ 511  271 1279]
+------------------------------------------------------------
+Rank: 159
+Macro F1-Score: 0.6156
+Number of Features: 8
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1951  228  277]
+  [470 678 412]
+  [ 503  293 1265]
+------------------------------------------------------------
+Rank: 160
+Macro F1-Score: 0.6146
+Number of Features: 9
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1720  293  443]
+  [464 632 464]
+  [ 296  231 1534]
+------------------------------------------------------------
+Rank: 161
+Macro F1-Score: 0.6146
+Number of Features: 9
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1720  293  443]
+  [464 632 464]
+  [ 296  231 1534]
+------------------------------------------------------------
+Rank: 162
+Macro F1-Score: 0.6135
+Number of Features: 10
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1711  233  512]
+  [425 614 521]
+  [ 293  208 1560]
+------------------------------------------------------------
+Rank: 163
+Macro F1-Score: 0.6135
+Number of Features: 10
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1711  233  512]
+  [425 614 521]
+  [ 293  208 1560]
+------------------------------------------------------------
+Rank: 164
+Macro F1-Score: 0.6133
+Number of Features: 9
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1725  292  439]
+  [472 631 457]
+  [ 307  232 1522]
+------------------------------------------------------------
+Rank: 165
+Macro F1-Score: 0.6133
+Number of Features: 9
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1725  292  439]
+  [472 631 457]
+  [ 307  232 1522]
+------------------------------------------------------------
+Rank: 166
+Macro F1-Score: 0.6111
+Number of Features: 9
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1736  285  435]
+  [474 626 460]
+  [ 325  232 1504]
+------------------------------------------------------------
+Rank: 167
+Macro F1-Score: 0.6111
+Number of Features: 9
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1736  285  435]
+  [474 626 460]
+  [ 325  232 1504]
+------------------------------------------------------------
+Rank: 168
+Macro F1-Score: 0.6110
+Number of Features: 10
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1706  233  517]
+  [434 614 512]
+  [ 308  206 1547]
+------------------------------------------------------------
+Rank: 169
+Macro F1-Score: 0.6110
+Number of Features: 10
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1706  233  517]
+  [434 614 512]
+  [ 308  206 1547]
+------------------------------------------------------------
+Rank: 170
+Macro F1-Score: 0.6108
+Number of Features: 8
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1927  243  286]
+  [462 680 418]
+  [ 484  322 1255]
+------------------------------------------------------------
+Rank: 171
+Macro F1-Score: 0.6103
+Number of Features: 2
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2086  186  184]
+  [477 481 602]
+  [ 317  310 1434]
+------------------------------------------------------------
+Rank: 172
+Macro F1-Score: 0.6097
+Number of Features: 10
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1685  225  546]
+  [416 609 535]
+  [ 274  220 1567]
+------------------------------------------------------------
+Rank: 173
+Macro F1-Score: 0.6097
+Number of Features: 10
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1685  225  546]
+  [416 609 535]
+  [ 274  220 1567]
+------------------------------------------------------------
+Rank: 174
+Macro F1-Score: 0.6084
+Number of Features: 10
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1717  245  494]
+  [454 616 490]
+  [ 334  211 1516]
+------------------------------------------------------------
+Rank: 175
+Macro F1-Score: 0.6084
+Number of Features: 10
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1717  245  494]
+  [454 616 490]
+  [ 334  211 1516]
+------------------------------------------------------------
+Rank: 176
+Macro F1-Score: 0.6059
+Number of Features: 10
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1732  248  476]
+  [453 609 498]
+  [ 350  214 1497]
+------------------------------------------------------------
+Rank: 177
+Macro F1-Score: 0.6059
+Number of Features: 10
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1732  248  476]
+  [453 609 498]
+  [ 350  214 1497]
+------------------------------------------------------------
+Rank: 178
+Macro F1-Score: 0.6023
+Number of Features: 10
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1748  254  454]
+  [466 603 491]
+  [ 376  217 1468]
+------------------------------------------------------------
+Rank: 179
+Macro F1-Score: 0.6023
+Number of Features: 10
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1748  254  454]
+  [466 603 491]
+  [ 376  217 1468]
+------------------------------------------------------------
+Rank: 180
+Macro F1-Score: 0.6014
+Number of Features: 9
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1724  306  426]
+  [476 606 478]
+  [ 353  226 1482]
+------------------------------------------------------------
+Rank: 181
+Macro F1-Score: 0.6014
+Number of Features: 9
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1724  306  426]
+  [476 606 478]
+  [ 353  226 1482]
+------------------------------------------------------------
+Rank: 182
+Macro F1-Score: 0.5993
+Number of Features: 2
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2070  201  185]
+  [477 490 593]
+  [ 313  388 1360]
+------------------------------------------------------------
+Rank: 183
+Macro F1-Score: 0.5993
+Number of Features: 2
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2070  201  185]
+  [477 490 593]
+  [ 313  388 1360]
+------------------------------------------------------------
+Rank: 184
+Macro F1-Score: 0.5993
+Number of Features: 2
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2070  201  185]
+  [477 490 593]
+  [ 313  388 1360]
+------------------------------------------------------------
+Rank: 185
+Macro F1-Score: 0.5993
+Number of Features: 2
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow, avg_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2070  201  185]
+  [477 490 593]
+  [ 313  388 1360]
+------------------------------------------------------------
+Rank: 186
+Macro F1-Score: 0.5973
+Number of Features: 8
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1854  254  348]
+  [451 665 444]
+  [ 470  337 1254]
+------------------------------------------------------------
+Rank: 187
+Macro F1-Score: 0.5958
+Number of Features: 1
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2102  278   76]
+  [653 424 483]
+  [ 382  267 1412]
+------------------------------------------------------------
+Rank: 188
+Macro F1-Score: 0.5958
+Number of Features: 1
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2102  278   76]
+  [653 424 483]
+  [ 382  267 1412]
+------------------------------------------------------------
+Rank: 189
+Macro F1-Score: 0.5958
+Number of Features: 1
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2102  278   76]
+  [653 424 483]
+  [ 382  267 1412]
+------------------------------------------------------------
+Rank: 190
+Macro F1-Score: 0.5958
+Number of Features: 1
+K Value (KNN): 11
+PCA Variance: 0.9
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2102  278   76]
+  [653 424 483]
+  [ 382  267 1412]
+------------------------------------------------------------
+Rank: 191
+Macro F1-Score: 0.5958
+Number of Features: 1
+K Value (KNN): 11
+PCA Variance: 0.95
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2102  278   76]
+  [653 424 483]
+  [ 382  267 1412]
+------------------------------------------------------------
+Rank: 192
+Macro F1-Score: 0.5958
+Number of Features: 1
+K Value (KNN): 11
+PCA Variance: No PCA
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2102  278   76]
+  [653 424 483]
+  [ 382  267 1412]
+------------------------------------------------------------
+Rank: 193
+Macro F1-Score: 0.5951
+Number of Features: 1
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2105  280   71]
+  [651 421 488]
+  [ 378  273 1410]
+------------------------------------------------------------
+Rank: 194
+Macro F1-Score: 0.5951
+Number of Features: 1
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2105  280   71]
+  [651 421 488]
+  [ 378  273 1410]
+------------------------------------------------------------
+Rank: 195
+Macro F1-Score: 0.5951
+Number of Features: 1
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2105  280   71]
+  [651 421 488]
+  [ 378  273 1410]
+------------------------------------------------------------
+Rank: 196
+Macro F1-Score: 0.5951
+Number of Features: 1
+K Value (KNN): 15
+PCA Variance: 0.9
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2105  280   71]
+  [651 421 488]
+  [ 378  273 1410]
+------------------------------------------------------------
+Rank: 197
+Macro F1-Score: 0.5951
+Number of Features: 1
+K Value (KNN): 15
+PCA Variance: 0.95
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2105  280   71]
+  [651 421 488]
+  [ 378  273 1410]
+------------------------------------------------------------
+Rank: 198
+Macro F1-Score: 0.5951
+Number of Features: 1
+K Value (KNN): 15
+PCA Variance: No PCA
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2105  280   71]
+  [651 421 488]
+  [ 378  273 1410]
+------------------------------------------------------------
+Rank: 199
+Macro F1-Score: 0.5944
+Number of Features: 1
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2084  280   92]
+  [651 420 489]
+  [ 375  260 1426]
+------------------------------------------------------------
+Rank: 200
+Macro F1-Score: 0.5944
+Number of Features: 1
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2084  280   92]
+  [651 420 489]
+  [ 375  260 1426]
+------------------------------------------------------------
+Rank: 201
+Macro F1-Score: 0.5944
+Number of Features: 1
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2084  280   92]
+  [651 420 489]
+  [ 375  260 1426]
+------------------------------------------------------------
+Rank: 202
+Macro F1-Score: 0.5944
+Number of Features: 1
+K Value (KNN): 9
+PCA Variance: 0.9
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2084  280   92]
+  [651 420 489]
+  [ 375  260 1426]
+------------------------------------------------------------
+Rank: 203
+Macro F1-Score: 0.5944
+Number of Features: 1
+K Value (KNN): 9
+PCA Variance: 0.95
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2084  280   92]
+  [651 420 489]
+  [ 375  260 1426]
+------------------------------------------------------------
+Rank: 204
+Macro F1-Score: 0.5944
+Number of Features: 1
+K Value (KNN): 9
+PCA Variance: No PCA
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2084  280   92]
+  [651 420 489]
+  [ 375  260 1426]
+------------------------------------------------------------
+Rank: 205
+Macro F1-Score: 0.5915
+Number of Features: 1
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2057  288  111]
+  [650 432 478]
+  [ 375  278 1408]
+------------------------------------------------------------
+Rank: 206
+Macro F1-Score: 0.5915
+Number of Features: 1
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2057  288  111]
+  [650 432 478]
+  [ 375  278 1408]
+------------------------------------------------------------
+Rank: 207
+Macro F1-Score: 0.5915
+Number of Features: 1
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2057  288  111]
+  [650 432 478]
+  [ 375  278 1408]
+------------------------------------------------------------
+Rank: 208
+Macro F1-Score: 0.5915
+Number of Features: 1
+K Value (KNN): 7
+PCA Variance: 0.9
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2057  288  111]
+  [650 432 478]
+  [ 375  278 1408]
+------------------------------------------------------------
+Rank: 209
+Macro F1-Score: 0.5915
+Number of Features: 1
+K Value (KNN): 7
+PCA Variance: 0.95
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2057  288  111]
+  [650 432 478]
+  [ 375  278 1408]
+------------------------------------------------------------
+Rank: 210
+Macro F1-Score: 0.5915
+Number of Features: 1
+K Value (KNN): 7
+PCA Variance: No PCA
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2057  288  111]
+  [650 432 478]
+  [ 375  278 1408]
+------------------------------------------------------------
+Rank: 211
+Macro F1-Score: 0.5895
+Number of Features: 3
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2096  230  130]
+  [468 496 596]
+  [ 404  390 1267]
+------------------------------------------------------------
+Rank: 212
+Macro F1-Score: 0.5877
+Number of Features: 3
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2073  248  135]
+  [468 503 589]
+  [ 404  395 1262]
+------------------------------------------------------------
+Rank: 213
+Macro F1-Score: 0.5877
+Number of Features: 3
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2073  248  135]
+  [468 503 589]
+  [ 404  395 1262]
+------------------------------------------------------------
+Rank: 214
+Macro F1-Score: 0.5861
+Number of Features: 3
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2101  214  141]
+  [459 495 606]
+  [ 413  404 1244]
+------------------------------------------------------------
+Rank: 215
+Macro F1-Score: 0.5853
+Number of Features: 3
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2083  194  179]
+  [456 506 598]
+  [ 414  411 1236]
+------------------------------------------------------------
+Rank: 216
+Macro F1-Score: 0.5848
+Number of Features: 3
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2081  230  145]
+  [459 504 597]
+  [ 415  409 1237]
+------------------------------------------------------------
+Rank: 217
+Macro F1-Score: 0.5848
+Number of Features: 3
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2081  230  145]
+  [459 504 597]
+  [ 415  409 1237]
+------------------------------------------------------------
+Rank: 218
+Macro F1-Score: 0.5847
+Number of Features: 3
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2084  232  140]
+  [456 488 616]
+  [ 416  386 1259]
+------------------------------------------------------------
+Rank: 219
+Macro F1-Score: 0.5846
+Number of Features: 3
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2060  199  197]
+  [440 514 606]
+  [ 406  418 1237]
+------------------------------------------------------------
+Rank: 220
+Macro F1-Score: 0.5831
+Number of Features: 3
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2063  250  143]
+  [456 499 605]
+  [ 418  395 1248]
+------------------------------------------------------------
+Rank: 221
+Macro F1-Score: 0.5831
+Number of Features: 3
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2063  250  143]
+  [456 499 605]
+  [ 418  395 1248]
+------------------------------------------------------------
+Rank: 222
+Macro F1-Score: 0.5825
+Number of Features: 3
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2060  212  184]
+  [456 512 592]
+  [ 416  418 1227]
+------------------------------------------------------------
+Rank: 223
+Macro F1-Score: 0.5825
+Number of Features: 3
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2060  212  184]
+  [456 512 592]
+  [ 416  418 1227]
+------------------------------------------------------------
+Rank: 224
+Macro F1-Score: 0.5824
+Number of Features: 3
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2042  213  201]
+  [440 521 599]
+  [ 408  426 1227]
+------------------------------------------------------------
+Rank: 225
+Macro F1-Score: 0.5824
+Number of Features: 3
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2042  213  201]
+  [440 521 599]
+  [ 408  426 1227]
+------------------------------------------------------------
+Rank: 226
+Macro F1-Score: 0.5807
+Number of Features: 1
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2042  284  130]
+  [649 410 501]
+  [ 376  295 1390]
+------------------------------------------------------------
+Rank: 227
+Macro F1-Score: 0.5807
+Number of Features: 1
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2042  284  130]
+  [649 410 501]
+  [ 376  295 1390]
+------------------------------------------------------------
+Rank: 228
+Macro F1-Score: 0.5807
+Number of Features: 1
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2042  284  130]
+  [649 410 501]
+  [ 376  295 1390]
+------------------------------------------------------------
+Rank: 229
+Macro F1-Score: 0.5807
+Number of Features: 1
+K Value (KNN): 5
+PCA Variance: 0.9
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2042  284  130]
+  [649 410 501]
+  [ 376  295 1390]
+------------------------------------------------------------
+Rank: 230
+Macro F1-Score: 0.5807
+Number of Features: 1
+K Value (KNN): 5
+PCA Variance: 0.95
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2042  284  130]
+  [649 410 501]
+  [ 376  295 1390]
+------------------------------------------------------------
+Rank: 231
+Macro F1-Score: 0.5807
+Number of Features: 1
+K Value (KNN): 5
+PCA Variance: No PCA
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2042  284  130]
+  [649 410 501]
+  [ 376  295 1390]
+------------------------------------------------------------
+Rank: 232
+Macro F1-Score: 0.5777
+Number of Features: 3
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2003  179  274]
+  [409 521 630]
+  [ 394  439 1228]
+------------------------------------------------------------
+Rank: 233
+Macro F1-Score: 0.5748
+Number of Features: 4
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2040  257  159]
+  [455 517 588]
+  [ 459  415 1187]
+------------------------------------------------------------
+Rank: 234
+Macro F1-Score: 0.5748
+Number of Features: 4
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2040  257  159]
+  [455 517 588]
+  [ 459  415 1187]
+------------------------------------------------------------
+Rank: 235
+Macro F1-Score: 0.5748
+Number of Features: 4
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2040  257  159]
+  [455 517 588]
+  [ 459  415 1187]
+------------------------------------------------------------
+Rank: 236
+Macro F1-Score: 0.5736
+Number of Features: 3
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1986  192  278]
+  [409 520 631]
+  [ 395  449 1217]
+------------------------------------------------------------
+Rank: 237
+Macro F1-Score: 0.5736
+Number of Features: 3
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1986  192  278]
+  [409 520 631]
+  [ 395  449 1217]
+------------------------------------------------------------
+Rank: 238
+Macro F1-Score: 0.5702
+Number of Features: 10
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1683  205  568]
+  [453 597 510]
+  [ 470  271 1320]
+------------------------------------------------------------
+Rank: 239
+Macro F1-Score: 0.5699
+Number of Features: 4
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2048  246  162]
+  [448 499 613]
+  [ 457  426 1178]
+------------------------------------------------------------
+Rank: 240
+Macro F1-Score: 0.5699
+Number of Features: 4
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2048  246  162]
+  [448 499 613]
+  [ 457  426 1178]
+------------------------------------------------------------
+Rank: 241
+Macro F1-Score: 0.5699
+Number of Features: 4
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2048  246  162]
+  [448 499 613]
+  [ 457  426 1178]
+------------------------------------------------------------
+Rank: 242
+Macro F1-Score: 0.5663
+Number of Features: 1
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1935  319  202]
+  [638 426 496]
+  [ 380  324 1357]
+------------------------------------------------------------
+Rank: 243
+Macro F1-Score: 0.5663
+Number of Features: 1
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1935  319  202]
+  [638 426 496]
+  [ 380  324 1357]
+------------------------------------------------------------
+Rank: 244
+Macro F1-Score: 0.5663
+Number of Features: 1
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1935  319  202]
+  [638 426 496]
+  [ 380  324 1357]
+------------------------------------------------------------
+Rank: 245
+Macro F1-Score: 0.5663
+Number of Features: 1
+K Value (KNN): 3
+PCA Variance: 0.9
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1935  319  202]
+  [638 426 496]
+  [ 380  324 1357]
+------------------------------------------------------------
+Rank: 246
+Macro F1-Score: 0.5663
+Number of Features: 1
+K Value (KNN): 3
+PCA Variance: 0.95
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1935  319  202]
+  [638 426 496]
+  [ 380  324 1357]
+------------------------------------------------------------
+Rank: 247
+Macro F1-Score: 0.5663
+Number of Features: 1
+K Value (KNN): 3
+PCA Variance: No PCA
+Features Used: left_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1935  319  202]
+  [638 426 496]
+  [ 380  324 1357]
+------------------------------------------------------------
+Rank: 248
+Macro F1-Score: 0.5658
+Number of Features: 4
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2032  238  186]
+  [431 491 638]
+  [ 463  420 1178]
+------------------------------------------------------------
+Rank: 249
+Macro F1-Score: 0.5658
+Number of Features: 4
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2032  238  186]
+  [431 491 638]
+  [ 463  420 1178]
+------------------------------------------------------------
+Rank: 250
+Macro F1-Score: 0.5658
+Number of Features: 4
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2032  238  186]
+  [431 491 638]
+  [ 463  420 1178]
+------------------------------------------------------------
+Rank: 251
+Macro F1-Score: 0.5656
+Number of Features: 9
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1687  232  537]
+  [461 626 473]
+  [ 496  318 1247]
+------------------------------------------------------------
+Rank: 252
+Macro F1-Score: 0.5647
+Number of Features: 10
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1633  218  605]
+  [445 592 523]
+  [ 457  267 1337]
+------------------------------------------------------------
+Rank: 253
+Macro F1-Score: 0.5641
+Number of Features: 10
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1625  209  622]
+  [441 585 534]
+  [ 440  270 1351]
+------------------------------------------------------------
+Rank: 254
+Macro F1-Score: 0.5636
+Number of Features: 4
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2020  227  209]
+  [417 502 641]
+  [ 467  437 1157]
+------------------------------------------------------------
+Rank: 255
+Macro F1-Score: 0.5636
+Number of Features: 4
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2020  227  209]
+  [417 502 641]
+  [ 467  437 1157]
+------------------------------------------------------------
+Rank: 256
+Macro F1-Score: 0.5636
+Number of Features: 4
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [2020  227  209]
+  [417 502 641]
+  [ 467  437 1157]
+------------------------------------------------------------
+Rank: 257
+Macro F1-Score: 0.5634
+Number of Features: 9
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1661  225  570]
+  [457 616 487]
+  [ 477  314 1270]
+------------------------------------------------------------
+Rank: 258
+Macro F1-Score: 0.5620
+Number of Features: 9
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1650  242  564]
+  [456 612 492]
+  [ 466  317 1278]
+------------------------------------------------------------
+Rank: 259
+Macro F1-Score: 0.5604
+Number of Features: 9
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1632  241  583]
+  [455 617 488]
+  [ 470  316 1275]
+------------------------------------------------------------
+Rank: 260
+Macro F1-Score: 0.5604
+Number of Features: 5
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1967  233  256]
+  [467 565 528]
+  [ 603  375 1083]
+------------------------------------------------------------
+Rank: 261
+Macro F1-Score: 0.5604
+Number of Features: 5
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1967  233  256]
+  [467 565 528]
+  [ 603  375 1083]
+------------------------------------------------------------
+Rank: 262
+Macro F1-Score: 0.5604
+Number of Features: 5
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1967  233  256]
+  [467 565 528]
+  [ 603  375 1083]
+------------------------------------------------------------
+Rank: 263
+Macro F1-Score: 0.5596
+Number of Features: 10
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1609  205  642]
+  [436 582 542]
+  [ 440  281 1340]
+------------------------------------------------------------
+Rank: 264
+Macro F1-Score: 0.5582
+Number of Features: 10
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1595  197  664]
+  [431 586 543]
+  [ 429  295 1337]
+------------------------------------------------------------
+Rank: 265
+Macro F1-Score: 0.5580
+Number of Features: 9
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1625  243  588]
+  [444 614 502]
+  [ 461  329 1271]
+------------------------------------------------------------
+Rank: 266
+Macro F1-Score: 0.5563
+Number of Features: 5
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1937  243  276]
+  [461 570 529]
+  [ 599  387 1075]
+------------------------------------------------------------
+Rank: 267
+Macro F1-Score: 0.5563
+Number of Features: 5
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1937  243  276]
+  [461 570 529]
+  [ 599  387 1075]
+------------------------------------------------------------
+Rank: 268
+Macro F1-Score: 0.5563
+Number of Features: 5
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1937  243  276]
+  [461 570 529]
+  [ 599  387 1075]
+------------------------------------------------------------
+Rank: 269
+Macro F1-Score: 0.5555
+Number of Features: 4
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1945  216  295]
+  [387 512 661]
+  [ 448  464 1149]
+------------------------------------------------------------
+Rank: 270
+Macro F1-Score: 0.5555
+Number of Features: 4
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1945  216  295]
+  [387 512 661]
+  [ 448  464 1149]
+------------------------------------------------------------
+Rank: 271
+Macro F1-Score: 0.5555
+Number of Features: 4
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1945  216  295]
+  [387 512 661]
+  [ 448  464 1149]
+------------------------------------------------------------
+Rank: 272
+Macro F1-Score: 0.5552
+Number of Features: 4
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1996  230  230]
+  [403 491 666]
+  [ 461  460 1140]
+------------------------------------------------------------
+Rank: 273
+Macro F1-Score: 0.5552
+Number of Features: 4
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1996  230  230]
+  [403 491 666]
+  [ 461  460 1140]
+------------------------------------------------------------
+Rank: 274
+Macro F1-Score: 0.5552
+Number of Features: 4
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1996  230  230]
+  [403 491 666]
+  [ 461  460 1140]
+------------------------------------------------------------
+Rank: 275
+Macro F1-Score: 0.5549
+Number of Features: 5
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1964  253  239]
+  [469 547 544]
+  [ 601  381 1079]
+------------------------------------------------------------
+Rank: 276
+Macro F1-Score: 0.5549
+Number of Features: 5
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1964  253  239]
+  [469 547 544]
+  [ 601  381 1079]
+------------------------------------------------------------
+Rank: 277
+Macro F1-Score: 0.5549
+Number of Features: 5
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1964  253  239]
+  [469 547 544]
+  [ 601  381 1079]
+------------------------------------------------------------
+Rank: 278
+Macro F1-Score: 0.5536
+Number of Features: 10
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1548  194  714]
+  [435 596 529]
+  [ 425  303 1333]
+------------------------------------------------------------
+Rank: 279
+Macro F1-Score: 0.5531
+Number of Features: 5
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1883  249  324]
+  [453 586 521]
+  [ 593  394 1074]
+------------------------------------------------------------
+Rank: 280
+Macro F1-Score: 0.5531
+Number of Features: 5
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1883  249  324]
+  [453 586 521]
+  [ 593  394 1074]
+------------------------------------------------------------
+Rank: 281
+Macro F1-Score: 0.5531
+Number of Features: 5
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1883  249  324]
+  [453 586 521]
+  [ 593  394 1074]
+------------------------------------------------------------
+Rank: 282
+Macro F1-Score: 0.5531
+Number of Features: 5
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1888  249  319]
+  [435 580 545]
+  [ 579  403 1079]
+------------------------------------------------------------
+Rank: 283
+Macro F1-Score: 0.5531
+Number of Features: 5
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1888  249  319]
+  [435 580 545]
+  [ 579  403 1079]
+------------------------------------------------------------
+Rank: 284
+Macro F1-Score: 0.5531
+Number of Features: 5
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1888  249  319]
+  [435 580 545]
+  [ 579  403 1079]
+------------------------------------------------------------
+Rank: 285
+Macro F1-Score: 0.5516
+Number of Features: 9
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1590  226  640]
+  [434 621 505]
+  [ 455  356 1250]
+------------------------------------------------------------
+Rank: 286
+Macro F1-Score: 0.5404
+Number of Features: 5
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1804  222  430]
+  [405 593 562]
+  [ 579  434 1048]
+------------------------------------------------------------
+Rank: 287
+Macro F1-Score: 0.5404
+Number of Features: 5
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1804  222  430]
+  [405 593 562]
+  [ 579  434 1048]
+------------------------------------------------------------
+Rank: 288
+Macro F1-Score: 0.5404
+Number of Features: 5
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1804  222  430]
+  [405 593 562]
+  [ 579  434 1048]
+------------------------------------------------------------
+Rank: 289
+Macro F1-Score: 0.5335
+Number of Features: 8
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1858  182  416]
+  [431 606 523]
+  [780 341 940]
+------------------------------------------------------------
+Rank: 290
+Macro F1-Score: 0.5335
+Number of Features: 8
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1858  182  416]
+  [431 606 523]
+  [780 341 940]
+------------------------------------------------------------
+Rank: 291
+Macro F1-Score: 0.5314
+Number of Features: 7
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1912  164  380]
+  [441 571 548]
+  [793 332 936]
+------------------------------------------------------------
+Rank: 292
+Macro F1-Score: 0.5314
+Number of Features: 7
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1912  164  380]
+  [441 571 548]
+  [793 332 936]
+------------------------------------------------------------
+Rank: 293
+Macro F1-Score: 0.5314
+Number of Features: 7
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1912  164  380]
+  [441 571 548]
+  [793 332 936]
+------------------------------------------------------------
+Rank: 294
+Macro F1-Score: 0.5308
+Number of Features: 6
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1914  223  319]
+  [436 543 581]
+  [712 372 977]
+------------------------------------------------------------
+Rank: 295
+Macro F1-Score: 0.5308
+Number of Features: 6
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1914  223  319]
+  [436 543 581]
+  [712 372 977]
+------------------------------------------------------------
+Rank: 296
+Macro F1-Score: 0.5308
+Number of Features: 6
+K Value (KNN): 15
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1914  223  319]
+  [436 543 581]
+  [712 372 977]
+------------------------------------------------------------
+Rank: 297
+Macro F1-Score: 0.5299
+Number of Features: 7
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1855  184  417]
+  [426 588 546]
+  [776 339 946]
+------------------------------------------------------------
+Rank: 298
+Macro F1-Score: 0.5299
+Number of Features: 7
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1855  184  417]
+  [426 588 546]
+  [776 339 946]
+------------------------------------------------------------
+Rank: 299
+Macro F1-Score: 0.5299
+Number of Features: 7
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1855  184  417]
+  [426 588 546]
+  [776 339 946]
+------------------------------------------------------------
+Rank: 300
+Macro F1-Score: 0.5295
+Number of Features: 8
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1901  166  389]
+  [438 576 546]
+  [807 329 925]
+------------------------------------------------------------
+Rank: 301
+Macro F1-Score: 0.5295
+Number of Features: 8
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1901  166  389]
+  [438 576 546]
+  [807 329 925]
+------------------------------------------------------------
+Rank: 302
+Macro F1-Score: 0.5286
+Number of Features: 8
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1837  173  446]
+  [419 597 544]
+  [778 345 938]
+------------------------------------------------------------
+Rank: 303
+Macro F1-Score: 0.5286
+Number of Features: 8
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1837  173  446]
+  [419 597 544]
+  [778 345 938]
+------------------------------------------------------------
+Rank: 304
+Macro F1-Score: 0.5282
+Number of Features: 7
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1879  172  405]
+  [434 585 541]
+  [784 354 923]
+------------------------------------------------------------
+Rank: 305
+Macro F1-Score: 0.5282
+Number of Features: 7
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1879  172  405]
+  [434 585 541]
+  [784 354 923]
+------------------------------------------------------------
+Rank: 306
+Macro F1-Score: 0.5282
+Number of Features: 7
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1879  172  405]
+  [434 585 541]
+  [784 354 923]
+------------------------------------------------------------
+Rank: 307
+Macro F1-Score: 0.5259
+Number of Features: 6
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1866  228  362]
+  [437 552 571]
+  [714 377 970]
+------------------------------------------------------------
+Rank: 308
+Macro F1-Score: 0.5259
+Number of Features: 6
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1866  228  362]
+  [437 552 571]
+  [714 377 970]
+------------------------------------------------------------
+Rank: 309
+Macro F1-Score: 0.5259
+Number of Features: 6
+K Value (KNN): 9
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1866  228  362]
+  [437 552 571]
+  [714 377 970]
+------------------------------------------------------------
+Rank: 310
+Macro F1-Score: 0.5256
+Number of Features: 6
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1877  232  347]
+  [439 552 569]
+  [717 383 961]
+------------------------------------------------------------
+Rank: 311
+Macro F1-Score: 0.5256
+Number of Features: 6
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1877  232  347]
+  [439 552 569]
+  [717 383 961]
+------------------------------------------------------------
+Rank: 312
+Macro F1-Score: 0.5256
+Number of Features: 6
+K Value (KNN): 11
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1877  232  347]
+  [439 552 569]
+  [717 383 961]
+------------------------------------------------------------
+Rank: 313
+Macro F1-Score: 0.5247
+Number of Features: 7
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1796  208  452]
+  [420 594 546]
+  [745 363 953]
+------------------------------------------------------------
+Rank: 314
+Macro F1-Score: 0.5247
+Number of Features: 7
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1796  208  452]
+  [420 594 546]
+  [745 363 953]
+------------------------------------------------------------
+Rank: 315
+Macro F1-Score: 0.5247
+Number of Features: 7
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1796  208  452]
+  [420 594 546]
+  [745 363 953]
+------------------------------------------------------------
+Rank: 316
+Macro F1-Score: 0.5239
+Number of Features: 9
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1837  172  447]
+  [434 573 553]
+  [804 316 941]
+------------------------------------------------------------
+Rank: 317
+Macro F1-Score: 0.5238
+Number of Features: 8
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1791  185  480]
+  [413 602 545]
+  [764 359 938]
+------------------------------------------------------------
+Rank: 318
+Macro F1-Score: 0.5238
+Number of Features: 8
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1791  185  480]
+  [413 602 545]
+  [764 359 938]
+------------------------------------------------------------
+Rank: 319
+Macro F1-Score: 0.5228
+Number of Features: 6
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1812  228  416]
+  [428 562 570]
+  [705 379 977]
+------------------------------------------------------------
+Rank: 320
+Macro F1-Score: 0.5228
+Number of Features: 6
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1812  228  416]
+  [428 562 570]
+  [705 379 977]
+------------------------------------------------------------
+Rank: 321
+Macro F1-Score: 0.5228
+Number of Features: 6
+K Value (KNN): 7
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1812  228  416]
+  [428 562 570]
+  [705 379 977]
+------------------------------------------------------------
+Rank: 322
+Macro F1-Score: 0.5197
+Number of Features: 9
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1796  195  465]
+  [425 586 549]
+  [793 337 931]
+------------------------------------------------------------
+Rank: 323
+Macro F1-Score: 0.5191
+Number of Features: 6
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1790  226  440]
+  [420 562 578]
+  [688 401 972]
+------------------------------------------------------------
+Rank: 324
+Macro F1-Score: 0.5191
+Number of Features: 6
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1790  226  440]
+  [420 562 578]
+  [688 401 972]
+------------------------------------------------------------
+Rank: 325
+Macro F1-Score: 0.5191
+Number of Features: 6
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1790  226  440]
+  [420 562 578]
+  [688 401 972]
+------------------------------------------------------------
+Rank: 326
+Macro F1-Score: 0.5179
+Number of Features: 7
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1718  216  522]
+  [382 612 566]
+  [726 388 947]
+------------------------------------------------------------
+Rank: 327
+Macro F1-Score: 0.5179
+Number of Features: 7
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1718  216  522]
+  [382 612 566]
+  [726 388 947]
+------------------------------------------------------------
+Rank: 328
+Macro F1-Score: 0.5179
+Number of Features: 7
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1718  216  522]
+  [382 612 566]
+  [726 388 947]
+------------------------------------------------------------
+Rank: 329
+Macro F1-Score: 0.5177
+Number of Features: 8
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1766  209  481]
+  [414 593 553]
+  [743 382 936]
+------------------------------------------------------------
+Rank: 330
+Macro F1-Score: 0.5177
+Number of Features: 8
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1766  209  481]
+  [414 593 553]
+  [743 382 936]
+------------------------------------------------------------
+Rank: 331
+Macro F1-Score: 0.5167
+Number of Features: 8
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1678  215  563]
+  [390 615 555]
+  [712 384 965]
+------------------------------------------------------------
+Rank: 332
+Macro F1-Score: 0.5167
+Number of Features: 8
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1678  215  563]
+  [390 615 555]
+  [712 384 965]
+------------------------------------------------------------
+Rank: 333
+Macro F1-Score: 0.5156
+Number of Features: 9
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1759  200  497]
+  [410 590 560]
+  [782 350 929]
+------------------------------------------------------------
+Rank: 334
+Macro F1-Score: 0.5149
+Number of Features: 7
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1752  215  489]
+  [407 588 565]
+  [746 379 936]
+------------------------------------------------------------
+Rank: 335
+Macro F1-Score: 0.5149
+Number of Features: 7
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1752  215  489]
+  [407 588 565]
+  [746 379 936]
+------------------------------------------------------------
+Rank: 336
+Macro F1-Score: 0.5149
+Number of Features: 7
+K Value (KNN): 5
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1752  215  489]
+  [407 588 565]
+  [746 379 936]
+------------------------------------------------------------
+Rank: 337
+Macro F1-Score: 0.5141
+Number of Features: 9
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1696  225  535]
+  [398 611 551]
+  [756 364 941]
+------------------------------------------------------------
+Rank: 338
+Macro F1-Score: 0.5140
+Number of Features: 9
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1768  203  485]
+  [422 579 559]
+  [793 340 928]
+------------------------------------------------------------
+Rank: 339
+Macro F1-Score: 0.5127
+Number of Features: 9
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1485  208  763]
+  [386 588 586]
+  [ 567  362 1132]
+------------------------------------------------------------
+Rank: 340
+Macro F1-Score: 0.5119
+Number of Features: 6
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1715  215  526]
+  [400 575 585]
+  [667 428 966]
+------------------------------------------------------------
+Rank: 341
+Macro F1-Score: 0.5119
+Number of Features: 6
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1715  215  526]
+  [400 575 585]
+  [667 428 966]
+------------------------------------------------------------
+Rank: 342
+Macro F1-Score: 0.5119
+Number of Features: 6
+K Value (KNN): 3
+PCA Variance: 0.8
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1715  215  526]
+  [400 575 585]
+  [667 428 966]
+------------------------------------------------------------
+Rank: 343
+Macro F1-Score: 0.5119
+Number of Features: 9
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1438  202  816]
+  [379 589 592]
+  [ 528  367 1166]
+------------------------------------------------------------
+Rank: 344
+Macro F1-Score: 0.5104
+Number of Features: 9
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1480  218  758]
+  [402 588 570]
+  [ 562  375 1124]
+------------------------------------------------------------
+Rank: 345
+Macro F1-Score: 0.5088
+Number of Features: 9
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1512  208  736]
+  [408 572 580]
+  [ 582  370 1109]
+------------------------------------------------------------
+Rank: 346
+Macro F1-Score: 0.5079
+Number of Features: 9
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1519  214  723]
+  [410 573 577]
+  [ 596  369 1096]
+------------------------------------------------------------
+Rank: 347
+Macro F1-Score: 0.5064
+Number of Features: 10
+K Value (KNN): 15
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1484  187  785]
+  [355 530 675]
+  [ 529  355 1177]
+------------------------------------------------------------
+Rank: 348
+Macro F1-Score: 0.5064
+Number of Features: 10
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1484  187  785]
+  [355 530 675]
+  [ 529  355 1177]
+------------------------------------------------------------
+Rank: 349
+Macro F1-Score: 0.5057
+Number of Features: 9
+K Value (KNN): 15
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1556  210  690]
+  [421 565 574]
+  [ 609  388 1064]
+------------------------------------------------------------
+Rank: 350
+Macro F1-Score: 0.5051
+Number of Features: 9
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1613  222  621]
+  [381 621 558]
+  [725 399 937]
+------------------------------------------------------------
+Rank: 351
+Macro F1-Score: 0.5032
+Number of Features: 10
+K Value (KNN): 11
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1454  192  810]
+  [349 526 685]
+  [ 519  353 1189]
+------------------------------------------------------------
+Rank: 352
+Macro F1-Score: 0.5032
+Number of Features: 10
+K Value (KNN): 11
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1454  192  810]
+  [349 526 685]
+  [ 519  353 1189]
+------------------------------------------------------------
+Rank: 353
+Macro F1-Score: 0.5009
+Number of Features: 10
+K Value (KNN): 9
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1435  196  825]
+  [350 523 687]
+  [ 504  361 1196]
+------------------------------------------------------------
+Rank: 354
+Macro F1-Score: 0.5009
+Number of Features: 10
+K Value (KNN): 9
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1435  196  825]
+  [350 523 687]
+  [ 504  361 1196]
+------------------------------------------------------------
+Rank: 355
+Macro F1-Score: 0.4984
+Number of Features: 10
+K Value (KNN): 7
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1415  198  843]
+  [343 518 699]
+  [ 498  358 1205]
+------------------------------------------------------------
+Rank: 356
+Macro F1-Score: 0.4984
+Number of Features: 10
+K Value (KNN): 7
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1415  198  843]
+  [343 518 699]
+  [ 498  358 1205]
+------------------------------------------------------------
+Rank: 357
+Macro F1-Score: 0.4979
+Number of Features: 10
+K Value (KNN): 5
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1389  187  880]
+  [329 522 709]
+  [ 490  354 1217]
+------------------------------------------------------------
+Rank: 358
+Macro F1-Score: 0.4979
+Number of Features: 10
+K Value (KNN): 5
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1389  187  880]
+  [329 522 709]
+  [ 490  354 1217]
+------------------------------------------------------------
+Rank: 359
+Macro F1-Score: 0.4912
+Number of Features: 10
+K Value (KNN): 3
+PCA Variance: 0.6
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1318  191  947]
+  [318 529 713]
+  [ 496  340 1225]
+------------------------------------------------------------
+Rank: 360
+Macro F1-Score: 0.4912
+Number of Features: 10
+K Value (KNN): 3
+PCA Variance: 0.7
+Features Used: left_angle_elbow, avg_elbow_angle, left_arm_ratio, left_shoulder_elbow_y_norm, right_angle_elbow, right_arm_ratio, right_shoulder_elbow_y_norm, delta_left_elbow_angle, avg_body_angle, left_body_angle
+Classes Order: ['High' 'Low' 'Medium']
+Global Confusion Matrix:
+  [1318  191  947]
+  [318 529 713]
+  [ 496  340 1225]
+------------------------------------------------------------
