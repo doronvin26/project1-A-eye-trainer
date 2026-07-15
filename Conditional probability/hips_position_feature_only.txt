@@ -1,0 +1,37 @@
+Feature ranking for target 'hips_position' based on KDE Conditional Probability Accuracy:
+--------------------------------------------------------------------------------
+  1. right_body_angle                         | Accuracy: 0.8746
+  2. avg_body_angle                           | Accuracy: 0.8601
+  3. left_body_angle                          | Accuracy: 0.8470
+  4. left_wrist_shoulder_hip                  | Accuracy: 0.8274
+  5. right_wrist_shoulder_hip                 | Accuracy: 0.7721
+  6. left_hip_deviation_norm                  | Accuracy: 0.7700
+  7. right_hip_deviation_norm                 | Accuracy: 0.7499
+  8. body_alignment_angle                     | Accuracy: 0.7117
+  9. right_knee_angle                         | Accuracy: 0.6803
+ 10. right_angle_elbow                        | Accuracy: 0.6735
+ 11. left_angle_elbow                         | Accuracy: 0.6715
+ 12. left_knee_angle                          | Accuracy: 0.6712
+ 13. avg_elbow_angle                          | Accuracy: 0.6707
+ 14. neck_angle                               | Accuracy: 0.6691
+ 15. elbow_symmetry                           | Accuracy: 0.6597
+ 16. delta_left_elbow_angle                   | Accuracy: 0.6582
+ 17. delta_right_elbow_angle                  | Accuracy: 0.6582
+ 18. avg_delta_elbow_angle                    | Accuracy: 0.6572
+ 19. delta_body_alignment_angle               | Accuracy: 0.6569
+ 20. left_arm_distance                        | Accuracy: 0.6564
+ 21. right_arm_distance                       | Accuracy: 0.6564
+ 22. left_arm_index_shoulder                  | Accuracy: 0.6564
+ 23. right_arm_index_shoulder                 | Accuracy: 0.6564
+ 24. left_torso_px                            | Accuracy: 0.6564
+ 25. right_torso_px                           | Accuracy: 0.6564
+ 26. avg_torso_px                             | Accuracy: 0.6564
+ 27. left_arm_ratio                           | Accuracy: 0.6564
+ 28. right_arm_ratio                          | Accuracy: 0.6564
+ 29. left_shoulder_elbow_y_norm               | Accuracy: 0.6564
+ 30. right_shoulder_elbow_y_norm              | Accuracy: 0.6564
+ 31. hip_line_error                           | Accuracy: 0.6564
+ 32. left_arm_compression                     | Accuracy: 0.6564
+ 33. right_arm_compression                    | Accuracy: 0.6564
+ 34. avg_arm_compression                      | Accuracy: 0.6564
+ 35. delta_hip_line_error                     | Accuracy: 0.6564

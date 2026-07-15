@@ -27,17 +27,26 @@ st.set_page_config(page_title="A-EYE TRAINER", layout="wide")
 # DEBUG MODULE
 # ==========================================
 class FrameDebugData:
-    def __init__(self, frame_num, phase_pred, hip_pred, mp_time, feat_time, pred_time, sm_time):
+    def __init__(self, frame_num, is_processed, timestamp_ms, delta_ms, phase_pred, hip_pred, mp_time, feat_time, pred_time, sm_time, rep_count, sm_state, hip_sm_status):
         self.frame_num = frame_num
+        self.is_processed = is_processed
+        self.timestamp_ms = timestamp_ms
+        self.delta_ms = delta_ms
         self.phase_pred = phase_pred
         self.hip_pred = hip_pred
         self.mp_time = mp_time
         self.feat_time = feat_time
         self.pred_time = pred_time
         self.sm_time = sm_time
+        self.rep_count = rep_count
+        self.sm_state = sm_state
+        self.hip_sm_status = hip_sm_status
         
     def __str__(self):
-        return (f"Frame: {self.frame_num:04d} | Phase: {self.phase_pred:<15} | Hip: {self.hip_pred:<15} | "
+        status_str = "Yes " if self.is_processed else "Skip"
+        return (f"Frame: {self.frame_num:04d} | Processed: {status_str} | TS(ms): {self.timestamp_ms:06d} | Delta: {self.delta_ms:04d} | "
+                f"Phase: {self.phase_pred:<15} | Hip: {self.hip_pred:<15} | "
+                f"Reps: {self.rep_count:02d} | RepState: {self.sm_state:<15} | HipStatus: {self.hip_sm_status:<10} | "
                 f"Times(ms) -> MP: {self.mp_time:04.1f}, Feat: {self.feat_time:04.1f}, "
                 f"Predict: {self.pred_time:04.1f}, States: {self.sm_time:04.1f}")
 
@@ -395,7 +404,9 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
             cv2.putText(frame, f"Get Ready! {countdown}s", (int(w/2) - 150, int(h/2)), 
                         cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 165, 255), 4)
             return frame, debug_info
-
+    
+    # mp_time, feat_time, pred_time, sm_time = 0.0, 0.0, 0.0, 0.0
+    # phase_pred_str, hip_pred_str = "None", "None"
     if process_this_frame:
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame_rgb)
@@ -403,10 +414,12 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
         t_mp_start = time.time()
         res = landmarker.detect_for_video(mp_image, timestamp_ms)
         mp_time = (time.time() - t_mp_start) * 1000
-        
+        delta_ms = 0
         feat_time, pred_time, sm_time = 0.0, 0.0, 0.0
         phase_pred_str, hip_pred_str = "None", "None"
-        
+        last_ts = cache.get('last_processed_ts', 0)
+        if last_ts > 0:
+            delta_ms = timestamp_ms - last_ts
         if res.pose_landmarks:
             pose_landmarks = res.pose_landmarks[0]
             world_landmarks = res.pose_world_landmarks[0] if res.pose_world_landmarks else None
@@ -438,7 +451,17 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
             cache['last_landmarks'] = None
 
         # יצירת מופע של אובייקט ה-Debug
-        debug_info = FrameDebugData(frame_num, phase_pred_str, hip_pred_str, mp_time, feat_time, pred_time, sm_time)
+       # debug_info = FrameDebugData(frame_num, phase_pred_str, hip_pred_str, mp_time, feat_time, pred_time, sm_time)
+        # חילוץ הנתונים ממכונות המצבים
+        current_rep_count = rep_sm.rep_count
+        current_sm_state = rep_sm.state
+        current_hip_status = hip_sm.status
+
+        debug_info = FrameDebugData(
+            frame_num, process_this_frame, timestamp_ms, delta_ms, 
+            phase_pred_str, hip_pred_str, mp_time, feat_time, pred_time, sm_time, 
+            current_rep_count, current_sm_state, current_hip_status
+        )
 
     # ציור על גבי הוידאו
     if cache.get('last_landmarks'):

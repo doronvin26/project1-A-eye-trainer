@@ -9,6 +9,7 @@ matplotlib
 seaborn
 streamlit-webrtc
 
+
 # Heavy dependencies - uncomment if needed later
 # tensorflow-cpu
 # ultralytics

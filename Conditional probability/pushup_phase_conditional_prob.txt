@@ -1,0 +1,258 @@
+Feature ranking for target 'pushup_phase' based on KDE Conditional Probability Accuracy:
+--------------------------------------------------------------------------------
+  1. left_angle_elbow                         | Accuracy: 0.7542
+  2. avg_elbow_angle                          | Accuracy: 0.7204
+  3. left_arm_ratio                           | Accuracy: 0.6378
+  4. left_shoulder_elbow_y_norm               | Accuracy: 0.6352
+  5. right_angle_elbow                        | Accuracy: 0.6316
+  6. right_arm_ratio                          | Accuracy: 0.6291
+  7. right_shoulder_elbow_y_norm              | Accuracy: 0.6125
+  8. delta_left_elbow_angle                   | Accuracy: 0.5763
+  9. avg_body_angle                           | Accuracy: 0.5731
+ 10. left_body_angle                          | Accuracy: 0.5680
+ 11. right_body_angle                         | Accuracy: 0.5486
+ 12. left_wrist_shoulder_hip                  | Accuracy: 0.5485
+ 13. body_alignment_angle                     | Accuracy: 0.5457
+ 14. neck_angle                               | Accuracy: 0.5416
+ 15. right_wrist_visibility                   | Accuracy: 0.5361
+ 16. avg_delta_elbow_angle                    | Accuracy: 0.5361
+ 17. right_thumb_visibility                   | Accuracy: 0.5223
+ 18. right_wrist_shoulder_hip                 | Accuracy: 0.5220
+ 19. elbow_symmetry                           | Accuracy: 0.5216
+ 20. right_pinky_visibility                   | Accuracy: 0.5124
+ 21. left_knee_angle                          | Accuracy: 0.4948
+ 22. right_index_visibility                   | Accuracy: 0.4935
+ 23. delta_right_elbow_angle                  | Accuracy: 0.4923
+ 24. right_knee_angle                         | Accuracy: 0.4680
+ 25. left_thumb_visibility                    | Accuracy: 0.4629
+ 26. left_eye_outer_y                         | Accuracy: 0.4614
+ 27. right_ear_y                              | Accuracy: 0.4614
+ 28. left_ear_y                               | Accuracy: 0.4611
+ 29. left_eye_y                               | Accuracy: 0.4608
+ 30. left_eye_inner_y                         | Accuracy: 0.4599
+ 31. right_eye_y                              | Accuracy: 0.4596
+ 32. right_eye_outer_y                        | Accuracy: 0.4596
+ 33. mouth_right_y                            | Accuracy: 0.4596
+ 34. right_eye_inner_y                        | Accuracy: 0.4591
+ 35. mouth_left_y                             | Accuracy: 0.4583
+ 36. nose_y                                   | Accuracy: 0.4576
+ 37. right_ear_z                              | Accuracy: 0.4545
+ 38. right_ear_centered_z                     | Accuracy: 0.4545
+ 39. right_shoulder_z                         | Accuracy: 0.4542
+ 40. right_shoulder_centered_z                | Accuracy: 0.4542
+ 41. left_hip_deviation_norm                  | Accuracy: 0.4538
+ 42. right_hip_deviation_norm                 | Accuracy: 0.4529
+ 43. left_shoulder_y                          | Accuracy: 0.4492
+ 44. left_index_visibility                    | Accuracy: 0.4489
+ 45. right_shoulder_y                         | Accuracy: 0.4466
+ 46. mouth_right_z                            | Accuracy: 0.4463
+ 47. left_pinky_visibility                    | Accuracy: 0.4463
+ 48. mouth_right_centered_z                   | Accuracy: 0.4463
+ 49. left_heel_centered_y                     | Accuracy: 0.4448
+ 50. right_elbow_visibility                   | Accuracy: 0.4446
+ 51. right_eye_inner_z                        | Accuracy: 0.4443
+ 52. right_eye_z                              | Accuracy: 0.4443
+ 53. right_eye_outer_z                        | Accuracy: 0.4443
+ 54. right_eye_inner_centered_z               | Accuracy: 0.4443
+ 55. right_eye_centered_z                     | Accuracy: 0.4443
+ 56. right_eye_outer_centered_z               | Accuracy: 0.4443
+ 57. left_hip_y                               | Accuracy: 0.4428
+ 58. right_elbow_centered_z                   | Accuracy: 0.4420
+ 59. right_elbow_z                            | Accuracy: 0.4418
+ 60. nose_z                                   | Accuracy: 0.4407
+ 61. nose_centered_z                          | Accuracy: 0.4407
+ 62. mouth_left_z                             | Accuracy: 0.4397
+ 63. left_arm_compression                     | Accuracy: 0.4397
+ 64. mouth_left_centered_z                    | Accuracy: 0.4395
+ 65. left_eye_inner_z                         | Accuracy: 0.4384
+ 66. left_eye_outer_z                         | Accuracy: 0.4384
+ 67. left_eye_inner_centered_z                | Accuracy: 0.4384
+ 68. left_eye_centered_z                      | Accuracy: 0.4384
+ 69. left_eye_outer_centered_z                | Accuracy: 0.4384
+ 70. left_eye_z                               | Accuracy: 0.4382
+ 71. left_foot_index_centered_z               | Accuracy: 0.4338
+ 72. left_foot_index_z                        | Accuracy: 0.4336
+ 73. mid_hip_y                                | Accuracy: 0.4331
+ 74. left_wrist_visibility                    | Accuracy: 0.4313
+ 75. left_foot_index_centered_y               | Accuracy: 0.4301
+ 76. right_ankle_visibility                   | Accuracy: 0.4283
+ 77. left_ear_z                               | Accuracy: 0.4270
+ 78. right_hip_y                              | Accuracy: 0.4270
+ 79. left_ear_centered_z                      | Accuracy: 0.4270
+ 80. left_heel_centered_z                     | Accuracy: 0.4262
+ 81. left_heel_z                              | Accuracy: 0.4260
+ 82. left_thumb_z                             | Accuracy: 0.4250
+ 83. left_thumb_centered_z                    | Accuracy: 0.4250
+ 84. left_index_centered_z                    | Accuracy: 0.4247
+ 85. left_index_z                             | Accuracy: 0.4246
+ 86. left_pinky_centered_z                    | Accuracy: 0.4241
+ 87. left_pinky_z                             | Accuracy: 0.4239
+ 88. left_wrist_centered_z                    | Accuracy: 0.4222
+ 89. left_wrist_z                             | Accuracy: 0.4221
+ 90. right_foot_index_visibility              | Accuracy: 0.4196
+ 91. right_heel_centered_y                    | Accuracy: 0.4196
+ 92. left_arm_index_shoulder                  | Accuracy: 0.4195
+ 93. right_knee_visibility                    | Accuracy: 0.4167
+ 94. left_pinky_centered_y                    | Accuracy: 0.4162
+ 95. left_wrist_centered_y                    | Accuracy: 0.4160
+ 96. left_index_centered_y                    | Accuracy: 0.4157
+ 97. left_thumb_centered_y                    | Accuracy: 0.4157
+ 98. right_foot_index_centered_y              | Accuracy: 0.4155
+ 99. left_arm_distance                        | Accuracy: 0.4142
+100. delta_body_alignment_angle               | Accuracy: 0.4142
+101. right_index_z                            | Accuracy: 0.4125
+102. right_index_centered_z                   | Accuracy: 0.4125
+103. left_ankle_centered_y                    | Accuracy: 0.4119
+104. avg_arm_compression                      | Accuracy: 0.4106
+105. right_thumb_z                            | Accuracy: 0.4071
+106. right_thumb_centered_z                   | Accuracy: 0.4071
+107. left_elbow_centered_y                    | Accuracy: 0.4068
+108. right_arm_compression                    | Accuracy: 0.4068
+109. right_thumb_centered_y                   | Accuracy: 0.4063
+110. left_eye_outer_centered_y                | Accuracy: 0.4061
+111. left_elbow_visibility                    | Accuracy: 0.4060
+112. left_eye_centered_y                      | Accuracy: 0.4060
+113. right_wrist_centered_y                   | Accuracy: 0.4060
+114. right_index_centered_y                   | Accuracy: 0.4060
+115. right_ankle_centered_y                   | Accuracy: 0.4060
+116. left_eye_inner_centered_y                | Accuracy: 0.4058
+117. left_ear_centered_y                      | Accuracy: 0.4058
+118. right_eye_inner_centered_y               | Accuracy: 0.4056
+119. right_eye_centered_y                     | Accuracy: 0.4055
+120. right_pinky_centered_y                   | Accuracy: 0.4055
+121. right_eye_outer_centered_y               | Accuracy: 0.4053
+122. right_elbow_centered_y                   | Accuracy: 0.4046
+123. right_ear_centered_y                     | Accuracy: 0.4045
+124. nose_x                                   | Accuracy: 0.4041
+125. left_eye_inner_x                         | Accuracy: 0.4041
+126. left_eye_x                               | Accuracy: 0.4041
+127. left_eye_visibility                      | Accuracy: 0.4041
+128. left_eye_outer_x                         | Accuracy: 0.4041
+129. right_eye_inner_x                        | Accuracy: 0.4041
+130. right_eye_x                              | Accuracy: 0.4041
+131. right_eye_outer_x                        | Accuracy: 0.4041
+132. left_ear_x                               | Accuracy: 0.4041
+133. right_ear_x                              | Accuracy: 0.4041
+134. mouth_left_x                             | Accuracy: 0.4041
+135. mouth_left_visibility                    | Accuracy: 0.4041
+136. mouth_right_x                            | Accuracy: 0.4041
+137. mouth_right_visibility                   | Accuracy: 0.4041
+138. left_shoulder_x                          | Accuracy: 0.4041
+139. right_shoulder_x                         | Accuracy: 0.4041
+140. left_elbow_x                             | Accuracy: 0.4041
+141. left_elbow_y                             | Accuracy: 0.4041
+142. right_elbow_x                            | Accuracy: 0.4041
+143. right_elbow_y                            | Accuracy: 0.4041
+144. left_wrist_x                             | Accuracy: 0.4041
+145. left_wrist_y                             | Accuracy: 0.4041
+146. right_wrist_x                            | Accuracy: 0.4041
+147. right_wrist_y                            | Accuracy: 0.4041
+148. left_pinky_x                             | Accuracy: 0.4041
+149. left_pinky_y                             | Accuracy: 0.4041
+150. right_pinky_x                            | Accuracy: 0.4041
+151. right_pinky_y                            | Accuracy: 0.4041
+152. left_index_x                             | Accuracy: 0.4041
+153. left_index_y                             | Accuracy: 0.4041
+154. right_index_x                            | Accuracy: 0.4041
+155. right_index_y                            | Accuracy: 0.4041
+156. left_thumb_x                             | Accuracy: 0.4041
+157. left_thumb_y                             | Accuracy: 0.4041
+158. right_thumb_x                            | Accuracy: 0.4041
+159. right_thumb_y                            | Accuracy: 0.4041
+160. left_hip_x                               | Accuracy: 0.4041
+161. left_hip_z                               | Accuracy: 0.4041
+162. right_hip_x                              | Accuracy: 0.4041
+163. right_hip_z                              | Accuracy: 0.4041
+164. left_knee_x                              | Accuracy: 0.4041
+165. left_knee_y                              | Accuracy: 0.4041
+166. left_knee_z                              | Accuracy: 0.4041
+167. left_knee_visibility                     | Accuracy: 0.4041
+168. right_knee_x                             | Accuracy: 0.4041
+169. right_knee_y                             | Accuracy: 0.4041
+170. right_knee_z                             | Accuracy: 0.4041
+171. left_ankle_x                             | Accuracy: 0.4041
+172. left_ankle_y                             | Accuracy: 0.4041
+173. left_ankle_z                             | Accuracy: 0.4041
+174. left_ankle_visibility                    | Accuracy: 0.4041
+175. right_ankle_x                            | Accuracy: 0.4041
+176. right_ankle_y                            | Accuracy: 0.4041
+177. left_heel_x                              | Accuracy: 0.4041
+178. left_heel_y                              | Accuracy: 0.4041
+179. left_heel_visibility                     | Accuracy: 0.4041
+180. right_heel_x                             | Accuracy: 0.4041
+181. right_heel_y                             | Accuracy: 0.4041
+182. right_heel_visibility                    | Accuracy: 0.4041
+183. left_foot_index_x                        | Accuracy: 0.4041
+184. left_foot_index_y                        | Accuracy: 0.4041
+185. left_foot_index_visibility               | Accuracy: 0.4041
+186. right_foot_index_x                       | Accuracy: 0.4041
+187. right_foot_index_y                       | Accuracy: 0.4041
+188. right_arm_distance                       | Accuracy: 0.4041
+189. right_arm_index_shoulder                 | Accuracy: 0.4041
+190. mid_hip_x                                | Accuracy: 0.4041
+191. nose_centered_x                          | Accuracy: 0.4041
+192. nose_centered_y                          | Accuracy: 0.4041
+193. left_eye_inner_centered_x                | Accuracy: 0.4041
+194. left_eye_centered_x                      | Accuracy: 0.4041
+195. left_eye_outer_centered_x                | Accuracy: 0.4041
+196. right_eye_inner_centered_x               | Accuracy: 0.4041
+197. right_eye_centered_x                     | Accuracy: 0.4041
+198. right_eye_outer_centered_x               | Accuracy: 0.4041
+199. left_ear_centered_x                      | Accuracy: 0.4041
+200. right_ear_centered_x                     | Accuracy: 0.4041
+201. mouth_left_centered_x                    | Accuracy: 0.4041
+202. mouth_left_centered_y                    | Accuracy: 0.4041
+203. mouth_right_centered_x                   | Accuracy: 0.4041
+204. mouth_right_centered_y                   | Accuracy: 0.4041
+205. left_shoulder_centered_x                 | Accuracy: 0.4041
+206. left_shoulder_centered_y                 | Accuracy: 0.4041
+207. right_shoulder_centered_x                | Accuracy: 0.4041
+208. right_shoulder_centered_y                | Accuracy: 0.4041
+209. left_elbow_centered_x                    | Accuracy: 0.4041
+210. right_elbow_centered_x                   | Accuracy: 0.4041
+211. left_wrist_centered_x                    | Accuracy: 0.4041
+212. right_wrist_centered_x                   | Accuracy: 0.4041
+213. left_pinky_centered_x                    | Accuracy: 0.4041
+214. right_pinky_centered_x                   | Accuracy: 0.4041
+215. left_index_centered_x                    | Accuracy: 0.4041
+216. right_index_centered_x                   | Accuracy: 0.4041
+217. left_thumb_centered_x                    | Accuracy: 0.4041
+218. right_thumb_centered_x                   | Accuracy: 0.4041
+219. left_hip_centered_x                      | Accuracy: 0.4041
+220. left_hip_centered_y                      | Accuracy: 0.4041
+221. left_hip_centered_z                      | Accuracy: 0.4041
+222. right_hip_centered_x                     | Accuracy: 0.4041
+223. right_hip_centered_y                     | Accuracy: 0.4041
+224. right_hip_centered_z                     | Accuracy: 0.4041
+225. left_knee_centered_x                     | Accuracy: 0.4041
+226. left_knee_centered_y                     | Accuracy: 0.4041
+227. left_knee_centered_z                     | Accuracy: 0.4041
+228. right_knee_centered_x                    | Accuracy: 0.4041
+229. right_knee_centered_y                    | Accuracy: 0.4041
+230. right_knee_centered_z                    | Accuracy: 0.4041
+231. left_ankle_centered_x                    | Accuracy: 0.4041
+232. left_ankle_centered_z                    | Accuracy: 0.4041
+233. right_ankle_centered_x                   | Accuracy: 0.4041
+234. left_heel_centered_x                     | Accuracy: 0.4041
+235. right_heel_centered_x                    | Accuracy: 0.4041
+236. left_foot_index_centered_x               | Accuracy: 0.4041
+237. right_foot_index_centered_x              | Accuracy: 0.4041
+238. left_torso_px                            | Accuracy: 0.4041
+239. right_torso_px                           | Accuracy: 0.4041
+240. avg_torso_px                             | Accuracy: 0.4041
+241. hip_line_error                           | Accuracy: 0.4041
+242. delta_hip_line_error                     | Accuracy: 0.4041
+243. right_heel_z                             | Accuracy: 0.4040
+244. right_heel_centered_z                    | Accuracy: 0.4040
+245. right_foot_index_z                       | Accuracy: 0.4038
+246. right_foot_index_centered_z              | Accuracy: 0.4038
+247. right_ankle_z                            | Accuracy: 0.4037
+248. right_ankle_centered_z                   | Accuracy: 0.4037
+249. right_wrist_z                            | Accuracy: 0.4022
+250. right_wrist_centered_z                   | Accuracy: 0.4022
+251. right_pinky_centered_z                   | Accuracy: 0.3994
+252. right_pinky_z                            | Accuracy: 0.3992
+253. left_shoulder_z                          | Accuracy: 0.3977
+254. left_shoulder_centered_z                 | Accuracy: 0.3977
+255. left_elbow_z                             | Accuracy: 0.3953
+256. left_elbow_centered_z                    | Accuracy: 0.3951
