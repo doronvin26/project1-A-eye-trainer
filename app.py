@@ -89,15 +89,40 @@ MP_LANDMARK_MAP = {
 }
 
 USE_CENTERED_COORDS = True
-USE_PCA = True
-SELECTED_LANDMARKS = ["left_shoulder", "right_shoulder", "left_elbow", "right_elbow", "left_wrist", "right_wrist", "left_hip", "right_hip"]
-SELECTED_ENG_FEATURES = [
-    'left_body_angle', 'right_body_angle', 
-    'left_angle_elbow', 'right_angle_elbow', 
-    'left_hip_deviation_norm', 'right_hip_deviation_norm',
-    'avg_elbow_angle', 'avg_delta_elbow_angle', 
-    'delta_hip_line_error', 'delta_body_alignment_angle'
-]
+# USE_PCA = True
+# USE_PCA_PUSHUP_PHASE = False
+# SELECTED_LANDMARKS = ["left_shoulder", "right_shoulder", "left_elbow", "right_elbow", "left_wrist", "right_wrist", "left_hip", "right_hip"]
+# SELECTED_ENG_FEATURES = [
+#     'left_body_angle', 'right_body_angle', 
+#     'left_angle_elbow', 'right_angle_elbow', 
+#     'left_hip_deviation_norm', 'right_hip_deviation_norm',
+#     'avg_elbow_angle', 'avg_delta_elbow_angle', 
+#     'delta_hip_line_error', 'delta_body_alignment_angle'
+# ]
+
+MODELS_CONFIG = {
+    "phase": {
+        "target_col": "pushup_phase",
+        "features": ["left_angle_elbow","avg_elbow_angle",
+                                  "left_arm_ratio","right_arm_ratio",
+                                  "left_shoulder_elbow_y_norm","right_shoulder_elbow_y_norm",
+                                  "delta_left_elbow_angle"],
+        "use_pca": False,
+        "pca_components": 1,
+        "k_neighbors": 11
+    },
+    "hips": {
+        "target_col": "hips_position",
+        "features": [
+            "left_body_angle", "right_body_angle", 
+            "left_hip_deviation_norm", "right_hip_deviation_norm",
+            "delta_hip_line_error", "delta_body_alignment_angle"
+        ],
+        "use_pca": True,
+        "pca_components": 0.95,
+        "k_neighbors": 18
+    }
+}
 
 # ==========================================
 # 1. STATE MACHINES LOGIC
@@ -195,7 +220,6 @@ class HipStateMachine:
 # 2. FEATURE EXTRACTION HELPERS
 # ==========================================
 def get_pt3d(world_landmarks, idx):
-    """חילוץ קואורדינטות 3D אמיתיות"""
     lm = world_landmarks[idx]
     return np.array([lm.x, lm.y, lm.z])
 
@@ -248,7 +272,122 @@ def calc_hip_deviation_live(pose_landmarks, shoulder_idx, knee_idx, hip_idx):
         return pose_landmarks[hip_idx].y - expected
     except Exception: return 0.0
 
-def extract_features_from_task(pose_landmarks, world_landmarks, selected_landmarks, selected_engineered_features, use_centered, cache):
+def extract_features_from_task(pose_landmarks, world_landmarks, cache):
+    eng_feat_dict = {}
+    
+    # --- 1. אינדקסים בסיסיים של נקודות הציון ---
+    l_shoulder = MP_LANDMARK_MAP["left_shoulder"]
+    r_shoulder = MP_LANDMARK_MAP["right_shoulder"]
+    l_hip_idx = MP_LANDMARK_MAP["left_hip"]
+    r_hip_idx = MP_LANDMARK_MAP["right_hip"]
+    
+    # --- 2. מדידות פלג גוף עליון (2D) כבסיס לנרמול ---
+    l_torso = calc_dist(pose_landmarks, l_shoulder, l_hip_idx)
+    r_torso = calc_dist(pose_landmarks, r_shoulder, r_hip_idx)
+    avg_torso = (l_torso + r_torso) / 2.0
+    if avg_torso == 0: avg_torso = 0.0001
+    eng_feat_dict['avg_torso_px'] = avg_torso
+        
+    # --- 3. פיצ'רים דו-ממדיים בסיסיים (מתוך הקוד הישן) ---
+    eng_feat_dict['left_body_angle'] = calc_angle_live(pose_landmarks, l_shoulder, l_hip_idx, MP_LANDMARK_MAP["left_heel"])
+    eng_feat_dict['right_body_angle'] = calc_angle_live(pose_landmarks, r_shoulder, r_hip_idx, MP_LANDMARK_MAP["right_heel"])
+    eng_feat_dict['avg_body_angle'] = (eng_feat_dict['left_body_angle'] + eng_feat_dict['right_body_angle']) / 2.0
+
+    eng_feat_dict['left_angle_elbow'] = calc_angle_live(pose_landmarks, l_shoulder, MP_LANDMARK_MAP["left_elbow"], MP_LANDMARK_MAP["left_wrist"])
+    eng_feat_dict['right_angle_elbow'] = calc_angle_live(pose_landmarks, r_shoulder, MP_LANDMARK_MAP["right_elbow"], MP_LANDMARK_MAP["right_wrist"])
+    eng_feat_dict['avg_elbow_angle'] = (eng_feat_dict['left_angle_elbow'] + eng_feat_dict['right_angle_elbow']) / 2.0
+    eng_feat_dict['elbow_symmetry'] = abs(eng_feat_dict['left_angle_elbow'] - eng_feat_dict['right_angle_elbow'])
+    
+    eng_feat_dict['left_hip_deviation_norm'] = calc_hip_deviation_live(pose_landmarks, l_shoulder, MP_LANDMARK_MAP["left_knee"], l_hip_idx) / avg_torso
+    eng_feat_dict['right_hip_deviation_norm'] = calc_hip_deviation_live(pose_landmarks, r_shoulder, MP_LANDMARK_MAP["right_knee"], r_hip_idx) / avg_torso
+
+    # --- 4. תוספות 2D: מרחקים, יחסים ו-Y ---
+    eng_feat_dict['left_arm_distance'] = calc_dist(pose_landmarks, l_shoulder, MP_LANDMARK_MAP["left_wrist"])
+    eng_feat_dict['right_arm_distance'] = calc_dist(pose_landmarks, r_shoulder, MP_LANDMARK_MAP["right_wrist"])
+    eng_feat_dict['left_arm_index_shoulder'] = calc_dist(pose_landmarks, l_shoulder, MP_LANDMARK_MAP["left_index"])
+    eng_feat_dict['right_arm_index_shoulder'] = calc_dist(pose_landmarks, r_shoulder, MP_LANDMARK_MAP["right_index"])
+
+    eng_feat_dict['left_arm_ratio'] = eng_feat_dict['left_arm_distance'] / avg_torso
+    eng_feat_dict['right_arm_ratio'] = eng_feat_dict['right_arm_distance'] / avg_torso
+    
+    left_shoulder_y = pose_landmarks[l_shoulder].y
+    left_elbow_y = pose_landmarks[MP_LANDMARK_MAP["left_elbow"]].y
+    right_shoulder_y = pose_landmarks[r_shoulder].y
+    right_elbow_y = pose_landmarks[MP_LANDMARK_MAP["right_elbow"]].y
+    eng_feat_dict['left_shoulder_elbow_y_norm'] = (left_shoulder_y - left_elbow_y) / avg_torso
+    eng_feat_dict['right_shoulder_elbow_y_norm'] = (right_shoulder_y - right_elbow_y) / avg_torso
+
+    # --- 5. תוספות 2D: זוויות נוספות ---
+    eng_feat_dict['left_wrist_shoulder_hip'] = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["left_wrist"], l_shoulder, l_hip_idx)
+    eng_feat_dict['right_wrist_shoulder_hip'] = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["right_wrist"], r_shoulder, r_hip_idx)
+    eng_feat_dict['left_knee_angle'] = calc_angle_live(pose_landmarks, l_hip_idx, MP_LANDMARK_MAP["left_knee"], MP_LANDMARK_MAP["left_ankle"])
+    eng_feat_dict['right_knee_angle'] = calc_angle_live(pose_landmarks, r_hip_idx, MP_LANDMARK_MAP["right_knee"], MP_LANDMARK_MAP["right_ankle"])
+    eng_feat_dict['neck_angle'] = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["nose"], l_shoulder, l_hip_idx)
+
+    # --- 6. פיצ'רים תלת-ממדיים (3D) ---
+    if world_landmarks:
+        # חילוץ בטוח של כל הנקודות ב-3D
+        ls = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_shoulder'])
+        rs = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_shoulder'])
+        lh = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_hip'])
+        rh = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_hip'])
+        la = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_ankle'])
+        ra = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_ankle'])
+        le = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_elbow'])
+        re = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_elbow'])
+        lw = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_wrist'])
+        rw = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_wrist'])
+        
+        shoulder_center = (ls + rs) / 2.0 if ls is not None and rs is not None else None
+        hip_center = (lh + rh) / 2.0 if lh is not None and rh is not None else None
+        ankle_center = (la + ra) / 2.0 if la is not None and ra is not None else None
+        
+        # חישוב יישור גוף וקו אגן
+        eng_feat_dict['body_alignment_angle'] = calc_angle_3d(shoulder_center, hip_center, ankle_center)
+        eng_feat_dict['hip_line_error'] = calc_hip_line_error_3d(shoulder_center, hip_center, ankle_center)
+        
+        # פונקציית עזר פנימית בטוחה למרחק ב-3D
+        def dist3d(p1, p2): 
+            if p1 is None or p2 is None: return 0.0
+            return np.linalg.norm(p1 - p2)
+            
+        # דחיסת זרוע
+        l_arm_len = dist3d(ls, le) + dist3d(le, lw)
+        r_arm_len = dist3d(rs, re) + dist3d(re, rw)
+        
+        eng_feat_dict['left_arm_compression'] = dist3d(ls, lw) / l_arm_len if l_arm_len > 0 else 0.0
+        eng_feat_dict['right_arm_compression'] = dist3d(rs, rw) / r_arm_len if r_arm_len > 0 else 0.0
+        eng_feat_dict['avg_arm_compression'] = (eng_feat_dict['left_arm_compression'] + eng_feat_dict['right_arm_compression']) / 2.0
+        
+    else:
+        # ערכי ברירת מחדל אם אין זיהוי 3D בפריים הנוכחי
+        eng_feat_dict['body_alignment_angle'] = 0.0
+        eng_feat_dict['hip_line_error'] = 0.0
+        eng_feat_dict['left_arm_compression'] = 0.0
+        eng_feat_dict['right_arm_compression'] = 0.0
+        eng_feat_dict['avg_arm_compression'] = 0.0
+
+    # --- 7. דלתאות (Deltas) מבוססות זמן בעזרת ה-Cache ---
+    prev_avg_elbow = cache.get('prev_avg_elbow_angle', eng_feat_dict['avg_elbow_angle'])
+    prev_l_elbow = cache.get('prev_left_angle_elbow', eng_feat_dict['left_angle_elbow'])
+    prev_r_elbow = cache.get('prev_right_angle_elbow', eng_feat_dict['right_angle_elbow'])
+    prev_hip_error = cache.get('prev_hip_line_error', eng_feat_dict['hip_line_error'])
+    prev_body_align = cache.get('prev_body_alignment', eng_feat_dict['body_alignment_angle'])
+    
+    eng_feat_dict['delta_left_elbow_angle'] = eng_feat_dict['left_angle_elbow'] - prev_l_elbow
+    eng_feat_dict['delta_right_elbow_angle'] = eng_feat_dict['right_angle_elbow'] - prev_r_elbow
+    eng_feat_dict['avg_delta_elbow_angle'] = eng_feat_dict['avg_elbow_angle'] - prev_avg_elbow
+    eng_feat_dict['delta_hip_line_error'] = eng_feat_dict['hip_line_error'] - prev_hip_error
+    eng_feat_dict['delta_body_alignment_angle'] = eng_feat_dict['body_alignment_angle'] - prev_body_align
+    
+    # עדכון ה-Cache לפריים הבא
+    cache['prev_avg_elbow_angle'] = eng_feat_dict['avg_elbow_angle']
+    cache['prev_left_angle_elbow'] = eng_feat_dict['left_angle_elbow']
+    cache['prev_right_angle_elbow'] = eng_feat_dict['right_angle_elbow']
+    cache['prev_hip_line_error'] = eng_feat_dict['hip_line_error']
+    cache['prev_body_alignment'] = eng_feat_dict['body_alignment_angle']
+
+    return eng_feat_dict
     features = []
     l_hip_idx = MP_LANDMARK_MAP["left_hip"]
     r_hip_idx = MP_LANDMARK_MAP["right_hip"]
@@ -256,13 +395,13 @@ def extract_features_from_task(pose_landmarks, world_landmarks, selected_landmar
     mid_y = (pose_landmarks[l_hip_idx].y + pose_landmarks[r_hip_idx].y) / 2.0
     mid_z = (pose_landmarks[l_hip_idx].z + pose_landmarks[r_hip_idx].z) / 2.0
 
-    for lm_name in selected_landmarks:
-        idx = MP_LANDMARK_MAP[lm_name]
-        lm = pose_landmarks[idx]
-        if use_centered:
-            features.extend([lm.x - mid_x, lm.y - mid_y, lm.z - mid_z, lm.visibility])
-        else:
-            features.extend([lm.x, lm.y, lm.z, lm.visibility])
+    # for lm_name in selected_landmarks:
+    #     idx = MP_LANDMARK_MAP[lm_name]
+    #     lm = pose_landmarks[idx]
+    #     if use_centered:
+    #         features.extend([lm.x - mid_x, lm.y - mid_y, lm.z - mid_z, lm.visibility])
+    #     else:
+    #         features.extend([lm.x, lm.y, lm.z, lm.visibility])
         
     l_shoulder = MP_LANDMARK_MAP["left_shoulder"]
     r_shoulder = MP_LANDMARK_MAP["right_shoulder"]
@@ -281,29 +420,99 @@ def extract_features_from_task(pose_landmarks, world_landmarks, selected_landmar
     eng_feat_dict['right_hip_deviation_norm'] = calc_hip_deviation_live(pose_landmarks, r_shoulder, MP_LANDMARK_MAP["right_knee"], r_hip_idx) / avg_torso
 
     # --- הפיצ'רים החדשים שלך ---
-    
+    if world_landmarks:
+        # שליפת כל הנקודות הדרושות ב-3D (כתפיים, מרפקים, שורשי כף יד)
+        ls = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_shoulder'])
+        rs = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_shoulder'])
+        le = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_elbow'])
+        re = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_elbow'])
+        lw = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_wrist'])
+        rw = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_wrist'])
+        
+        # פונקציית עזר קטנה לחישוב מרחק 3D בתוך הפונקציה
+        def dist3d(p1, p2): 
+            if p1 is None or p2 is None: return 0.0
+            return np.linalg.norm(p1 - p2)
+        
+        l_arm_len = dist3d(ls, le) + dist3d(le, lw)
+        r_arm_len = dist3d(rs, re) + dist3d(re, rw)
+        
+        eng_feat_dict['left_arm_compression'] = dist3d(ls, lw) / l_arm_len if l_arm_len > 0 else 0.0
+        eng_feat_dict['right_arm_compression'] = dist3d(rs, rw) / r_arm_len if r_arm_len > 0 else 0.0
+        eng_feat_dict['avg_arm_compression'] = (eng_feat_dict['left_arm_compression'] + eng_feat_dict['right_arm_compression']) / 2.0
+    else:
+        eng_feat_dict['left_arm_compression'] = 0.0
+        eng_feat_dict['right_arm_compression'] = 0.0
+        eng_feat_dict['avg_arm_compression'] = 0.0
+
     # 1. ממוצע זווית מרפקים
     avg_elbow = (eng_feat_dict['left_angle_elbow'] + eng_feat_dict['right_angle_elbow']) / 2.0
     eng_feat_dict['avg_elbow_angle'] = avg_elbow
 
-    # 2. חישובי 3D (סטיית אגן ויישור גוף כפי שהיו בקוד הישן)
-    if world_landmarks:
-        ls = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_shoulder'])
-        rs = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_shoulder'])
-        lh = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_hip'])
-        rh = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_hip'])
-        la = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_ankle'])
-        ra = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_ankle'])
-        
-        shoulder_center = (ls + rs) / 2.0
-        hip_center = (lh + rh) / 2.0
-        ankle_center = (la + ra) / 2.0
-        
-        body_align = calc_angle_3d(shoulder_center, hip_center, ankle_center)
-        hip_error = calc_hip_line_error_3d(shoulder_center, hip_center, ankle_center)
-    else:
-        body_align, hip_error = 0.0, 0.0
+# 1. מרחקים 2D
+    eng_feat_dict['left_arm_distance'] = calc_dist(pose_landmarks, l_shoulder, MP_LANDMARK_MAP["left_wrist"])
+    eng_feat_dict['right_arm_distance'] = calc_dist(pose_landmarks, r_shoulder, MP_LANDMARK_MAP["right_wrist"])
+    eng_feat_dict['left_arm_index_shoulder'] = calc_dist(pose_landmarks, l_shoulder, MP_LANDMARK_MAP["left_index"])
+    eng_feat_dict['right_arm_index_shoulder'] = calc_dist(pose_landmarks, r_shoulder, MP_LANDMARK_MAP["right_index"])
 
+    # 2. יחסים ומנרמלים 2D
+    eng_feat_dict['left_arm_ratio'] = eng_feat_dict['left_arm_distance'] / avg_torso
+    eng_feat_dict['right_arm_ratio'] = eng_feat_dict['right_arm_distance'] / avg_torso
+    
+    # חישוב הפרשי Y מנורמלים
+    left_shoulder_y = pose_landmarks[l_shoulder].y
+    left_elbow_y = pose_landmarks[MP_LANDMARK_MAP["left_elbow"]].y
+    right_shoulder_y = pose_landmarks[r_shoulder].y
+    right_elbow_y = pose_landmarks[MP_LANDMARK_MAP["right_elbow"]].y
+    eng_feat_dict['left_shoulder_elbow_y_norm'] = (left_shoulder_y - left_elbow_y) / avg_torso
+    eng_feat_dict['right_shoulder_elbow_y_norm'] = (right_shoulder_y - right_elbow_y) / avg_torso
+
+    # 3. זוויות 2D נוספות
+    eng_feat_dict['left_wrist_shoulder_hip'] = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["left_wrist"], l_shoulder, l_hip_idx)
+    eng_feat_dict['right_wrist_shoulder_hip'] = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["right_wrist"], r_shoulder, r_hip_idx)
+    eng_feat_dict['left_knee_angle'] = calc_angle_live(pose_landmarks, l_hip_idx, MP_LANDMARK_MAP["left_knee"], MP_LANDMARK_MAP["left_ankle"])
+    eng_feat_dict['right_knee_angle'] = calc_angle_live(pose_landmarks, r_hip_idx, MP_LANDMARK_MAP["right_knee"], MP_LANDMARK_MAP["right_ankle"])
+    eng_feat_dict['neck_angle'] = calc_angle_live(pose_landmarks, MP_LANDMARK_MAP["nose"], l_shoulder, l_hip_idx)
+    
+    eng_feat_dict['elbow_symmetry'] = abs(eng_feat_dict['left_angle_elbow'] - eng_feat_dict['right_angle_elbow'])
+    eng_feat_dict['avg_body_angle'] = (eng_feat_dict['left_body_angle'] + eng_feat_dict['right_body_angle']) / 2.0
+
+    # 4. פיצ'רים תלת-ממדיים (יש למזג את זה לתוך בלוק ה- if world_landmarks הקיים)
+    if world_landmarks:
+        # שליפת נקודות נוספות למרפקים ושורש כף היד ב-3D
+        le = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_elbow'])
+        re = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_elbow'])
+        lw = get_pt3d(world_landmarks, MP_LANDMARK_MAP['left_wrist'])
+        rw = get_pt3d(world_landmarks, MP_LANDMARK_MAP['right_wrist'])
+        
+        # פונקציית עזר קטנה לחישוב מרחק 3D בתוך הפונקציה
+        def dist3d(p1, p2): return np.linalg.norm(p1 - p2)
+        
+        l_arm_len = dist3d(ls, le) + dist3d(le, lw)
+        r_arm_len = dist3d(rs, re) + dist3d(re, rw)
+        
+        eng_feat_dict['left_arm_compression'] = dist3d(ls, lw) / l_arm_len if l_arm_len > 0 else 0.0
+        eng_feat_dict['right_arm_compression'] = dist3d(rs, rw) / r_arm_len if r_arm_len > 0 else 0.0
+        eng_feat_dict['avg_arm_compression'] = (eng_feat_dict['left_arm_compression'] + eng_feat_dict['right_arm_compression']) / 2.0
+    else:
+        eng_feat_dict['left_arm_compression'] = 0.0
+        eng_feat_dict['right_arm_compression'] = 0.0
+        eng_feat_dict['avg_arm_compression'] = 0.0
+
+    # 5. דלתאות (Deltas) נוספות מבוססות זמן
+    prev_l_elbow = cache.get('prev_left_angle_elbow', eng_feat_dict['left_angle_elbow'])
+    prev_r_elbow = cache.get('prev_right_angle_elbow', eng_feat_dict['right_angle_elbow'])
+    
+    eng_feat_dict['delta_left_elbow_angle'] = eng_feat_dict['left_angle_elbow'] - prev_l_elbow
+    eng_feat_dict['delta_right_elbow_angle'] = eng_feat_dict['right_angle_elbow'] - prev_r_elbow
+    
+    # עדכון ה-Cache לפריים הבא
+    cache['prev_left_angle_elbow'] = eng_feat_dict['left_angle_elbow']
+    cache['prev_right_angle_elbow'] = eng_feat_dict['right_angle_elbow']
+
+
+
+    
 # 3. חישוב דלתאות זמניות (Deltas) בעזרת ה-cache
     prev_avg_elbow = cache.get('prev_avg_elbow_angle', avg_elbow)
     prev_hip_error = cache.get('prev_hip_line_error', hip_error)
@@ -319,54 +528,61 @@ def extract_features_from_task(pose_landmarks, world_landmarks, selected_landmar
     cache['prev_hip_line_error'] = hip_error
     cache['prev_body_alignment'] = body_align
 
-    # הוספת הפיצ'רים לסדר הסופי
-    for feat_name in selected_engineered_features:
-        features.append(eng_feat_dict.get(feat_name, 0.0))
 
-    return np.array(features).reshape(1, -1)
-
+    return eng_feat_dict
 # ==========================================
 # 3. ML MODELS SETUP
 # ==========================================
 def get_feature_columns(selected_landmarks, selected_engineered_features, use_centered):
     cols = []
-    for lm in selected_landmarks:
-        if use_centered:
-            cols.extend([f"{lm}_centered_x", f"{lm}_centered_y", f"{lm}_centered_z", f"{lm}_visibility"])
-        else:
-            cols.extend([f"{lm}_x", f"{lm}_y", f"{lm}_z", f"{lm}_visibility"])
+    # for lm in selected_landmarks:
+    #     if use_centered:
+    #         cols.extend([f"{lm}_centered_x", f"{lm}_centered_y", f"{lm}_centered_z", f"{lm}_visibility"])
+    #     else:
+    #         cols.extend([f"{lm}_x", f"{lm}_y", f"{lm}_z", f"{lm}_visibility"])
     cols.extend(selected_engineered_features)
     return cols
 
 @st.cache_resource
+@st.cache_resource
 def load_and_train_models():
     path = os.path.join("data", "*.csv")
     files = glob.glob(path)
-    if not files: return None, None, None, None
+    if not files: return None
     dfs = [pd.read_csv(f) for f in files]
     full_data = pd.concat(dfs, ignore_index=True)
-    full_data = full_data[full_data['is_valid_frame'] == True].dropna(subset=['pushup_phase', 'hips_position'])
     
-    feature_cols = get_feature_columns(SELECTED_LANDMARKS, SELECTED_ENG_FEATURES, USE_CENTERED_COORDS)
-    X_train = full_data[feature_cols]
-    y_phase_train = full_data['pushup_phase']
-    y_hips_train = full_data['hips_position']
-
-    scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train.values)    
-    if USE_PCA:
-        pca = PCA(n_components=0.95)
-        X_train_final = pca.fit_transform(X_train_scaled)
-    else:
+    full_data = full_data[full_data['is_valid_frame'] == True]
+    
+    trained_models = {}
+    
+    for model_name, config in MODELS_CONFIG.items():
+        
+        model_data = full_data.dropna(subset=[config["target_col"]])
+        
+        X_train = model_data[config["features"]]
+        y_train = model_data[config["target_col"]]
+        scaler = StandardScaler()
+        X_train_scaled = scaler.fit_transform(X_train.values)    
+        
         pca = None
-        X_train_final = X_train_scaled
+        if config["use_pca"]:
+            pca = PCA(n_components=config["pca_components"])
+            X_train_final = pca.fit_transform(X_train_scaled)
+        else:
+            X_train_final = X_train_scaled
 
-    knn_phase = KNeighborsClassifier(n_neighbors=15).fit(X_train_final, y_phase_train)
-    knn_hips = KNeighborsClassifier(n_neighbors=18).fit(X_train_final, y_hips_train)
-    
-    return scaler, pca, knn_phase, knn_hips
+        knn = KNeighborsClassifier(n_neighbors=config["k_neighbors"]).fit(X_train_final, y_train)
+        
+        trained_models[model_name] = {
+            "scaler": scaler,
+            "pca": pca,
+            "knn": knn
+        }
+        
+    return trained_models
 
-scaler, pca, knn_phase, knn_hips = load_and_train_models()
+trained_models = load_and_train_models()
 
 MODEL_PATH = 'pose_landmarker_heavy.task'
 if not os.path.exists(MODEL_PATH):
@@ -379,9 +595,9 @@ def get_landmarker():
         base_options=python.BaseOptions(model_asset_path=MODEL_PATH), 
         running_mode=vision.RunningMode.VIDEO,
         output_segmentation_masks=False,
-        num_poses=1,                     # הגבלת זיהוי לאדם אחד בלבד
+        num_poses=1,                    
         min_pose_detection_confidence=0.5, 
-        min_tracking_confidence=0.5      # מאפשר למעקב המהיר "לתפוס פיקוד" בקלות יותר
+        min_tracking_confidence=0.5      
     )
     return vision.PoseLandmarker.create_from_options(options)
 
@@ -405,8 +621,6 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
                         cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 165, 255), 4)
             return frame, debug_info
     
-    # mp_time, feat_time, pred_time, sm_time = 0.0, 0.0, 0.0, 0.0
-    # phase_pred_str, hip_pred_str = "None", "None"
     if process_this_frame:
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame_rgb)
@@ -425,18 +639,39 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
             world_landmarks = res.pose_world_landmarks[0] if res.pose_world_landmarks else None
                 
             t_feat_start = time.time()
-            features = extract_features_from_task(
-                pose_landmarks, world_landmarks, 
-                SELECTED_LANDMARKS, SELECTED_ENG_FEATURES, USE_CENTERED_COORDS, cache
+            all_features_dict = extract_features_from_task(
+                pose_landmarks, world_landmarks,cache
             )
             feat_time = (time.time() - t_feat_start) * 1000
             
             t_pred_start = time.time()
-            scaled_feat = scaler.transform(features.values if hasattr(features, 'values') else features)
-            final_feat = pca.transform(scaled_feat) if pca else scaled_feat
             
-            phase_pred = knn_phase.predict(final_feat)[0]
-            hip_pred = knn_hips.predict(final_feat)[0]
+            # --- 1. מסלול חיזוי שלב שכיבת סמיכה (Phase) ---
+            phase_config = MODELS_CONFIG["phase"]
+            phase_model = trained_models["phase"]
+            
+            # שולפים רק את הפיצ'רים הרלוונטיים ומסדרים אותם כמטריצה של שורה אחת
+            phase_features = np.array([[all_features_dict.get(f, 0.0) for f in phase_config["features"]]])
+            
+            # נרמול ו-PCA (אם יש) שמיוחדים למודל הזה
+            phase_scaled = phase_model["scaler"].transform(phase_features)
+            phase_final = phase_model["pca"].transform(phase_scaled) if phase_model["pca"] else phase_scaled
+            phase_pred = phase_model["knn"].predict(phase_final)[0]
+
+            # --- 2. מסלול חיזוי מנח אגן (Hips) ---
+            hips_config = MODELS_CONFIG["hips"]
+            hips_model = trained_models["hips"]
+            
+            # שולפים רק את הפיצ'רים הרלוונטיים לאגן
+            hips_features = np.array([[all_features_dict.get(f, 0.0) for f in hips_config["features"]]])
+            
+            # נרמול ו-PCA (אם יש) שמיוחדים למודל האגן
+            hips_scaled = hips_model["scaler"].transform(hips_features)
+            hips_final = hips_model["pca"].transform(hips_scaled) if hips_model["pca"] else hips_scaled
+            hip_pred = hips_model["knn"].predict(hips_final)[0]
+
+
+            
             phase_pred_str = str(phase_pred)
             hip_pred_str = str(hip_pred)
             pred_time = (time.time() - t_pred_start) * 1000
@@ -465,9 +700,10 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
 
     # ציור על גבי הוידאו
     if cache.get('last_landmarks'):
-        for lm_name in SELECTED_LANDMARKS:
-            lm = cache['last_landmarks'][MP_LANDMARK_MAP[lm_name]]
-            cv2.circle(frame, (int(lm.x * w), int(lm.y * h)), 6, (0, 255, 0), -1)
+        # for lm_name in SELECTED_LANDMARKS:
+        #     lm = cache['last_landmarks'][MP_LANDMARK_MAP[lm_name]]
+        #     cv2.circle(frame, (int(lm.x * w), int(lm.y * h)), 6, (0, 255, 0), -1)
+        pass
     else:
         cv2.putText(frame, "No Pose Detected", (int(w/2) - 150, int(h/2)), 
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
