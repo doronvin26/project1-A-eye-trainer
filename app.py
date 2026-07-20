@@ -22,7 +22,7 @@ from sklearn.decomposition import PCA
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, WebRtcMode
 
 st.set_page_config(page_title="A-EYE TRAINER", layout="wide")
-
+USE_GEBUG_INFORMATION  = False
 # ==========================================
 # DEBUG MODULE
 # ==========================================
@@ -617,7 +617,7 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
         elapsed = time.time() - start_time
         if elapsed < 10:
             countdown = int(10 - elapsed)
-            cv2.putText(frame, f"Get Ready! {countdown}s", (int(w/2) - 150, int(h/2)), 
+            cv2.putText(frame, f"Get Redfdfady! {countdown}s", (int(w/2) - 150, int(h/2)), 
                         cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 165, 255), 4)
             return frame, debug_info
     
@@ -708,10 +708,10 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
         cv2.putText(frame, "No Pose Detected", (int(w/2) - 150, int(h/2)), 
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     
-    cv2.rectangle(frame, (10, 10), (450, 150), (0, 0, 0), -1)
-    cv2.putText(frame, f"Reps: {rep_sm.rep_count}", (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+    cv2.rectangle(frame, (10, 200), (300, 350), (0, 0, 0), -1)
+    cv2.putText(frame, f"Reps: {rep_sm.rep_count}", (20, 250), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     color = (0, 255, 0) if hip_sm.status == "Good Form" else (0, 0, 255)
-    cv2.putText(frame, f"Hips: {hip_sm.status}", (20, 90), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
+    cv2.putText(frame, f"Hips: {hip_sm.status}", (20,300), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
     
     if rep_sm.last_issue:
         cv2.putText(frame, f"Alert: {rep_sm.last_issue}", (20, 130), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 165, 255), 2)
@@ -761,6 +761,8 @@ with tab_live:
                 countdown = int(10 - elapsed)
                 cv2.putText(img, f"Get Ready! {countdown}s", (int(w/2) - 150, int(h/2)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 165, 255), 4)
+                cv2.putText(img, f"Place camera at 9 o'clock", (int(w/2) - 130, int(h/2) + 70), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 165, 255), 2)
                 return av.VideoFrame.from_ndarray(img, format="bgr24")
             
             timestamp_ms = int(current_time * 1000)
@@ -792,7 +794,8 @@ with tab_live:
         key="a-eye-live", 
         mode=WebRtcMode.SENDRECV,
         video_processor_factory=VideoProcessor,
-        media_stream_constraints={"video": True, "audio": False}
+        media_stream_constraints={"video": True, "audio": False},
+        
     )
 
 with tab_video:
@@ -810,12 +813,12 @@ with tab_video:
             
             cap = cv2.VideoCapture(tfile.name)
             fps = cap.get(cv2.CAP_PROP_FPS)
-            if fps <= 0: fps = 30
+            if fps <= 0: fps = 10
             
             st_frame = st.empty() 
             frame_count = 0
             offline_cache = {'last_landmarks': None}
-            frame_skip_interval = 1
+            frame_skip_interval =2
             
             # יצירת תור ה-Debug לוידאו האופליין
             offline_debug_queue = []
