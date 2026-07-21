@@ -27,7 +27,7 @@ USE_GEBUG_INFORMATION  = False
 # DEBUG MODULE
 # ==========================================
 class FrameDebugData:
-    def __init__(self, frame_num, is_processed, timestamp_ms, delta_ms, phase_pred, hip_pred, mp_time, feat_time, pred_time, sm_time, rep_count, sm_state, hip_sm_status):
+    def __init__(self, frame_num, is_processed, timestamp_ms, delta_ms, phase_pred, hip_pred, mp_time, feat_time, pred_time, sm_time, rep_count, sm_state, hip_sm_status, plank_status, plank_debug_msg):
         self.frame_num = frame_num
         self.is_processed = is_processed
         self.timestamp_ms = timestamp_ms
@@ -41,15 +41,18 @@ class FrameDebugData:
         self.rep_count = rep_count
         self.sm_state = sm_state
         self.hip_sm_status = hip_sm_status
+        self.plank_status = plank_status
+        self.plank_debug_msg = plank_debug_msg
         
     def __str__(self):
         status_str = "Yes " if self.is_processed else "Skip"
+        plank_str = "ACTIVE " if self.plank_status else "WAITING"
         return (f"Frame: {self.frame_num:04d} | Processed: {status_str} | TS(ms): {self.timestamp_ms:06d} | Delta: {self.delta_ms:04d} | "
+                f"Plank: {plank_str} [{self.plank_debug_msg}] | "
                 f"Phase: {self.phase_pred:<15} | Hip: {self.hip_pred:<15} | "
                 f"Reps: {self.rep_count:02d} | RepState: {self.sm_state:<15} | HipStatus: {self.hip_sm_status:<10} | "
                 f"Times(ms) -> MP: {self.mp_time:04.1f}, Feat: {self.feat_time:04.1f}, "
                 f"Predict: {self.pred_time:04.1f}, States: {self.sm_time:04.1f}")
-
 def flush_debug_queue(queue, source_info):
     if not queue: 
         return
@@ -215,6 +218,95 @@ class HipStateMachine:
             self.status = "Good Form"
             return 0
         return -1
+
+class PlankPositionDetector:
+    #we have 4 criteria to detect a plank position:
+    #1. visibility of key points, 2. horizontal alignment, 3. grounded hands + feet, 4. duration of valid frames
+    def __init__(self, fps=30, required_time_sec=0.5):
+        # how many consecutive frames must meet the criteria to consider it a valid plank position
+        self.required_frames = int(fps * required_time_sec)
+        self.valid_frames_count = 0
+        self.is_in_plank = False
+        self.last_debug_msg = "No Pose"
+        
+    def check(self, pose_landmarks, avg_torso):
+        if not pose_landmarks or avg_torso <= 0:
+            return self._update_state(False)
+
+        l_shoulder = pose_landmarks[MP_LANDMARK_MAP["left_shoulder"]]
+        r_shoulder = pose_landmarks[MP_LANDMARK_MAP["right_shoulder"]]
+        l_wrist = pose_landmarks[MP_LANDMARK_MAP["left_wrist"]]
+        r_wrist = pose_landmarks[MP_LANDMARK_MAP["right_wrist"]]
+        l_ankle = pose_landmarks[MP_LANDMARK_MAP["left_ankle"]]
+        r_ankle = pose_landmarks[MP_LANDMARK_MAP["right_ankle"]]
+        l_knee = pose_landmarks[MP_LANDMARK_MAP["left_knee"]]
+        r_knee = pose_landmarks[MP_LANDMARK_MAP["right_knee"]]
+        l_hip = pose_landmarks[MP_LANDMARK_MAP["left_hip"]]
+        r_hip = pose_landmarks[MP_LANDMARK_MAP["right_hip"]]
+        
+        # we need to see at least one side of the body (shoulder, wrist, ankle) to consider it valid
+        visibility_threshold = 0.3
+        left_visible = (l_shoulder.visibility > visibility_threshold and 
+                        l_wrist.visibility > visibility_threshold and 
+                        l_ankle.visibility > visibility_threshold and
+                        l_knee.visibility > visibility_threshold)
+        right_visible = (r_shoulder.visibility > visibility_threshold and 
+                         r_wrist.visibility > visibility_threshold and 
+                         r_ankle.visibility > visibility_threshold and
+                         r_knee.visibility > visibility_threshold)
+
+        #first check: if neither side is visible, we cannot consider it a plank
+        if not (left_visible or right_visible):
+            self.last_debug_msg = "Visibility Check Failed (MediaPipe Glitch)"
+            return self._update_state(False)
+            
+        # average the positions of the shoulders, wrists, and ankles to get a central line
+        # (this helps with cases where one side is unvisible)
+        shoulder_x = (l_shoulder.x + r_shoulder.x) / 2.0
+        shoulder_y = (l_shoulder.y + r_shoulder.y) / 2.0
+        wrist_y = (l_wrist.y + r_wrist.y) / 2.0
+        ankle_x = (l_ankle.x + r_ankle.x) / 2.0
+        ankle_y = (l_ankle.y + r_ankle.y) / 2.0
+        knee_y = (l_knee.y + r_knee.y) / 2.0
+        hip_x = (l_hip.x + r_hip.x) / 2.0
+        hip_y = (l_hip.y + r_hip.y) / 2.0
+        
+        #second check: we want to ensure that the body is roughly horizontal.
+        #We can do this by checking that the horizontal distance (X) between the shoulder and ankle is dominant
+        #compared to the vertical distance (Y).
+        delta_x = abs(shoulder_x - ankle_x)
+        delta_y = abs(shoulder_y - ankle_y)
+        
+        #is_horizontal = delta_x > (delta_y * 0.8) - need to think about this threshold
+        is_horizontal = delta_x > delta_y 
+        
+        #third check: we want to ensure that the wrists and ankles are the lowest part of the body
+
+        lowest_body_part_y = max(shoulder_y, hip_y, knee_y)
+        buffer = 0.05 * avg_torso
+        wrists_are_lowest = wrist_y > (lowest_body_part_y - buffer)
+        ankles_are_lowest = ankle_y > (lowest_body_part_y - buffer)
+
+        is_grounded =wrists_are_lowest and ankles_are_lowest
+
+        self.last_debug_msg = f"Vis: {left_visible or right_visible} | Horiz: {is_horizontal} (dx:{delta_x:.1f}, dy:{delta_y:.1f}) | W_Low: {wrists_are_lowest} | A_Low: {ankles_are_lowest}"
+        is_valid = is_horizontal and is_grounded
+        
+        return self._update_state(is_valid)
+
+    def _update_state(self, is_valid):
+        if is_valid:
+            # מקדמים את המונה אם התנאים מתקיימים
+            self.valid_frames_count += 1
+            if self.valid_frames_count >= self.required_frames:
+                self.is_in_plank = True
+        else:
+            # ירידה הדרגתית של המונה (מאפשר להתמודד עם פריים בודד שהתפספס)
+            self.valid_frames_count = max(0, self.valid_frames_count - 1)
+            if self.valid_frames_count == 0:
+                self.is_in_plank = False
+                
+        return self.is_in_plank
 
 # ==========================================
 # 2. FEATURE EXTRACTION HELPERS
@@ -608,10 +700,11 @@ landmarker = get_landmarker()
 # ==========================================
 from mediapipe.tasks.python.components.containers import NormalizedRect
 
-def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, start_time=0, process_this_frame=True, frame_num=0):
+def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, start_time=0, process_this_frame=True, frame_num=0, plank_detector=None):
     frame = cv2.resize(frame, (640, 480))
     h, w, _ = frame.shape
     debug_info = None
+    is_plank_ready = False
     
     if is_live:
         elapsed = time.time() - start_time
@@ -643,43 +736,55 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
                 pose_landmarks, world_landmarks,cache
             )
             feat_time = (time.time() - t_feat_start) * 1000
+
+            avg_torso = all_features_dict.get('avg_torso_px', 0.1)
+            is_plank_ready = plank_detector.check(pose_landmarks, avg_torso)
             
             t_pred_start = time.time()
             
-            # --- 1. מסלול חיזוי שלב שכיבת סמיכה (Phase) ---
-            phase_config = MODELS_CONFIG["phase"]
-            phase_model = trained_models["phase"]
-            
-            # שולפים רק את הפיצ'רים הרלוונטיים ומסדרים אותם כמטריצה של שורה אחת
-            phase_features = np.array([[all_features_dict.get(f, 0.0) for f in phase_config["features"]]])
-            
-            # נרמול ו-PCA (אם יש) שמיוחדים למודל הזה
-            phase_scaled = phase_model["scaler"].transform(phase_features)
-            phase_final = phase_model["pca"].transform(phase_scaled) if phase_model["pca"] else phase_scaled
-            phase_pred = phase_model["knn"].predict(phase_final)[0]
+            if is_plank_ready:
+                # --- 1. מסלול חיזוי שלב שכיבת סמיכה (Phase) ---
+                phase_config = MODELS_CONFIG["phase"]
+                phase_model = trained_models["phase"]
+                
+                # שולפים רק את הפיצ'רים הרלוונטיים ומסדרים אותם כמטריצה של שורה אחת
+                phase_features = np.array([[all_features_dict.get(f, 0.0) for f in phase_config["features"]]])
+                
+                # נרמול ו-PCA (אם יש) שמיוחדים למודל הזה
+                phase_scaled = phase_model["scaler"].transform(phase_features)
+                phase_final = phase_model["pca"].transform(phase_scaled) if phase_model["pca"] else phase_scaled
+                phase_pred = phase_model["knn"].predict(phase_final)[0]
 
-            # --- 2. מסלול חיזוי מנח אגן (Hips) ---
-            hips_config = MODELS_CONFIG["hips"]
-            hips_model = trained_models["hips"]
-            
-            # שולפים רק את הפיצ'רים הרלוונטיים לאגן
-            hips_features = np.array([[all_features_dict.get(f, 0.0) for f in hips_config["features"]]])
-            
-            # נרמול ו-PCA (אם יש) שמיוחדים למודל האגן
-            hips_scaled = hips_model["scaler"].transform(hips_features)
-            hips_final = hips_model["pca"].transform(hips_scaled) if hips_model["pca"] else hips_scaled
-            hip_pred = hips_model["knn"].predict(hips_final)[0]
+                # --- 2. מסלול חיזוי מנח אגן (Hips) ---
+                hips_config = MODELS_CONFIG["hips"]
+                hips_model = trained_models["hips"]
+                
+                # שולפים רק את הפיצ'רים הרלוונטיים לאגן
+                hips_features = np.array([[all_features_dict.get(f, 0.0) for f in hips_config["features"]]])
+                
+                # נרמול ו-PCA (אם יש) שמיוחדים למודל האגן
+                hips_scaled = hips_model["scaler"].transform(hips_features)
+                hips_final = hips_model["pca"].transform(hips_scaled) if hips_model["pca"] else hips_scaled
+                hip_pred = hips_model["knn"].predict(hips_final)[0]
 
 
             
-            phase_pred_str = str(phase_pred)
-            hip_pred_str = str(hip_pred)
-            pred_time = (time.time() - t_pred_start) * 1000
+                phase_pred_str = str(phase_pred)
+                hip_pred_str = str(hip_pred)
+                pred_time = (time.time() - t_pred_start) * 1000
 
-            t_sm_start = time.time()
-            rep_sm.process(phase_pred)
-            hip_sm.process(hip_pred)
-            sm_time = (time.time() - t_sm_start) * 1000
+                t_sm_start = time.time()
+                rep_sm.process(phase_pred)
+                hip_sm.process(hip_pred)
+                sm_time = (time.time() - t_sm_start) * 1000
+            else:
+                # --- הבן אדם קם או יצא ממנח פלאנק: איפוס מכונות מצבים ---
+                phase_pred_str, hip_pred_str = "N/A", "N/A"
+                rep_sm.state = 'idle'
+                rep_sm.vote.q.clear() # איפוס תור ההצבעות
+                hip_sm.status = "Waiting..."
+                hip_sm.vote.q.clear()
+                pred_time, sm_time = 0.0, 0.0
             
             cache['last_landmarks'] = pose_landmarks
         else:
@@ -695,7 +800,9 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
         debug_info = FrameDebugData(
             frame_num, process_this_frame, timestamp_ms, delta_ms, 
             phase_pred_str, hip_pred_str, mp_time, feat_time, pred_time, sm_time, 
-            current_rep_count, current_sm_state, current_hip_status
+            current_rep_count, current_sm_state, current_hip_status,
+            is_plank_ready, 
+            plank_detector.last_debug_msg if plank_detector else "No Detector"
         )
 
     # ציור על גבי הוידאו
@@ -716,6 +823,19 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
     if rep_sm.last_issue:
         cv2.putText(frame, f"Alert: {rep_sm.last_issue}", (20, 130), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 165, 255), 2)
         
+    # --- משוב ויזואלי 3 מצבים למשתמש ---
+    if plank_detector and plank_detector.is_in_plank:
+        # מצב ירוק: המערכת נעולה והמשתמש יכול להתחיל לעבוד
+        cv2.putText(frame, "PLANK DETECTED", (int(w/2) - 130, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        
+    elif plank_detector and plank_detector.valid_frames_count > 0 and plank_detector.valid_frames_count < plank_detector.required_frames:
+        # מצב צהוב: המתאמן נכנס למנח, אבל אנחנו מוודאים יציבות (ספירה לאחור/אחוזים)
+        progress = int((plank_detector.valid_frames_count / plank_detector.required_frames) * 100)
+        cv2.putText(frame, f"Hold still... {progress}%", (int(w/2) - 150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
+        
+    else:
+        # מצב כתום: אין פלאנק באופק
+        cv2.putText(frame, "Waiting for Plank...", (int(w/2) - 160, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 165, 255), 2)
     return frame, debug_info
 
 # ==========================================
@@ -729,6 +849,8 @@ if 'offline_hip_sm' not in st.session_state:
     st.session_state.offline_hip_sm = HipStateMachine()
 if 'global_timestamp_ms' not in st.session_state:
     st.session_state.global_timestamp_ms = int(time.time() * 1000)
+if 'offline_plank_detector' not in st.session_state:
+    st.session_state.offline_plank_detector = PlankPositionDetector()
 
 tab_live, tab_video = st.tabs(["🔴 Live Camera", "🎥 Upload Video"])
     
@@ -740,6 +862,7 @@ with tab_live:
             self.start_time = time.time()
             self.rep_sm = RepStateMachine()
             self.hip_sm = HipStateMachine()
+            self.plank_detector = PlankPositionDetector()
             self.cache = {'last_landmarks': None}
             self.last_process_time = 0
             self.fps = 30
@@ -777,7 +900,7 @@ with tab_live:
             # קבלת האובייקט המעובד ואובייקט ה-Debug
             processed_img, debug_info = process_frame(
                 img, self.rep_sm, self.hip_sm, self.cache, timestamp_ms,
-                is_live=True, start_time=self.start_time, process_this_frame=process_this_frame, frame_num=self.frame_count
+                is_live=True, start_time=self.start_time, process_this_frame=process_this_frame, frame_num=self.frame_count, plank_detector=self.plank_detector
             )
             
             # הכנסה לתור במידה ועובד פריים
@@ -806,7 +929,7 @@ with tab_video:
         if st.button("Start Processing Video"):
             st.session_state.offline_rep_sm = RepStateMachine()
             st.session_state.offline_hip_sm = HipStateMachine()
-            
+            st.session_state.offline_plank_detector = PlankPositionDetector()
             tfile = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4')
             tfile.write(uploaded_video.read())
             tfile.close()
@@ -838,7 +961,8 @@ with tab_video:
                 # קבלת התמונה ואובייקט ה-Debug
                 processed_frame, debug_info = process_frame(
                     frame, st.session_state.offline_rep_sm, st.session_state.offline_hip_sm, 
-                    offline_cache, timestamp_ms, is_live=False, process_this_frame=process_this_frame, frame_num=frame_count
+                    offline_cache, timestamp_ms, is_live=False, process_this_frame=process_this_frame, frame_num=frame_count 
+                    ,plank_detector=st.session_state.offline_plank_detector
                 )
                 
                 # הכנסה לתור
