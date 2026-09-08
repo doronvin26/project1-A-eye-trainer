@@ -1,16 +1,6 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import os
-import glob
 import cv2
-import time
-from collections import deque
 import tempfile
-import math
-import av
-
-# Mediapipe & ML
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
