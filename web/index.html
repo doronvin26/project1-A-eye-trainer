@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>A-Eye Trainer - Client Side</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="ui-container">
+        <video id="input-video" style="display:none;"></video>
+        <canvas id="output-canvas"></canvas>
+        <div id="debug-overlay"></div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js" crossorigin="anonymous"></script>
+    
+    <script src="debug_utils.js"></script>
+    <script src="ml_engine.js"></script>
+    <script src="state_machine.js"></script>
+    <script src="pose_processor.js"></script>
+</html>

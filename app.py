@@ -23,6 +23,131 @@ from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, WebRtcMode
 
 st.set_page_config(page_title="A-EYE TRAINER", layout="wide")
 USE_GEBUG_INFORMATION  = False
+
+st.markdown("""
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+        --ink: #17202a;
+        --muted: #61707d;
+        --paper: #f5f7f4;
+        --panel: #ffffff;
+        --teal: #087f8c;
+        --teal-dark: #075b65;
+        --coral: #d95d39;
+        --line: #d9e2df;
+    }
+
+    .stApp {
+        background: radial-gradient(circle at 85% 0%, #d9efed 0, transparent 32%), var(--paper);
+        color: var(--ink);
+        font-family: 'DM Sans', 'Trebuchet MS', sans-serif;
+    }
+
+    .block-container {
+        max-width: 1180px;
+        padding: 3.2rem 2.5rem 4rem;
+    }
+
+    h1, h2, h3 {
+        color: var(--ink) !important;
+        font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+        letter-spacing: 0;
+    }
+
+    h1 {
+        font-size: 2.45rem !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    [data-testid="stMarkdownContainer"] p,
+    [data-testid="stFileUploaderDropzoneInstructions"] {
+        color: var(--muted);
+    }
+
+    [data-baseweb="tab-list"] {
+        gap: 0.55rem;
+        border-bottom: 1px solid var(--line);
+    }
+
+    [data-baseweb="tab"] {
+        color: var(--muted);
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 600;
+        padding: 0.8rem 1.1rem;
+    }
+
+    [aria-selected="true"] {
+        color: var(--teal-dark) !important;
+    }
+
+    [data-testid="stButton"] button {
+        background: #075b65 !important;
+        border: 0;
+        border-radius: 8px;
+        color: #ffffff !important;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        min-height: 2.75rem;
+        padding: 0.55rem 1.25rem;
+        transition: background 160ms ease, transform 160ms ease;
+    }
+
+    [data-testid="stButton"] button p,
+    [data-testid="stButton"] button span {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stButton"] button:hover {
+        background: #087f8c !important;
+        color: #ffffff !important;
+        transform: translateY(-1px);
+    }
+
+    [data-testid="stFileUploader"] {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0.7rem;
+    }
+
+    [data-testid="stAlert"] {
+        border-radius: 8px;
+        border-left-width: 5px;
+        font-weight: 600;
+    }
+
+    [data-testid="stImage"] img {
+        border: 1px solid #c8d5d2;
+        border-radius: 8px;
+        box-shadow: 0 14px 35px rgba(23, 32, 42, 0.12);
+    }
+</style>
+""", unsafe_allow_html=True)
+
+
+def draw_overlay_text(frame, text, origin, color=(255, 255, 255), font_scale=0.8, thickness=2, centered=False):
+    font = cv2.FONT_HERSHEY_DUPLEX
+    text_size, baseline = cv2.getTextSize(text, font, font_scale, thickness)
+    x, y = origin
+    if centered:
+        x -= text_size[0] // 2
+    padding_x, padding_y = 12, 9
+    left = max(8, x - padding_x)
+    top = max(8, y - text_size[1] - padding_y)
+    right = min(frame.shape[1] - 8, x + text_size[0] + padding_x)
+    bottom = min(frame.shape[0] - 8, y + baseline + padding_y)
+    cv2.rectangle(frame, (left, top), (right, bottom), (24, 35, 42), -1)
+    cv2.rectangle(frame, (left, top), (right, bottom), color, 2)
+    cv2.putText(frame, text, (x, y), font, font_scale, color, thickness, cv2.LINE_AA)
+
+
+def draw_emphasized_text(frame, text, origin, color=(255, 255, 255), font_scale=0.7, thickness=2):
+    cv2.putText(frame, text, origin, cv2.FONT_HERSHEY_DUPLEX, font_scale,
+                (18, 28, 34), thickness + 3, cv2.LINE_AA)
+    cv2.putText(frame, text, origin, cv2.FONT_HERSHEY_DUPLEX, font_scale,
+                color, thickness, cv2.LINE_AA)
 # ==========================================
 # DEBUG MODULE
 # ==========================================
@@ -154,7 +279,6 @@ class RepStateMachine:
         self.vote.push(str(phase_val).strip().lower())
         maj = self.vote.get_majority()
         output = None
-        self.last_issue = ""
         
         if maj is None: return output, self.state
             
@@ -190,12 +314,110 @@ class RepStateMachine:
                 self.state = 'HIGH'
                 output = 1
                 self.rep_count += 1
+                self.last_issue = ""
             elif 'low' in maj:
                 self.state = 'LOW'
                 output = 3
                 self.last_issue = "Half way down!"
                 
         return output, self.state
+
+
+class WorkoutStats:
+    def __init__(self):
+        self.valid_reps = 0
+        self.half_down = 0
+        self.half_up = 0
+        self.started_at = None
+        self.finished_at = None
+
+    def start(self, timestamp):
+        if self.started_at is None:
+            self.started_at = timestamp
+
+    def record_event(self, output):
+        if output == 1:
+            self.valid_reps += 1
+        elif output == 2:
+            self.half_up += 1
+        elif output == 3:
+            self.half_down += 1
+
+    def finish(self, timestamp):
+        if self.started_at is not None and self.finished_at is None:
+            self.finished_at = timestamp
+
+    @property
+    def total_events(self):
+        return self.valid_reps + self.half_down + self.half_up
+
+    @property
+    def accuracy(self):
+        if self.total_events == 0:
+            return 0.0
+        return (self.valid_reps / self.total_events) * 100
+
+    @property
+    def duration_seconds(self):
+        if self.started_at is None:
+            return 0
+        end_time = self.finished_at or time.time()
+        return max(0, int(end_time - self.started_at))
+
+    def has_completed_workout(self):
+        return self.valid_reps > 0 and self.finished_at is not None
+
+    def as_dict(self):
+        return {
+            "valid_reps": self.valid_reps,
+            "half_down": self.half_down,
+            "half_up": self.half_up,
+            "accuracy": self.accuracy,
+            "duration_seconds": self.duration_seconds,
+        }
+
+
+def render_workout_summary(summary):
+    minutes, seconds = divmod(summary["duration_seconds"], 60)
+    duration = f"{minutes}:{seconds:02d}"
+    st.markdown(f"""
+    <section style="background: #ffffff; border: 1px solid #d9e2df; border-left: 5px solid #087f8c; border-radius: 8px; padding: 1.1rem 1.25rem; margin: 1rem 0 1.5rem; box-shadow: 0 8px 24px rgba(23, 32, 42, 0.08);">
+        <div style="color: #075b65; font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.8rem;">Workout summary</div>
+        <div style="display: grid; grid-template-columns: repeat(5, minmax(90px, 1fr)); gap: 0.7rem;">
+            <div><div style="color: #61707d; font-size: 0.78rem;">Valid reps</div><strong style="font-size: 1.35rem; color: #17202a;">{summary["valid_reps"]}</strong></div>
+            <div><div style="color: #61707d; font-size: 0.78rem;">Half down</div><strong style="font-size: 1.35rem; color: #d95d39;">{summary["half_down"]}</strong></div>
+            <div><div style="color: #61707d; font-size: 0.78rem;">Half up</div><strong style="font-size: 1.35rem; color: #d95d39;">{summary["half_up"]}</strong></div>
+            <div><div style="color: #61707d; font-size: 0.78rem;">Accuracy</div><strong style="font-size: 1.35rem; color: #087f8c;">{summary["accuracy"]:.1f}%</strong></div>
+            <div><div style="color: #61707d; font-size: 0.78rem;">Workout time</div><strong style="font-size: 1.35rem; color: #17202a;">{duration}</strong></div>
+        </div>
+    </section>
+    """, unsafe_allow_html=True)
+
+
+def draw_workout_summary_overlay(frame, summary):
+    overlay = frame.copy()
+    height, width, _ = frame.shape
+    panel_x1, panel_y1 = 35, 115
+    panel_x2, panel_y2 = width - 35, height - 55
+    cv2.rectangle(overlay, (panel_x1, panel_y1), (panel_x2, panel_y2), (18, 28, 34), -1)
+    cv2.addWeighted(overlay, 0.88, frame, 0.12, 0, frame)
+    cv2.rectangle(frame, (panel_x1, panel_y1), (panel_x2, panel_y2), (90, 190, 185), 2)
+
+    minutes, seconds = divmod(summary["duration_seconds"], 60)
+    lines = [
+        ("WORKOUT SUMMARY", (90, 220, 220), 0.9),
+        (f"Valid reps: {summary['valid_reps']}", (255, 255, 255), 0.68),
+        (f"Half down: {summary['half_down']}    Half up: {summary['half_up']}", (70, 190, 245), 0.62),
+        (f"Accuracy: {summary['accuracy']:.1f}%    Time: {minutes}:{seconds:02d}", (80, 220, 130), 0.62),
+    ]
+    for index, (text, color, scale) in enumerate(lines):
+        text_size = cv2.getTextSize(text, cv2.FONT_HERSHEY_DUPLEX, scale, 2)[0]
+        x = (width - text_size[0]) // 2
+        y = panel_y1 + 55 + index * 48
+        cv2.putText(frame, text, (x, y), cv2.FONT_HERSHEY_DUPLEX, scale,
+                    (8, 15, 20), 5, cv2.LINE_AA)
+        cv2.putText(frame, text, (x, y), cv2.FONT_HERSHEY_DUPLEX, scale,
+                    color, 2, cv2.LINE_AA)
 
 class HipStateMachine:
     def __init__(self):
@@ -703,7 +925,7 @@ landmarker = get_landmarker()
 # ==========================================
 from mediapipe.tasks.python.components.containers import NormalizedRect
 
-def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, start_time=0, process_this_frame=True, frame_num=0, plank_detector=None):
+def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, start_time=0, process_this_frame=True, frame_num=0, plank_detector=None, workout_stats=None):
     frame = cv2.resize(frame, (640, 480))
     h, w, _ = frame.shape
     debug_info = None
@@ -713,8 +935,8 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
         elapsed = time.time() - start_time
         if elapsed < 10:
             countdown = int(10 - elapsed)
-            cv2.putText(frame, f"Get Redfdfady! {countdown}s", (int(w/2) - 150, int(h/2)), 
-                        cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 165, 255), 4)
+            draw_overlay_text(frame, f"GET READY  {countdown}s", (int(w / 2), int(h / 2)),
+                              (40, 190, 245), 1.35, 3, centered=True)
             return frame, debug_info
     
     if process_this_frame:
@@ -742,6 +964,13 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
 
             avg_torso = all_features_dict.get('avg_torso_px', 0.1)
             is_plank_ready = plank_detector.check(pose_landmarks, avg_torso)
+            was_in_plank = cache.get('was_in_plank', False)
+            if workout_stats:
+                if is_plank_ready and not was_in_plank:
+                    workout_stats.start(timestamp_ms / 1000)
+                elif was_in_plank and not is_plank_ready:
+                    workout_stats.finish(timestamp_ms / 1000)
+            cache['was_in_plank'] = is_plank_ready
             
             t_pred_start = time.time()
             
@@ -777,7 +1006,9 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
                 pred_time = (time.time() - t_pred_start) * 1000
 
                 t_sm_start = time.time()
-                rep_sm.process(phase_pred)
+                rep_output, _ = rep_sm.process(phase_pred)
+                if workout_stats:
+                    workout_stats.record_event(rep_output)
                 hip_sm.process(hip_pred)
                 sm_time = (time.time() - t_sm_start) * 1000
             else:
@@ -785,6 +1016,7 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
                 phase_pred_str, hip_pred_str = "N/A", "N/A"
                 rep_sm.state = 'idle'
                 rep_sm.vote.q.clear() # איפוס תור ההצבעות
+                rep_sm.last_issue = ""
                 hip_sm.status = "Waiting..."
                 hip_sm.vote.q.clear()
                 pred_time, sm_time = 0.0, 0.0
@@ -792,6 +1024,9 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
             cache['last_landmarks'] = pose_landmarks
         else:
             cache['last_landmarks'] = None
+            if workout_stats and cache.get('was_in_plank', False):
+                workout_stats.finish(timestamp_ms / 1000)
+            cache['was_in_plank'] = False
 
         # יצירת מופע של אובייקט ה-Debug
        # debug_info = FrameDebugData(frame_num, phase_pred_str, hip_pred_str, mp_time, feat_time, pred_time, sm_time)
@@ -815,16 +1050,18 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
         #     cv2.circle(frame, (int(lm.x * w), int(lm.y * h)), 6, (0, 255, 0), -1)
         pass
     else:
-        cv2.putText(frame, "No Pose Detected", (int(w/2) - 150, int(h/2)), 
-                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        draw_overlay_text(frame, "NO POSE DETECTED", (int(w / 2), int(h / 2)),
+                          (80, 90, 235), 0.95, 2, centered=True)
     
     # ==========================================
     # HANDSHAKE & UI VISUALS
     # ==========================================
     
     # 1. הגדרת Bounding Box (מסגרת הכיול) במרכז המסך
-    box_x1, box_y1 = int(w * 0.15), int(h * 0.25)
-    box_x2, box_y2 = int(w * 0.85), int(h * 0.75)
+    box_x1 = int(w * 0.15)
+    box_x2 = int(w * 0.85)
+    box_y2 = h - 8
+    box_y1 = box_y2 - int(h * 0.5)
     
     # 2. קביעת צבע המסגרת בהתאם למצב ה-Handshake
     if plank_detector and plank_detector.is_in_plank:
@@ -838,32 +1075,44 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
     # 3. הצגת הנחיות טקסטואליות למשתמש בהתאם לשלב
     if plank_detector and plank_detector.is_in_plank:
         # שלב א': הכל מוכן, אימון פעיל
-        cv2.putText(frame, "HANDSHAKE OK - READY", (int(w/2) - 160, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
+        draw_overlay_text(frame, "READY TO TRAIN", (int(w / 2), 40),
+                          (80, 220, 130), 0.8, 2, centered=True)
         
     elif plank_detector and 0 < plank_detector.valid_frames_count < plank_detector.required_frames:
         # שלב ב': המשתמש בפנים, המערכת סופרת לאחור לייצוב (אחוזים)
         progress = int((plank_detector.valid_frames_count / plank_detector.required_frames) * 100)
-        cv2.putText(frame, f"Calibrating... {progress}%", (int(w/2) - 130, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2)
+        draw_overlay_text(frame, f"CALIBRATING  {progress}%", (int(w / 2), 40),
+                          (80, 220, 235), 0.75, 2, centered=True)
         
     else:
         # שלב ג': מחכים שהמשתמש יכנס למסגרת בפרופיל
-        cv2.putText(frame, "Align body in box (9 o'clock)", (int(w/2) - 180, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 165, 255), 2)
+        draw_overlay_text(frame, "ALIGN BODY IN BOX  |  9 O'CLOCK", (int(w / 2), 40),
+                          (40, 190, 245), 0.68, 2, centered=True)
 
-    # פאנל נתונים בצד (חזרות וסטטוס אגן)
-    cv2.rectangle(frame, (10, 200), (300, 350), (0, 0, 0), -1)
-    cv2.putText(frame, f"Reps: {rep_sm.rep_count}", (20, 250), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+    # נתוני האימון נשארים שקופים כדי לא להסתיר את המשתמש.
+    draw_emphasized_text(frame, f"REPS  {rep_sm.rep_count}", (18, 38), (255, 255, 255), 0.65, 2)
     
-    hip_color = (0, 255, 0) if hip_sm.status == "Good Form" else (0, 0, 255)
-    cv2.putText(frame, f"Hips: {hip_sm.status}", (20, 300), cv2.FONT_HERSHEY_SIMPLEX, 1, hip_color, 2)
+    hip_color = (80, 220, 130) if hip_sm.status == "Good Form" else (80, 90, 235)
+    draw_emphasized_text(frame, f"HIPS  {hip_sm.status.upper()}", (18, 70), hip_color, 0.58, 2)
     
     if rep_sm.last_issue:
-        cv2.putText(frame, f"Alert: {rep_sm.last_issue}", (20, 130), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 165, 255), 2)
+        draw_overlay_text(frame, f"ALERT  {rep_sm.last_issue}", (25, 145),
+                          (70, 90, 235), 0.78, 2)
+
+    if workout_stats and workout_stats.has_completed_workout() and not is_plank_ready:
+        draw_workout_summary_overlay(frame, workout_stats.as_dict())
     return frame, debug_info
 
 # ==========================================
 # 5. UI & TABS
 # ==========================================
-st.title("🤖 A-EYE TRAINER: Live & Offline Predictor")
+st.title("A-EYE TRAINER")
+st.caption("Real-time push-up form coaching with clear, actionable feedback")
+
+if 'last_workout_summary' not in st.session_state:
+    st.session_state.last_workout_summary = None
+if st.session_state.last_workout_summary:
+    render_workout_summary(st.session_state.last_workout_summary)
 
 if 'offline_rep_sm' not in st.session_state:
     st.session_state.offline_rep_sm = RepStateMachine()
@@ -873,18 +1122,31 @@ if 'global_timestamp_ms' not in st.session_state:
     st.session_state.global_timestamp_ms = int(time.time() * 1000)
 if 'offline_plank_detector' not in st.session_state:
     st.session_state.offline_plank_detector = PlankPositionDetector()
+if 'live_session_active' not in st.session_state:
+    st.session_state.live_session_active = False
 
-tab_live, tab_video = st.tabs(["🔴 Live Camera", "🎥 Upload Video"])
+tab_live, tab_video = st.tabs(["Live Camera", "Upload Video"])
     
 with tab_live:
-    st.subheader("Live Real-Time Processing")
-    
+    st.subheader("Live coaching")
+    st.markdown("""
+    <section style="background: #ffffff; border: 1px solid #d9e2df; border-left: 5px solid #087f8c; border-radius: 8px; padding: 1rem 1.2rem; margin: 0.5rem 0 1rem;">
+        <div style="color: #075b65; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.45rem;">Before you start</div>
+        <div style="color: #61707d; line-height: 1.65;">
+            1. Place the camera at your side, at 9 o'clock.<br>
+            2. Make sure your full body, hands and feet are visible.<br>
+            3. Enter the guide box and hold the plank position until the screen says READY TO TRAIN.
+        </div>
+    </section>
+    """, unsafe_allow_html=True)
+
     class VideoProcessor(VideoTransformerBase):
         def __init__(self):
             self.start_time = time.time()
             self.rep_sm = RepStateMachine()
             self.hip_sm = HipStateMachine()
             self.plank_detector = PlankPositionDetector()
+            self.workout_stats = WorkoutStats()
             self.cache = {'last_landmarks': None}
             self.last_process_time = 0
             self.fps = 30
@@ -904,10 +1166,10 @@ with tab_live:
             elapsed = current_time - self.start_time
             if elapsed < 10:
                 countdown = int(10 - elapsed)
-                cv2.putText(img, f"Get Ready! {countdown}s", (int(w/2) - 150, int(h/2)), 
-                            cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 165, 255), 4)
-                cv2.putText(img, f"Place camera at 9 o'clock", (int(w/2) - 130, int(h/2) + 70), 
-                        cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 165, 255), 2)
+                draw_overlay_text(img, f"GET READY  {countdown}s", (int(w / 2), int(h / 2)),
+                          (40, 190, 245), 1.35, 3, centered=True)
+                draw_overlay_text(img, "PLACE CAMERA AT 9 O'CLOCK", (int(w / 2), int(h / 2) + 70),
+                          (40, 190, 245), 0.72, 2, centered=True)
                 return av.VideoFrame.from_ndarray(img, format="bgr24")
             
             timestamp_ms = int(current_time * 1000)
@@ -922,7 +1184,7 @@ with tab_live:
             # קבלת האובייקט המעובד ואובייקט ה-Debug
             processed_img, debug_info = process_frame(
                 img, self.rep_sm, self.hip_sm, self.cache, timestamp_ms,
-                is_live=True, start_time=self.start_time, process_this_frame=process_this_frame, frame_num=self.frame_count, plank_detector=self.plank_detector
+                is_live=True, start_time=self.start_time, process_this_frame=process_this_frame, frame_num=self.frame_count, plank_detector=self.plank_detector, workout_stats=self.workout_stats
             )
             
             # הכנסה לתור במידה ועובד פריים
@@ -933,25 +1195,40 @@ with tab_live:
             
         # פונקציה מובנית שנקראת אוטומטית כשהחיבור מתנתק / השידור נעצר
         def on_ended(self):
+            self.workout_stats.finish(time.time())
+            if self.workout_stats.has_completed_workout():
+                st.session_state.last_workout_summary = self.workout_stats.as_dict()
             flush_debug_queue(self.debug_queue, "Live Camera")
 
-    webrtc_streamer(
+    live_context = webrtc_streamer(
         key="a-eye-live", 
         mode=WebRtcMode.SENDRECV,
         video_processor_factory=VideoProcessor,
         media_stream_constraints={"video": True, "audio": False},
+        translations={
+            "start": "START NEW WORKOUT",
+            "stop": "STOP WORKOUT",
+        },
         
     )
 
+    if live_context.state.playing and not st.session_state.live_session_active:
+        st.session_state.last_workout_summary = None
+        st.session_state.live_session_active = True
+    elif not live_context.state.playing:
+        st.session_state.live_session_active = False
+
 with tab_video:
-    st.subheader("Offline Video Processing")
-    uploaded_video = st.file_uploader("Upload an MP4 video", type=['mp4', 'mov', 'avi'])
+    st.subheader("Review a recorded workout")
+    uploaded_video = st.file_uploader("Choose a video to analyze", type=['mp4', 'mov', 'avi'])
     
     if uploaded_video is not None:
-        if st.button("Start Processing Video"):
+        if st.button("Analyze video"):
+            st.session_state.last_workout_summary = None
             st.session_state.offline_rep_sm = RepStateMachine()
             st.session_state.offline_hip_sm = HipStateMachine()
             st.session_state.offline_plank_detector = PlankPositionDetector()
+            offline_workout_stats = WorkoutStats()
             tfile = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4')
             tfile.write(uploaded_video.read())
             tfile.close()
@@ -984,7 +1261,7 @@ with tab_video:
                 processed_frame, debug_info = process_frame(
                     frame, st.session_state.offline_rep_sm, st.session_state.offline_hip_sm, 
                     offline_cache, timestamp_ms, is_live=False, process_this_frame=process_this_frame, frame_num=frame_count 
-                    ,plank_detector=st.session_state.offline_plank_detector
+                    ,plank_detector=st.session_state.offline_plank_detector, workout_stats=offline_workout_stats
                 )
                 
                 # הכנסה לתור
@@ -996,8 +1273,14 @@ with tab_video:
                 
             cap.release()
             os.unlink(tfile.name)
+            offline_workout_stats.finish(st.session_state.global_timestamp_ms / 1000)
             
             # ריקון התור לקובץ בסוף הריצה
             flush_debug_queue(offline_debug_queue, f"Offline Video - {uploaded_video.name}")
             
-            st.success(f"✅ Processing complete! Total Reps: {st.session_state.offline_rep_sm.rep_count}")
+            if offline_workout_stats.has_completed_workout():
+                st.session_state.last_workout_summary = offline_workout_stats.as_dict()
+                render_workout_summary(st.session_state.last_workout_summary)
+            else:
+                st.info("No completed workout was detected. Complete at least one valid rep before leaving the box.")
+            st.success(f"Processing complete  |  Total reps: {st.session_state.offline_rep_sm.rep_count}")

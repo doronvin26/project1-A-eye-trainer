@@ -149,8 +149,7 @@ def process_all_csvs(target_folders):
 
                 df['left_knee_angle'] = df.apply(lambda row: calculate_angle(row, 'left_hip', 'left_knee', 'left_ankle'), axis=1)
                 df['right_knee_angle'] = df.apply(lambda row: calculate_angle(row, 'right_hip', 'right_knee', 'right_ankle'), axis=1)
-                if 'nose_x' in df.columns:
-                    df['neck_angle'] = df.apply(lambda row: calculate_angle(row, 'nose', 'left_shoulder', 'left_hip'), axis=1)
+
 
                 # --- 2. ADVANCED 3D FEATURES ---
                 def compute_centers_and_features(row):
