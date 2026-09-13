@@ -1,6 +1,15 @@
 import streamlit as st
+import os
+import glob
+import time
+import math
+import threading
+from collections import deque
+import pandas as pd
+import numpy as np
 import cv2
 import tempfile
+import av
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
@@ -910,6 +919,24 @@ def get_landmarker():
 
 landmarker = get_landmarker()
 
+
+@st.cache_resource
+def get_landmarker_timestamp_state():
+    return {"lock": threading.Lock(), "last_timestamp_ms": 0}
+
+
+landmarker_timestamp_state = get_landmarker_timestamp_state()
+
+
+def get_monotonic_landmarker_timestamp(timestamp_ms):
+    with landmarker_timestamp_state["lock"]:
+        safe_timestamp_ms = max(
+            timestamp_ms,
+            landmarker_timestamp_state["last_timestamp_ms"] + 1,
+        )
+        landmarker_timestamp_state["last_timestamp_ms"] = safe_timestamp_ms
+        return safe_timestamp_ms
+
 # ==========================================
 # 4. UNIFIED PROCESSING PIPELINE
 # ==========================================
@@ -934,6 +961,7 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame_rgb)
         
         t_mp_start = time.time()
+        timestamp_ms = get_monotonic_landmarker_timestamp(timestamp_ms)
         res = landmarker.detect_for_video(mp_image, timestamp_ms)
         mp_time = (time.time() - t_mp_start) * 1000
         delta_ms = 0
