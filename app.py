@@ -1258,7 +1258,7 @@ with tab_video:
             st_frame = st.empty() 
             frame_count = 0
             offline_cache = {'last_landmarks': None}
-            frame_skip_interval =2
+            frame_skip_interval =1
             
             # יצירת תור ה-Debug לוידאו האופליין
             offline_debug_queue = []
@@ -1269,11 +1269,20 @@ with tab_video:
                 
                 frame_count += 1
                 
-                if (frame_count % frame_skip_interval == 0):
-                    st.session_state.global_timestamp_ms += int((frame_skip_interval / fps) * 1000)
+                # if (frame_count % frame_skip_interval == 0):
+                #     st.session_state.global_timestamp_ms += int((frame_skip_interval / fps) * 1000)
                 
+                # timestamp_ms = st.session_state.global_timestamp_ms
+                # process_this_frame = (frame_count % frame_skip_interval == 0)
+                # חישוב מתמטי שמוודא שנעבד בדיוק 20 פריימים לכל שניית וידאו
+                # במקום: frame_skip_interval = 2
+                target_fps = 18
+                process_this_frame = int(frame_count * target_fps / fps) > int((frame_count - 1) * target_fps / fps)
+
+                if process_this_frame:
+                    # הוספת 50 אלפיות השנייה (1000 / 20) באופן מדויק לטיימר של MediaPipe
+                    st.session_state.global_timestamp_ms += int((1.0 / target_fps) * 1000)
                 timestamp_ms = st.session_state.global_timestamp_ms
-                process_this_frame = (frame_count % frame_skip_interval == 0)
                 
                 # קבלת התמונה ואובייקט ה-Debug
                 processed_frame, debug_info = process_frame(
