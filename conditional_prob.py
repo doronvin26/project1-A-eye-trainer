@@ -6,6 +6,8 @@ import glob
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.metrics import confusion_matrix, f1_score
+from sklearn.metrics import log_loss
 
 # ==========================================
 # Part 1: Load data and concatenate files
@@ -67,7 +69,8 @@ else:
         # Calculate the prior probability for each class P(y)
         class_counts = full_data[target].value_counts()
         priors = class_counts / len(full_data)
-        classes = class_counts.index.tolist()
+        # classes = class_counts.index.tolist()
+        classes = sorted(class_counts.index.tolist()) #for cross antropy
         print(f"Classes detected for {target}: {classes}")
 
         for feature in features:
@@ -115,28 +118,44 @@ else:
             
             # Stack results and find the class with the highest probability
             posteriors = np.vstack(posteriors)
-            predictions_idx = np.argmax(posteriors, axis=0)
-            predictions = [classes[idx] for idx in predictions_idx]
+            # --- חישוב P(y|x) מנורמל ---
+            evidence = np.sum(posteriors, axis=0)
+            evidence[evidence == 0] = 1e-10 # מניעת חלוקה באפס
+            normalized_probs = posteriors / evidence
             
+            # חישוב Log-Loss (ככל שהציון נמוך יותר, P(y|x) עבור המחלקה הנכונה גבוה יותר)
+            # הפונקציה דורשת מטריצה בצורה (n_samples, n_classes), לכן עושים Transpose
+            loss = log_loss(full_data[target].values, normalized_probs.T, labels=classes)
+            results.append((feature, loss))
+
+
+
+
+
+            # predictions_idx = np.argmax(posteriors, axis=0)
+            # predictions = [classes[idx] for idx in predictions_idx]
             # Calculate the accuracy of the current feature
-            accuracy = np.mean(predictions == full_data[target].values)
-            results.append((feature, accuracy))
-            cm = confusion_matrix(full_data[target].values, predictions, labels=classes)
-            plt.figure(figsize=(8, 6))
-            sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=classes, yticklabels=classes)
-            plt.title(f'Confusion Matrix: {feature}')
-            plt.ylabel('Actual'); plt.xlabel('Predicted')
-            os.makedirs(f"Conditional probability/matrices_{target}", exist_ok=True)
-            plt.savefig(f"Conditional probability/matrices_{target}/{feature}.png")
-            plt.close()
+            # accuracy = np.mean(predictions == full_data[target].values)
+            # Calculate the Macro F1-score of the current feature
+            # macro_f1 = f1_score(full_data[target].values, predictions, average='macro')
+            # results.append((feature, macro_f1))
+            # cm = confusion_matrix(full_data[target].values, predictions, labels=classes)
+            # plt.figure(figsize=(8, 6))
+            # sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=classes, yticklabels=classes)
+            # plt.title(f'Confusion Matrix: {feature}')
+            # plt.ylabel('Actual'); plt.xlabel('Predicted')
+            # os.makedirs(f"Conditional probability/matrices_{target}", exist_ok=True)
+            # plt.savefig(f"Conditional probability/matrices_{target}/{feature}.png")
+            # plt.close()
         
         # ==========================================
         # Part 5: Sort results and save to file
         # ==========================================
         # Sort features by accuracy in descending order
-        results.sort(key=lambda x: x[1], reverse=True)
+        # results.sort(key=lambda x: x[1], reverse=True)
+        results.sort(key=lambda x: x[1], reverse=False)
         
-        output_path = f"Conditional probability/{target}_feature_only.txt"
+        output_path = f"Conditional probability/{target}_feature_only_cross_antropy.txt"
         
         with open(output_path, "w") as f:
             f.write(f"Feature ranking for target '{target}' based on KDE Conditional Probability Accuracy:\n")

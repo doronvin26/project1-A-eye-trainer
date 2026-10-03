@@ -14,11 +14,11 @@ warnings.filterwarnings('ignore')
 # ==========================================
 # הגדרות מודולריות - ניתן לשנות בקלות בעתיד
 # ==========================================
-FEATURE_LIST_FILE = "Conditional probability/hips_position_feature_only.txt"
+FEATURE_LIST_FILE = "Conditional probability/pushup_phase_feature_only_cross_antropy.txt"
 DATA_DIR = "data"                  
-TARGET_COL = "hips_position"         
-OUTPUT_DIR = "Conditional probability/knn_optimization_results"
-OUTPUT_FILE_NAME = "hips_position.txt"
+TARGET_COL = "pushup_phase"         
+OUTPUT_DIR = "Conditional probability/knn_optimization_results_cross_antropy"
+OUTPUT_FILE_NAME = "pushup_phase.txt"
 #hips_position
 #pushup_phase
 
@@ -41,6 +41,7 @@ def extract_top_features(filepath, max_feat):
     with open(filepath, 'r', encoding='utf-8') as f:
         for line in f:
             if "|" in line and "Accuracy" in line:
+            # if "|" in line and "Macro F1" in line:
                
                 part1 = line.split('|')[0]
                 feat_name = part1.split('.')[1].strip()

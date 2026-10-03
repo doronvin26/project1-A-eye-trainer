@@ -16,6 +16,8 @@ from mediapipe.tasks.python import vision
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
+import threading
+import queue
 
 # WebRTC for live video
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, WebRtcMode
@@ -1158,6 +1160,65 @@ with tab_live:
     </section>
     """, unsafe_allow_html=True)
 
+    # class VideoProcessor(VideoTransformerBase):
+    #     def __init__(self):
+    #         self.start_time = time.time()
+    #         self.rep_sm = RepStateMachine()
+    #         self.hip_sm = HipStateMachine()
+    #         self.plank_detector = PlankPositionDetector()
+    #         self.workout_stats = WorkoutStats()
+    #         self.cache = {'last_landmarks': None}
+    #         self.last_process_time = 0
+    #         self.fps = 30
+    #         self.last_timestamp_ms = -1 
+            
+    #         # הוספת משתנים לתור ה-Debug
+    #         self.frame_count = 0
+    #         self.debug_queue = []
+            
+    #     def recv(self, frame):
+    #         self.frame_count += 1
+            
+    #         img = frame.to_ndarray(format="bgr24")
+    #         h, w, _ = img.shape
+    #         current_time = time.time()
+            
+    #         elapsed = current_time - self.start_time
+    #         if elapsed < 10:
+    #             countdown = int(10 - elapsed)
+    #             draw_overlay_text(img, f"GET READY  {countdown}s", (int(w / 2), int(h / 2)),
+    #                       (40, 190, 245), 1.35, 3, centered=True)
+    #             draw_overlay_text(img, "PLACE CAMERA AT 9 O'CLOCK", (int(w / 2), int(h / 2) + 70),
+    #                       (40, 190, 245), 0.72, 2, centered=True)
+    #             return av.VideoFrame.from_ndarray(img, format="bgr24")
+            
+    #         timestamp_ms = int(current_time * 1000)
+    #         if timestamp_ms <= self.last_timestamp_ms:
+    #             timestamp_ms = self.last_timestamp_ms + 1
+    #         self.last_timestamp_ms = timestamp_ms
+            
+    #         process_this_frame = (current_time - self.last_process_time) >= 1/self.fps
+    #         if process_this_frame:
+    #             self.last_process_time = current_time
+                
+    #         # קבלת האובייקט המעובד ואובייקט ה-Debug
+    #         processed_img, debug_info = process_frame(
+    #             img, self.rep_sm, self.hip_sm, self.cache, timestamp_ms,
+    #             is_live=True, start_time=self.start_time, process_this_frame=process_this_frame, frame_num=self.frame_count, plank_detector=self.plank_detector, workout_stats=self.workout_stats
+    #         )
+            
+    #         # הכנסה לתור במידה ועובד פריים
+    #         if debug_info:
+    #             self.debug_queue.append(debug_info)
+            
+    #         return av.VideoFrame.from_ndarray(processed_img, format="bgr24")
+            
+    #     # פונקציה מובנית שנקראת אוטומטית כשהחיבור מתנתק / השידור נעצר
+    #     def on_ended(self):
+    #         self.workout_stats.finish(time.time())
+    #         if self.workout_stats.has_completed_workout():
+    #             st.session_state.last_workout_summary = self.workout_stats.as_dict()
+    #         flush_debug_queue(self.debug_queue, "Live Camera")
     class VideoProcessor(VideoTransformerBase):
         def __init__(self):
             self.start_time = time.time()
@@ -1166,18 +1227,44 @@ with tab_live:
             self.plank_detector = PlankPositionDetector()
             self.workout_stats = WorkoutStats()
             self.cache = {'last_landmarks': None}
-            self.last_process_time = 0
-            self.fps = 30
-            self.last_timestamp_ms = -1 
-            
-            # הוספת משתנים לתור ה-Debug
             self.frame_count = 0
             self.debug_queue = []
             
+            # --- מנגנון תהליכונים (Threading) ---
+            self.frame_queue = queue.Queue(maxsize=1)
+            self.result_frame = None
+            self.stop_event = threading.Event()
+            self.thread = threading.Thread(target=self._processing_worker, daemon=True)
+            self.thread.start()
+            
+        def _processing_worker(self):
+            # תהליכון שרץ ברקע (Consumer) - מחלץ מאפיינים ומפעיל את המודל ללא חסימת הווידאו
+            while not self.stop_event.is_set():
+                try:
+                    # ממתין לפריים בתור
+                    img, timestamp_ms, frame_num = self.frame_queue.get(timeout=0.2)
+                except queue.Empty:
+                    continue
+                    
+                processed_img, debug_info = process_frame(
+                    img, self.rep_sm, self.hip_sm, self.cache, timestamp_ms,
+                    is_live=True, start_time=self.start_time, process_this_frame=True, 
+                    frame_num=frame_num, plank_detector=self.plank_detector, workout_stats=self.workout_stats
+                )
+                
+                # שמירת התוצאה המעובדת (הציורים והנתונים) שתוצג למשתמש
+                self.result_frame = processed_img
+                
+                if debug_info:
+                    self.debug_queue.append(debug_info)
+                    
         def recv(self, frame):
             self.frame_count += 1
             
+            # עיבוד מידי לרזולוציה אחידה לכל אורך הזרם
             img = frame.to_ndarray(format="bgr24")
+            img = cv2.resize(img, (640, 480))
+            
             h, w, _ = img.shape
             current_time = time.time()
             
@@ -1191,28 +1278,21 @@ with tab_live:
                 return av.VideoFrame.from_ndarray(img, format="bgr24")
             
             timestamp_ms = int(current_time * 1000)
-            if timestamp_ms <= self.last_timestamp_ms:
-                timestamp_ms = self.last_timestamp_ms + 1
-            self.last_timestamp_ms = timestamp_ms
             
-            process_this_frame = (current_time - self.last_process_time) >= 1/self.fps
-            if process_this_frame:
-                self.last_process_time = current_time
-                
-            # קבלת האובייקט המעובד ואובייקט ה-Debug
-            processed_img, debug_info = process_frame(
-                img, self.rep_sm, self.hip_sm, self.cache, timestamp_ms,
-                is_live=True, start_time=self.start_time, process_this_frame=process_this_frame, frame_num=self.frame_count, plank_detector=self.plank_detector, workout_stats=self.workout_stats
-            )
+            # דחיפת פריים לתור (Producer) רק אם התור ריק, כדי למנוע הצטברות ועיכוב בשידור
+            if self.frame_queue.empty():
+                self.frame_queue.put((img.copy(), timestamp_ms, self.frame_count))
             
-            # הכנסה לתור במידה ועובד פריים
-            if debug_info:
-                self.debug_queue.append(debug_info)
+            # שליחת הפריים האחרון שעובד ברקע. אם עוד אין, נציג את הפריים הגולמי הנוכחי.
+            output_img = self.result_frame if self.result_frame is not None else img
             
-            return av.VideoFrame.from_ndarray(processed_img, format="bgr24")
+            return av.VideoFrame.from_ndarray(output_img, format="bgr24")
             
-        # פונקציה מובנית שנקראת אוטומטית כשהחיבור מתנתק / השידור נעצר
         def on_ended(self):
+            # סגירה בטוחה של התהליכון בעת ניתוק
+            self.stop_event.set()
+            self.thread.join(timeout=1.0)
+            
             self.workout_stats.finish(time.time())
             if self.workout_stats.has_completed_workout():
                 st.session_state.last_workout_summary = self.workout_stats.as_dict()
