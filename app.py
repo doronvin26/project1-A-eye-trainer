@@ -256,23 +256,46 @@ MODELS_CONFIG = {
 # ==========================================
 # 1. STATE MACHINES LOGIC
 # ==========================================
+#original - 5 frames
+#  class MajorityVoting:
+#     def __init__(self, window_size=5):
+#         self.q = deque(maxlen=window_size)
+#     def push(self, val):
+#         self.q.append(val)
+#     def get_majority(self):
+#         if len(self.q) < 3: return None
+#         counts = {}
+#         for v in self.q: counts[v] = counts.get(v, 0) + 1
+#         for v, count in counts.items():
+#             if count >= 3: return v
+#         return None
 class MajorityVoting:
-    def __init__(self, window_size=5):
+    def __init__(self, window_size=4):
         self.q = deque(maxlen=window_size)
+        
     def push(self, val):
         self.q.append(val)
+        
     def get_majority(self):
-        if len(self.q) < 3: return None
+        if len(self.q) == 0: return None
+        
         counts = {}
         for v in self.q: counts[v] = counts.get(v, 0) + 1
-        for v, count in counts.items():
-            if count >= 3: return v
-        return None
-
+            
+        max_count = max(counts.values())
+        # מציאת כל הערכים שחולקים את מספר ההופעות המקסימלי
+        candidates = [k for k, v in counts.items() if v == max_count]
+        
+        if len(candidates) > 1:
+            # במקרה של שוויון (למשל 2 מול 2), קח את הפריים האחרון
+            return self.q[-1]
+        else:
+            return candidates[0]
 class RepStateMachine:
     def __init__(self):
         self.state = 'idle'
-        self.vote = MajorityVoting(5)
+        # self.vote = MajorityVoting(5)   
+        self.vote = MajorityVoting(4)
         self.rep_count = 0
         self.last_issue = ""
         
@@ -299,8 +322,8 @@ class RepStateMachine:
                 self.state = 'LOW'
             elif 'high' in maj:
                 self.state = 'HIGH'
-                output = 2
-                self.last_issue = "Half way up!"
+                # output = 2
+                # self.last_issue = "Half way up!"
                 
         elif self.state == 'LOW':
             if 'medium' in maj or 'mid' in maj: 
@@ -318,8 +341,8 @@ class RepStateMachine:
                 self.last_issue = ""
             elif 'low' in maj:
                 self.state = 'LOW'
-                output = 3
-                self.last_issue = "Half way down!"
+                # output = 3
+                # self.last_issue = "Half way down!"
                 
         return output, self.state
 
@@ -453,8 +476,9 @@ class PlankPositionDetector:
         self.last_debug_msg = "No Pose"
         
     def check(self, pose_landmarks, avg_torso):
-        if not pose_landmarks or avg_torso <= 0:
-            return self._update_state(False)
+        # if not pose_landmarks or avg_torso <= 0:
+        #     return self._update_state(False)
+        return True
 
         l_shoulder = pose_landmarks[MP_LANDMARK_MAP["left_shoulder"]]
         r_shoulder = pose_landmarks[MP_LANDMARK_MAP["right_shoulder"]]
@@ -1119,8 +1143,8 @@ def process_frame(frame, rep_sm, hip_sm, cache, timestamp_ms, is_live=False, sta
         draw_overlay_text(frame, f"ALERT  {rep_sm.last_issue}", (25, 145),
                           (70, 90, 235), 0.78, 2)
 
-    if workout_stats and workout_stats.has_completed_workout() and not is_plank_ready:
-        draw_workout_summary_overlay(frame, workout_stats.as_dict())
+    # if workout_stats and workout_stats.has_completed_workout() and not is_plank_ready:
+    #     draw_workout_summary_overlay(frame, workout_stats.as_dict())
     return frame, debug_info
 
 # ==========================================
@@ -1356,7 +1380,7 @@ with tab_video:
                 # process_this_frame = (frame_count % frame_skip_interval == 0)
                 # חישוב מתמטי שמוודא שנעבד בדיוק 20 פריימים לכל שניית וידאו
                 # במקום: frame_skip_interval = 2
-                target_fps = 18
+                target_fps =20
                 process_this_frame = int(frame_count * target_fps / fps) > int((frame_count - 1) * target_fps / fps)
 
                 if process_this_frame:
